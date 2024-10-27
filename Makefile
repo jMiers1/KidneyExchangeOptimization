@@ -1,5 +1,3 @@
-# Makefile for simple C++ project
-
 # Compiler
 CXX = g++
 
@@ -25,7 +23,6 @@ $(TARGET): $(OBJS)
 
 # Custom run target to build, execute, and clean up
 run: $(TARGET)
-	@echo "Surpressed message" 
 	@./$(TARGET)
 	@make clean > /dev/null 2>&1
 

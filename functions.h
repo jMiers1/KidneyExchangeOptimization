@@ -1,7 +1,8 @@
 // functions.h
-#ifndef FUNCTIONS_H
+
+#ifndef FUNCTIONS_H    // only process once
 #define FUNCTIONS_H
 
-void sayHello();
+int func();
 
 #endif // FUNCTIONS_H

@@ -1,7 +1,11 @@
 // functions.cpp
-#include <iostream>
-#include "functions.h"
+#include <iostream>    // standard library for in- and output 
+#include <algorithm>  // for std::sort
+#include "functions.h"  // implement the header file 
 
-void sayHello() {
-    std::cout << "Hello from functions.cpp!" << std::endl;
+
+int func() {
+    return 0;
 }
+
+
