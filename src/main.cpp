@@ -9,10 +9,26 @@
 #include "main_VFS.hpp"
 
 int main(int argc, const char * argv[]) {
-    if (argc != 8){
-        cout <<"Not enough parameters. They must be 8." << endl;
+    if (argc < 8) {
+        cout << "The program expects 7 additional arguments" << endl;
+        
+        cout << "Received: \n";
+
+        for(int i{0}; i < argc; i++) {
+            cout << "Argument " << i << ": " << std::string{argv[i]} << "\n";
+        }
+        
         return -1;
     }
+
+    cout << "1: Input Path - got: \"" << string(argv[1]) << "\"\n" 
+        << "2: Output Path - got: \"" << string(argv[2]) << "\"\n"
+        << "3: Max cycle length - got: \"" << string(argv[3]) << "\"\n"
+        << "4: Max chain length - got: \"" << string(argv[4]) << "\"\n"
+        << "5: Degree type - got: \"" << string(argv[5]) << "\"\n"
+        << "6: Time limit - got: \"" << string(argv[6]) << "\"\n"
+        << "7: Cycle / Chain mode - got: \"" << string(argv[7]) << "\"" << endl;
+
     //List of arguments
     string FilePath = argv[1];
     string OutputPath = argv[2];
