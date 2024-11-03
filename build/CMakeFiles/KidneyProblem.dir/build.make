@@ -153,10 +153,24 @@ CMakeFiles/KidneyProblem.dir/FindCycles.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/FindCycles.cpp.s"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/FindCycles.cpp -o CMakeFiles/KidneyProblem.dir/FindCycles.cpp.s
 
+CMakeFiles/KidneyProblem.dir/timer.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
+CMakeFiles/KidneyProblem.dir/timer.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/timer.cpp
+CMakeFiles/KidneyProblem.dir/timer.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/KidneyProblem.dir/timer.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/timer.cpp.o -MF CMakeFiles/KidneyProblem.dir/timer.cpp.o.d -o CMakeFiles/KidneyProblem.dir/timer.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/timer.cpp
+
+CMakeFiles/KidneyProblem.dir/timer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/KidneyProblem.dir/timer.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/juliusmiers/CodingWS24/ORSeminar/src/timer.cpp > CMakeFiles/KidneyProblem.dir/timer.cpp.i
+
+CMakeFiles/KidneyProblem.dir/timer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/timer.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/timer.cpp -o CMakeFiles/KidneyProblem.dir/timer.cpp.s
+
 CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
 CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/LagrangianRelaxation.cpp
 CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o -MF CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o.d -o CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/LagrangianRelaxation.cpp
 
 CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.s: cmake_force
 CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
 CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/LongestPath.cpp
 CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o -MF CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o.d -o CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/LongestPath.cpp
 
 CMakeFiles/KidneyProblem.dir/LongestPath.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/KidneyProblem.dir/LongestPath.cpp.s: cmake_force
 CMakeFiles/KidneyProblem.dir/main.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
 CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/main.cpp
 CMakeFiles/KidneyProblem.dir/main.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/KidneyProblem.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/KidneyProblem.dir/main.cpp.o"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/main.cpp.o -MF CMakeFiles/KidneyProblem.dir/main.cpp.o.d -o CMakeFiles/KidneyProblem.dir/main.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/main.cpp
 
 CMakeFiles/KidneyProblem.dir/main.cpp.i: cmake_force
@@ -203,6 +217,7 @@ KidneyProblem_OBJECTS = \
 "CMakeFiles/KidneyProblem.dir/Chains.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o" \
+"CMakeFiles/KidneyProblem.dir/timer.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/main.cpp.o"
@@ -216,12 +231,13 @@ bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/BBTree.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/Chains.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o
+bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/timer.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/main.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/build.make
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable bin/KidneyProblem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable bin/KidneyProblem"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KidneyProblem.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

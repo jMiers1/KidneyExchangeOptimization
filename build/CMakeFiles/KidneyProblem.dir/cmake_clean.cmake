@@ -17,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/main.cpp.o"
   "CMakeFiles/KidneyProblem.dir/main.cpp.o.d"
+  "CMakeFiles/KidneyProblem.dir/timer.cpp.o"
+  "CMakeFiles/KidneyProblem.dir/timer.cpp.o.d"
   "bin/KidneyProblem"
   "bin/KidneyProblem.pdb"
 )

@@ -14,6 +14,12 @@ degree_type="Indegree"
 time_limit=15
 mode="CY"
 
+if [ "$1" == "true" ]; then
+    rm -rf build
+    mkdir build
+    echo "Existing 'build' directory removed."
+fi
+
 cd build
 cmake ../src
 make

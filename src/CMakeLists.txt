@@ -57,6 +57,7 @@ add_executable(KidneyProblem "ReadData.cpp"
                              "Class_Problem.cpp"
                              "FindCycles.cpp" 
                              # "FindCycles_VFS.cpp"
+                             "timer.cpp"
                              "LagrangianRelaxation.cpp"
                              "LongestPath.cpp"
                              "main.cpp" )

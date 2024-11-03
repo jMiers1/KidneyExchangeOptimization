@@ -6,8 +6,12 @@
 //  Copyright © 2020 Carolina Riascos Alvarez. All rights reserved.
 //
 
+#include "timer.hpp"
 #include "BBTree.hpp"
+
 void Problem::getChildren(){
+
+    auto time_start = std::chrono::high_resolution_clock::now();
     
     //Verify if solution is feasible
     LagArcs.clear();
@@ -182,6 +186,9 @@ void Problem::getChildren(){
 };
 
 void Problem::BBTree(){
+
+    //double timeB = 2;
+    operationTimes.emplace_back("B", 2);
     
     //Modify Adjancency List: Super Source node
     AdjacencyList.add(IloNumArray(env,0));
