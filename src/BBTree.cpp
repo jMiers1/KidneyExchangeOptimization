@@ -6,7 +6,7 @@
 //  Copyright © 2020 Carolina Riascos Alvarez. All rights reserved.
 //
 
-#include "timer.hpp"
+#include "OperationTracer.hpp"
 #include "BBTree.hpp"
 
 void Problem::getChildren(){
@@ -187,8 +187,7 @@ void Problem::getChildren(){
 
 void Problem::BBTree(){
 
-    //double timeB = 2;
-    operationTimes.emplace_back("B", 2);
+    //operationTimes.emplace_back("B", 2);
     
     //Modify Adjancency List: Super Source node
     AdjacencyList.add(IloNumArray(env,0));

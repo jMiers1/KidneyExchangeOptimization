@@ -297,6 +297,30 @@ LongestPath.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/LongestPath.cpp.s
 .PHONY : LongestPath.cpp.s
 
+OperationTracer.o: OperationTracer.cpp.o
+.PHONY : OperationTracer.o
+
+# target to build an object file
+OperationTracer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/OperationTracer.cpp.o
+.PHONY : OperationTracer.cpp.o
+
+OperationTracer.i: OperationTracer.cpp.i
+.PHONY : OperationTracer.i
+
+# target to preprocess a source file
+OperationTracer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/OperationTracer.cpp.i
+.PHONY : OperationTracer.cpp.i
+
+OperationTracer.s: OperationTracer.cpp.s
+.PHONY : OperationTracer.s
+
+# target to generate assembly for a file
+OperationTracer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/OperationTracer.cpp.s
+.PHONY : OperationTracer.cpp.s
+
 ReadData.o: ReadData.cpp.o
 .PHONY : ReadData.o
 
@@ -345,30 +369,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-timer.o: timer.cpp.o
-.PHONY : timer.o
-
-# target to build an object file
-timer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/timer.cpp.o
-.PHONY : timer.cpp.o
-
-timer.i: timer.cpp.i
-.PHONY : timer.i
-
-# target to preprocess a source file
-timer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/timer.cpp.i
-.PHONY : timer.cpp.i
-
-timer.s: timer.cpp.s
-.PHONY : timer.s
-
-# target to generate assembly for a file
-timer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/timer.cpp.s
-.PHONY : timer.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -399,15 +399,15 @@ help:
 	@echo "... LongestPath.o"
 	@echo "... LongestPath.i"
 	@echo "... LongestPath.s"
+	@echo "... OperationTracer.o"
+	@echo "... OperationTracer.i"
+	@echo "... OperationTracer.s"
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... timer.o"
-	@echo "... timer.i"
-	@echo "... timer.s"
 .PHONY : help
 
 

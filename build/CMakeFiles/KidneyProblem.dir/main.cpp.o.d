@@ -1156,7 +1156,7 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__charconv/from_chars_integral.h \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__charconv/from_chars_result.h \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__charconv/to_chars.h \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/timer.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/OperationTracer.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/BBTree.hpp \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/thread \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__thread/formatter.h \
