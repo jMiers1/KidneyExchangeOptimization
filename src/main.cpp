@@ -7,8 +7,13 @@
 
 
 #include "main_VFS.hpp"
+#include <chrono>
+#include <map>
 
 int main(int argc, const char * argv[]) {
+
+    map<string, double> time_measurements;
+
     if (argc < 8) {
         cout << "The program expects 7 additional arguments" << endl;
         
@@ -29,7 +34,11 @@ int main(int argc, const char * argv[]) {
         << "6: Time limit - got: \"" << string(argv[6]) << "\"\n"
         << "7: Cycle / Chain mode - got: \"" << string(argv[7]) << "\"" << endl;
 
-    //List of arguments
+    
+
+    // Read user input
+    auto time_start = chrono::high_resolution_clock::now();
+    auto time_start_global = chrono::high_resolution_clock::now();
     string FilePath = argv[1];
     string OutputPath = argv[2];
     stringstream str; str << argv[3];
@@ -40,16 +49,24 @@ int main(int argc, const char * argv[]) {
     str.clear(); str << argv[6];
     IloNum TimeLimit; str >> TimeLimit;
     string Preference = argv[7];
+    auto time_end = std::chrono::high_resolution_clock::now();
+    time_measurements["Read user input"] = std::chrono::duration<double>(time_end - time_start).count();
+
     
+    // Read intance File
+    time_start = std::chrono::high_resolution_clock::now();
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
-    
-    //Reading
     cout << "Reading input graph..." << endl;
-    //clock_t tStart = clock();
     if (P.ReadData() == 0) {
         cout << "Failed while reading input..." << endl;
         return -1;
     }
+    time_end = std::chrono::high_resolution_clock::now();
+    time_measurements["Read instance file"] = std::chrono::duration<double>(time_end - time_start).count();
+
+    
+    // Confoigure solution mode
+    time_start = std::chrono::high_resolution_clock::now();
     if (P.Nodes > 2000){
         if (ChainLength == 0){
             P.CadaCuantoMerge = 600;
@@ -70,11 +87,33 @@ int main(int argc, const char * argv[]) {
             P.CadaCuantoMerge = 20;
         }
     }
-    
-    P.BuildMDDs();
-    P.BBTree();
-    
+    time_end = std::chrono::high_resolution_clock::now();
+    time_measurements["Configure solution mode"] = std::chrono::duration<double>(time_end - time_start).count();
 
-    cout << endl << "End" << endl;
+    
+    // Apply MDD 
+    time_start = std::chrono::high_resolution_clock::now();
+    P.BuildMDDs();
+    time_end = std::chrono::high_resolution_clock::now();
+    time_measurements["Apply MDD"] = std::chrono::duration<double>(time_end - time_start).count();
+    
+    // Apply BBTree
+    time_start = chrono::high_resolution_clock::now();
+    P.BBTree();
+    time_end = chrono::high_resolution_clock::now();
+    time_measurements["Apply BBTree"] = std::chrono::duration<double>(time_end - time_start).count();
+    
+    auto time_end_global = chrono::high_resolution_clock::now();
+    double time_global{std::chrono::duration<double>(time_end_global - time_start_global).count()};
+    cout << endl << "End \n" <<endl;
+
+    // Output results in a table format
+    int step = 0;
+    cout << setw(10) << "Step" << setw(25) << "Task" << setw(25) << "Time (seconds)" << setw(25) << "Time (%)" << '\n';
+    for (auto it = time_measurements.begin(); it != time_measurements.end(); ++it) {
+        cout << setw(10) << step << setw(25) << it->first << setw(25) << it->second << setw(25) << (it->second)/time_global <<'\n';
+        ++step;
+    }
+
     return 0;
 }

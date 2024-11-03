@@ -1,12 +1,15 @@
 #!/bin/sh
 
-instance="KP_Num1_N16_A0.txt"
+base_path="Users/juliusmiers/CodingWS24/ORSeminar"
+instance_type="PrefLib"
 instance_folder="Kidney_Matching_16_0"
-input_path="/Users/juliusmiers/CodingWS24/ORSeminar/instances/PrefLib/$instance_folder/$instance"
-output_path="/Users/juliusmiers/CodingWS24/ORSeminar/out/$instance"
+instance="KP_Num2_N16_A0.txt"
 
-cycle_length=3
-chain_length=4
+input_path="/$base_path/instances/$instance_type/$instance_folder/$instance"
+output_path="/$base_path/out/$instance_type/$instance_folder/$instance"
+
+cycle_length=6
+chain_length=6
 degree_type="Indegree"
 time_limit=15
 mode="CY"
@@ -14,14 +17,7 @@ mode="CY"
 cd build
 cmake ../src
 make
-
-# echo "Input path:$input_path"
-# echo "Output path: $output_path"
-# echo "Cycle length: $cycle_length"
-# echo "Chain length: $chain_length"
-# echo "Degree type: $degree_type"
-# echo "Time limit: $time_limit"
-# echo "Mode: $mode" 
-
-
 ./bin/KidneyProblem "$input_path" "$output_path" "$cycle_length" $chain_length $degree_type $time_limit $mode
+
+
+#execution: ./command.sh
