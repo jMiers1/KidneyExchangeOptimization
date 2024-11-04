@@ -1,0 +1,10 @@
+0_Information;Cycle/chain mdoe;Degree type;Execution date;File;Folder;Input path;Max chain length;Max cycle length;Output path;Path;Time limit
+0_Value;CY;Indegree;2024-11-04;KP_Num2_N16_A0.txt;Kidney_Matching_16_0;/Users/juliusmiers/CodingWS24/ORSeminar/instances/PrefLib/Kidney_Matching_16_0/KP_Num2_N16_A0.txt;6;6;/Users/juliusmiers/CodingWS24/ORSeminar/out/PrefLib/Kidney_Matching_16_0/KP_Num2_N16_A0.txt;/Users/juliusmiers/CodingWS24/ORSeminar/instances/PrefLib;15
+
+
+ Step;                     Task;      File; Line;  Function;        Time(s);        Time(%);     Memory(GB);      Memory(%);         CPU(%);        Comment;
+    0;          Read user input;  main.cpp;   45;      main;          0.000;          0.124;          0.031;          0.271;          1.000;               ;
+    1;       Read instance file;  main.cpp;   54;      main;          0.001;          2.815;          0.250;          2.171;          1.000;               ;
+    2;  Configure solution mode;  main.cpp;   79;      main;          0.000;          0.005;          0.250;          2.171;          1.000;               ;
+    3;                Apply MDD;  main.cpp;   83;      main;          0.002;          9.282;          0.375;          3.256;          1.000;               ;
+    4;             Apply BBTree;  main.cpp;   87;      main;          0.019;         87.444;          9.094;         78.969;          1.000;               ;

@@ -23,7 +23,7 @@ auto global_start_time{std::chrono::high_resolution_clock::now()};
 auto global_start_memory{99.9};
 auto global_used_time{99.9};
 auto global_used_memory{99.9};
-std::map<string, string> userInput = {{}};
+std::map<string, string> userInput = {{"0_Information", "0_Value"}};
 
 
 int colWidth{15};
@@ -153,9 +153,7 @@ for (auto it = userInput.begin(); it != userInput.end(); ++it) {
 
 void writeLogs_CSV(){
     std::ostringstream oss;
-    std::string inputPath = userInput.at("Input path"); // Get the input path
-    std::replace(inputPath.begin(), inputPath.end(), '/', '+'); // Replace '/' with ':'
-    oss << "../logs/" << userInput.at("Execution date") << "__" << inputPath << ".csv";
+    oss << "../logs/" << userInput.at("Execution date") << "_:_" << userInput["Folder"] <<"_:_" << userInput["File"] << ".csv";
     std::string filename = oss.str();
     std::ofstream file(filename);
     int step = 0;
@@ -201,5 +199,16 @@ std::map<string, string> mapUserInput(const char * argv[]){
     userInput["Degree type"] = string(argv[5]);
     userInput["Time limit"] = string(argv[6]);
     userInput["Cycle/chain mdoe"] = string(argv[7]);
+    
+    const string& inputPath = string(argv[1]);
+    size_t lastSlash = inputPath.find_last_of('/');            
+    size_t secondLastSlash = inputPath.find_last_of('/', lastSlash - 1);  
+    size_t dotPos = inputPath.find('t');
+
+    userInput["Path"] = inputPath.substr(0, secondLastSlash);          
+    userInput["Folder"] = inputPath.substr(secondLastSlash + 1, lastSlash - secondLastSlash - 1); 
+    cout << inputPath.substr(lastSlash + 1).substr(0, dotPos) <<endl;
+    userInput["File"] = inputPath.substr(lastSlash + 1).substr(0, dotPos);
+
     return userInput;
 };
