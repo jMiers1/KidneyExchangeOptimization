@@ -273,6 +273,30 @@ LagrangianRelaxation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.s
 .PHONY : LagrangianRelaxation.cpp.s
 
+Logger.o: Logger.cpp.o
+.PHONY : Logger.o
+
+# target to build an object file
+Logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.o
+.PHONY : Logger.cpp.o
+
+Logger.i: Logger.cpp.i
+.PHONY : Logger.i
+
+# target to preprocess a source file
+Logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.i
+.PHONY : Logger.cpp.i
+
+Logger.s: Logger.cpp.s
+.PHONY : Logger.s
+
+# target to generate assembly for a file
+Logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.s
+.PHONY : Logger.cpp.s
+
 LongestPath.o: LongestPath.cpp.o
 .PHONY : LongestPath.o
 
@@ -296,30 +320,6 @@ LongestPath.s: LongestPath.cpp.s
 LongestPath.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/LongestPath.cpp.s
 .PHONY : LongestPath.cpp.s
-
-OperationTracer.o: OperationTracer.cpp.o
-.PHONY : OperationTracer.o
-
-# target to build an object file
-OperationTracer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/OperationTracer.cpp.o
-.PHONY : OperationTracer.cpp.o
-
-OperationTracer.i: OperationTracer.cpp.i
-.PHONY : OperationTracer.i
-
-# target to preprocess a source file
-OperationTracer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/OperationTracer.cpp.i
-.PHONY : OperationTracer.cpp.i
-
-OperationTracer.s: OperationTracer.cpp.s
-.PHONY : OperationTracer.s
-
-# target to generate assembly for a file
-OperationTracer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/OperationTracer.cpp.s
-.PHONY : OperationTracer.cpp.s
 
 ReadData.o: ReadData.cpp.o
 .PHONY : ReadData.o
@@ -396,12 +396,12 @@ help:
 	@echo "... LagrangianRelaxation.o"
 	@echo "... LagrangianRelaxation.i"
 	@echo "... LagrangianRelaxation.s"
+	@echo "... Logger.o"
+	@echo "... Logger.i"
+	@echo "... Logger.s"
 	@echo "... LongestPath.o"
 	@echo "... LongestPath.i"
 	@echo "... LongestPath.s"
-	@echo "... OperationTracer.o"
-	@echo "... OperationTracer.i"
-	@echo "... OperationTracer.s"
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"

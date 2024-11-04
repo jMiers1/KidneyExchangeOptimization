@@ -6,7 +6,7 @@
 //  Copyright © 2020 Carolina Riascos Alvarez. All rights reserved.
 //
 
-#include "OperationTracer.hpp"
+#include "Logger.hpp"
 #include "BBTree.hpp"
 
 void Problem::getChildren(){

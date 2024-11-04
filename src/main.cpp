@@ -10,8 +10,7 @@
 #include <mach/mach.h>
 #include "main_VFS.hpp"
 #include "BBTree.hpp"
-#include "OperationTracer.hpp"
-
+#include "Logger.hpp"
 
 
 int main(int argc, const char * argv[]) {
@@ -25,18 +24,10 @@ int main(int argc, const char * argv[]) {
         
         return -1;
     }
-
-    cout << "1: Input Path - got: \"" << string(argv[1]) << "\"\n" 
-        << "2: Output Path - got: \"" << string(argv[2]) << "\"\n"
-        << "3: Max cycle length - got: \"" << string(argv[3]) << "\"\n"
-        << "4: Max chain length - got: \"" << string(argv[4]) << "\"\n"
-        << "5: Degree type - got: \"" << string(argv[5]) << "\"\n"
-        << "6: Time limit - got: \"" << string(argv[6]) << "\"\n"
-        << "7: Cycle / Chain mode - got: \"" << string(argv[7]) << "\"" << endl;
-
     
     // Start measurements
-    initializeTraces();
+    mapUserInput(argv);
+    startLogging();
     auto prevSectionEnd{std::chrono::high_resolution_clock::now()};
 
 
@@ -51,7 +42,7 @@ int main(int argc, const char * argv[]) {
     str.clear(); str << argv[6];
     IloNum TimeLimit; str >> TimeLimit;
     string Preference = argv[7];
-    prevSectionEnd = logTraces("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
     
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
@@ -60,7 +51,7 @@ int main(int argc, const char * argv[]) {
         cout << "Failed while reading input..." << endl;
         return -1;
     }
-    prevSectionEnd = logTraces("Read instance file", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging("Read instance file", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
    
 
     
@@ -85,21 +76,20 @@ int main(int argc, const char * argv[]) {
             P.CadaCuantoMerge = 20;
         }
     }
-    prevSectionEnd = logTraces("Configure solution mode", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging("Configure solution mode", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
     
     // Apply MDD 
     P.BuildMDDs();
-    prevSectionEnd = logTraces("Apply MDD", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging("Apply MDD", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
     
     // Apply BBTree
     P.BBTree();
-    prevSectionEnd = logTraces("Apply BBTree", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging("Apply BBTree", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     cout << endl << "End \n" <<endl;
 
 
     //Traces
-    printTraces();
-
+    finishLogging();
     return 0;
 }

@@ -1,6 +1,6 @@
 CMakeFiles/KidneyProblem.dir/BBTree.cpp.o: \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/BBTree.cpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/OperationTracer.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/Logger.hpp \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/map \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__algorithm/equal.h \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__algorithm/comp.h \

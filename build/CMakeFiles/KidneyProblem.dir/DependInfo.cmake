@@ -14,8 +14,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/Class_Problem.cpp" "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/FindCycles.cpp" "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/LagrangianRelaxation.cpp" "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o.d"
+  "/Users/juliusmiers/CodingWS24/ORSeminar/src/Logger.cpp" "CMakeFiles/KidneyProblem.dir/Logger.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/Logger.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/LongestPath.cpp" "CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o.d"
-  "/Users/juliusmiers/CodingWS24/ORSeminar/src/OperationTracer.cpp" "CMakeFiles/KidneyProblem.dir/OperationTracer.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/OperationTracer.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/ReadData.cpp" "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/main.cpp" "CMakeFiles/KidneyProblem.dir/main.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/main.cpp.o.d"
   )
