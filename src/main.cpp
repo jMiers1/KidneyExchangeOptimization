@@ -27,7 +27,6 @@ int main(int argc, const char * argv[]) {
     
     // Start measurements
     startLogging(argv);
-    auto prevSectionEnd{std::chrono::high_resolution_clock::now()};
 
 
     // Read user input
@@ -82,8 +81,8 @@ int main(int argc, const char * argv[]) {
     prevSectionEnd = logging("Apply MDD", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
     
     // Apply BBTree
+    prevSectionEnd = logging("---- Begin BBTree ----", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     P.BBTree();
-    prevSectionEnd = logging("Apply BBTree", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     cout << endl << "End \n" <<endl;
 

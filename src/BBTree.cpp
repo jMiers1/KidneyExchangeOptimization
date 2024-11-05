@@ -10,8 +10,6 @@
 #include "BBTree.hpp"
 
 void Problem::getChildren(){
-
-    auto time_start = std::chrono::high_resolution_clock::now();
     
     //Verify if solution is feasible
     LagArcs.clear();
@@ -187,7 +185,7 @@ void Problem::getChildren(){
 
 void Problem::BBTree(){
 
-    //operationTimes.emplace_back("B", 2);
+    prevSectionEnd = logging("-> Start", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     //Modify Adjancency List: Super Source node
     AdjacencyList.add(IloNumArray(env,0));
@@ -196,7 +194,8 @@ void Problem::BBTree(){
         Weights[make_pair(AdjacencyList.getSize() - 1, i)] = 0;
         PredList[i].push_back(AdjacencyList.getSize() - 1);
     }
-    
+
+
     //Sink node
     AdjacencyList.add(IloNumArray(env,0));
     PredList.push_back(vector<int>());//source
@@ -208,16 +207,21 @@ void Problem::BBTree(){
         PredList[AdjacencyList.getSize() - 1].push_back(i);
     }
     
+    prevSectionEnd = logging("Preparations", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     StartSolTime = clock();
     //Lagranagian relaxation
     VoyBB = make_pair(0, 0);
+    prevSectionEnd = logging("--- Lagrange ---", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     Lagrange();
+    prevSectionEnd = logging("--- Lagrange ---", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     if (TimedOut == false){
         GlobalUB = UpperBound;
         GlobalLB = CFObj;
+        prevSectionEnd = logging("Not yet TimedOut", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
         if (CFObj < UpperBound - 0.00001){
+            prevSectionEnd = logging("Close to upper bound", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             //Save Solution
             vBestSol = vFeasSol;
             //Get children
@@ -247,6 +251,7 @@ void Problem::BBTree(){
                     getChildren();
                     //Update node explored
                     VoyBB = Tree[VoyBB.first][VoyBB.second].parentNode;
+                    prevSectionEnd = logging("(3aa)", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                 }
                 else{
                     //Go to the next node in the same level
@@ -276,6 +281,7 @@ void Problem::BBTree(){
                                 break;
                             }
                         }
+                        prevSectionEnd = logging("(3aba)", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                     }
                     else{//Go down one level
                         if (VoyBB.first + 1 < Tree.size()){
@@ -291,7 +297,9 @@ void Problem::BBTree(){
                         else{
                             break;
                         }
+                        prevSectionEnd = logging("(3abb)", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                     }
+                    prevSectionEnd = logging("(3ab)", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                 }
             }
              //Print best solution
@@ -300,17 +308,20 @@ void Problem::BBTree(){
                 TBBtime = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
                 cout << endl << "Feasible Solution " << endl << "Objective Value: " << GlobalLB << endl;
                 PrintLag("Feasible");
+                prevSectionEnd = logging("(3c)", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             }
             else{
                 //vBestSol = vFeasSol;
                 TBBtime = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
                 cout << endl << "Optimal Solution " << endl << "Objective Value: " << GlobalLB << endl;
                 PrintLag("Optimal");
+                prevSectionEnd = logging("(3a)", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             }
             
         }
         else{
             //Save solution
+            prevSectionEnd = logging("Far from upper bound", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             vBestSol = vFeasSol;
             TBBtime = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
             if (DegreeType == "Best_K-VFS" && TooManyVFSCycles == true){
@@ -342,5 +353,10 @@ void Problem::BBTree(){
         else{
             PrintLag("Unknown_UB");
         }
+        prevSectionEnd = logging("TimedOut", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     }
+
+
+    prevSectionEnd = logging("<- End", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
 }

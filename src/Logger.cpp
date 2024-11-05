@@ -24,6 +24,7 @@ auto global_start_memory{99.9};
 auto global_used_time{99.9};
 auto global_used_memory{99.9};
 std::map<string, string> userInput = {{"0_Information", "0_Value"}};
+auto prevSectionEnd{std::chrono::high_resolution_clock::now()}; 
 
 
 int colWidth{15};
@@ -33,6 +34,7 @@ std::tuple<string, string, string, string,string, string, string, string, string
 void startLogging(const char * argv[]){
     mapUserInput(argv);
     global_start_time = std::chrono::high_resolution_clock::now();
+    prevSectionEnd = std::chrono::high_resolution_clock::now(); 
     global_start_memory = getMemory();
 }
 
@@ -75,7 +77,7 @@ std::chrono::time_point<std::chrono::high_resolution_clock> logging(const string
 
 
     // CPU Usage
-    double CPUUsage = 1.0; // todo
+    double CPUUsage = 0; // todo
 
     operationTraces.emplace_back(description, filename, line, function, timeUsage, memoryUsage, CPUUsage, extraInfo);
     return std::chrono::high_resolution_clock::now();  // end of section = start of new section
@@ -89,16 +91,16 @@ std::ostringstream extractLogHeader(
 
     oss << std::fixed 
         << setw(colWidth - 10) << get<0>(logHeader) <<separator // step
-        << setw(colWidth + 10) << get<1>(logHeader)<<separator  // task
-        << setw(colWidth - 5) << get<2>(logHeader)<<separator   // file
-        << setw(colWidth - 10) << get<3>(logHeader)<<separator  // line
-        << setw(colWidth - 5) << get<4>(logHeader)<<separator   // function
+        << setw(colWidth + 20) << get<1>(logHeader)<<separator  // task
+        << setw(colWidth + 20) << get<2>(logHeader)<<separator   // file
+        << setw(colWidth - 5) << get<3>(logHeader)<<separator  // line
+        << setw(colWidth + 10) << get<4>(logHeader)<<separator   // function
         << setw(colWidth) << get<5>(logHeader)<<separator       // time(s)
         << setw(colWidth) << get<6>(logHeader)<<separator       // time(%)
         << setw(colWidth) << get<7>(logHeader)<<separator       // memory(gb)
         << setw(colWidth) << get<8>(logHeader)<<separator       // memory(%)
         << setw(colWidth) << get<9>(logHeader) <<separator       // cpu
-        << setw(colWidth) <<  get<10>(logHeader) <<separator       // comment
+        << setw(colWidth-10) <<  get<10>(logHeader) <<separator       // comment
         << '\n';
     return oss;
 }
@@ -111,18 +113,18 @@ std::ostringstream extractLogEntry(
     std::ostringstream oss;
 
     // Write formatted output for the single tuple to the ostringstream
-    oss << std::fixed << std::setprecision(3)
+    oss << std::fixed << std::setprecision(4)
         << setw(colWidth - 10) << step <<separator                                     // step
-        << setw(colWidth + 10) << get<0>(log_entry)  <<separator                       // task
-        << setw(colWidth - 5) << get<1>(log_entry)  <<separator                        // file
-        << setw(colWidth - 10) << get<2>(log_entry) << separator                       // line
-        << setw(colWidth - 5) << get<3>(log_entry) <<separator                         // function
+        << setw(colWidth + 20) << get<0>(log_entry)  <<separator                       // task
+        << setw(colWidth + 20) << get<1>(log_entry)  <<separator                        // file
+        << setw(colWidth - 5) << get<2>(log_entry) << separator                       // line
+        << setw(colWidth + 10) << get<3>(log_entry) <<separator                         // function
         << setw(colWidth) << get<4>(log_entry) <<separator                             // time(s)
         << setw(colWidth) << (get<4>(log_entry) / global_used_time) * 100 <<separator  // time(%)
         << setw(colWidth) << get<5>(log_entry) <<separator                              // memory(gb)
         << setw(colWidth) << (get<5>(log_entry) / global_used_memory) * 100 <<separator // memory(%)
         << setw(colWidth) << get<6>(log_entry) <<separator                              // cpu
-        << setw(colWidth) << get<7>(log_entry)  <<separator                             // comment
+        << setw(colWidth-10) << get<7>(log_entry)  <<separator                             // comment
         << '\n';
     return oss;
 }

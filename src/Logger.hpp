@@ -9,6 +9,7 @@ using std::string;
 
 // Task | File | Line | Function | TimeUsage | MemoryUsage | CPUUsage | Comment
 extern std::chrono::time_point<std::chrono::high_resolution_clock> global_start_time;
+extern std::chrono::time_point<std::chrono::high_resolution_clock> prevSectionEnd;
 extern double global_start_memory;
 extern double global_used_time;
 extern double global_used_memory;

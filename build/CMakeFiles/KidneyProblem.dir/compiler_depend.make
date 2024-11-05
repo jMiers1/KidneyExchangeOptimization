@@ -5243,6 +5243,7 @@ CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o: /Users/juliusmiers/Codi
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_wctype.h \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/Class_Problem_VFS.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/LagrangianRelaxation.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/Logger.hpp \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/adjacent_find.h \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/all_of.h \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/any_of.h \
@@ -7292,6 +7293,7 @@ CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o: /Users/juliusmiers/CodingWS24/OR
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_wchar.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_wctype.h \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/Class_Problem_VFS.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/Logger.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/LongestPath.hpp \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/adjacent_find.h \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/all_of.h \

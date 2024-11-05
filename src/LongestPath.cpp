@@ -6,6 +6,7 @@
 //
 
 #include "LongestPath.hpp"
+#include "Logger.hpp"
 
 tuple<int,int,double,int,double> Problem::maxMenosOcho(vector<state>& vLosNew, state& estoy, int i, bool cadena, int CuantosPahtsQueres){
     tuple<int,int,double,int,double> tCicloFinAux; double peso = 0; double mmax = -1000000.0;//-10000000.0;
@@ -198,6 +199,8 @@ pair<int, double> Problem::predMax(vector<state>& vLosNew, int indexestoy, bool 
 }
 
 void Problem::FindLongestPath(){
+
+    prevSectionEnd = logging("Find Longest Path", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     clock_t tStart = clock();
     tStart = clock();
     bool cadena = false;

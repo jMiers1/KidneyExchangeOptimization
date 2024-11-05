@@ -6,6 +6,7 @@
 //
 
 #include "LagrangianRelaxation.hpp"
+#include "Logger.hpp"
 #include <algorithm>
 
 void Problem::Lagrange(){
@@ -58,8 +59,13 @@ void Problem::Lagrange(){
     vector<int>ColumnsAdded;
     vector<vector<int>>LastCol;
     ThirdPhase = false;
+
+
+    prevSectionEnd = logging("Preparations", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     while(NewCycleAdded == true){
+
+        prevSectionEnd = logging("New Cycle added", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
         cplex.setOut(env.getNullStream());
         clock_t tStartMP2 = clock();
@@ -69,6 +75,7 @@ void Problem::Lagrange(){
         MPTime += (clock() - tStartMP2)/double(CLOCKS_PER_SEC);
         
         if (cplex.getStatus() == IloAlgorithm::Infeasible) {
+            prevSectionEnd = logging("Infeasible", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             cout << "Infeasible";
         }
         else{
@@ -76,6 +83,7 @@ void Problem::Lagrange(){
             IloNum trun = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
             if (trun >= TimeLimit){
                 CGNotOptimal = true;
+                prevSectionEnd = logging("Exceed Time Limit", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                 break;
             }
             //Get objective value
@@ -96,6 +104,10 @@ void Problem::Lagrange(){
             bool next = false;
             int counter = 0;
             countSame = 0;
+
+            prevSectionEnd = logging("Get cycle variables", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+           
             
             int nCHCols = 0;
             if (WarmUp == true){
@@ -106,7 +118,9 @@ void Problem::Lagrange(){
                         //Solve subproblems
                         clock_t tStartSP = clock();
                         LongestPath.clear();
+                        //prevSectionEnd = logging("--- Start Find Longest Path ----", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                         FindLongestPath();
+                        //prevSectionEnd = logging("--- End Find Longest Path ----", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                         SPTime += (clock() - tStartSP)/double(CLOCKS_PER_SEC);
                         IloExpr NewCut(env,0);
                         for (int t = 0; t < LongestPath.size(); t++){
