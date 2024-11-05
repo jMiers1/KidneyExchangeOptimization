@@ -3726,3 +3726,355 @@ Cycle 3:	15	13
 Average Chain Length: nan
 Average Cycle Length: 2.66667
 Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.018547
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.009932
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.011475
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.012425
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.010386
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.009892
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.010568
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.019731
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.012501
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.017646
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.01452
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.010677
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.01938
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.008705
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.009794
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.018605
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.009234
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.01752
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.018126
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.014261
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.014896
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0
+Instance: KP_Num2_N16_A0.txt
+Max Cyle Length: 6
+Max Chain Length: 6
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.012646
+Time Limit: 15
+Status: Optimal
+Objective Value: 8
+Cycle 1:	9	4	
+Cycle 2:	11	2	3	1	
+Cycle 3:	15	13	
+
+Average Chain Length: nan
+Average Cycle Length: 2.66667
+Percentage of highly-sensitized patients in solution (%): 0

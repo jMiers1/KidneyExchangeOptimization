@@ -14,6 +14,7 @@ using std::endl;
 using std::setw;
 using std::get;
 using std::string;
+using std::ostringstream;
 
 
 #include "Logger.hpp"
@@ -42,7 +43,7 @@ void finishLogging(){
     global_used_time = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - global_start_time).count();
     global_used_memory = getMemory();
     writeLogs_Terminal();
-    writeLogs_CSV();
+    writeLog_Files();
 }
 
 // get memory at certain time
@@ -106,7 +107,7 @@ std::ostringstream extractLogHeader(
 }
 
 std::ostringstream extractLogEntry(
-    const std::tuple<std::string, std::string, int, std::string, double, double, double, std::string>& log_entry, 
+    const std::tuple<string, string, int, string, double, double, double, string>& log_entry, 
     int step,
     string separator) 
 {
@@ -130,46 +131,44 @@ std::ostringstream extractLogEntry(
 }
 
 std::ostringstream extractUserInput(
-    std::map<string, string>& userInput, 
-    string separator){
+    std::map<string, string>& userInput, int colWidth){
 
     std::ostringstream oss;
-
     for (auto it = userInput.begin(); it != userInput.end(); ++it) {
-        if (it != userInput.begin()) { 
-            oss << separator; 
-        }
-        oss << it->first; 
+        // if (it != userInput.begin()) { 
+        //     oss << setw(colWidth); 
+        // }
+        oss << setw(colWidth) << it->first << setw(colWidth) << it->second << "\n"; 
     }
-    oss << "\n";
-for (auto it = userInput.begin(); it != userInput.end(); ++it) {
-        if (it != userInput.begin()) { 
-            oss << separator; 
-        }
-        oss << it->second; 
-    }
-    oss << "\n\n\n";
     return oss;
 }
 
-void writeLogs_CSV(){
+std::ostringstream fileName(std::map<string, string>& userInput, string fileType){
     std::ostringstream oss;
-    oss << "../logs/" << userInput.at("Execution date") << "_:_" << userInput["Folder"] <<"_:_" << userInput["File"] << ".csv";
-    std::string filename = oss.str();
-    std::ofstream file(filename);
-    int step = 0;
+    oss << "../logs/" << userInput.at("Execution date") << "_:_" << userInput["Folder"] <<"_:_" << userInput["File"] << "." << fileType;
+    return oss;
+}
 
+void createFile(ostringstream header, string fileType){
+    string filename = fileName(userInput, fileType).str();
+    std::ofstream file(filename);
     if (file.is_open()) {
-        file << extractUserInput(userInput, ";").str();
-        file << extractLogHeader(logHeader = logHeader, ";").str();
-        for (const auto& entry : operationTraces) {
-            file << extractLogEntry(entry, step, ";").str();
-            ++step;}
+        file << header.str();
+        if (fileType == "csv"){
+            int step = 0;
+            for (const auto& entry : operationTraces) {
+                file << extractLogEntry(entry, step, ";").str();
+                ++step;}
+        }
         file.close();
-        std::cout << "Data written to " << filename << std::endl;
-    } else {
-        std::cerr << "Error: Could not open the file." << std::endl;
+    }else {
+        std::cerr << "Error: Could not open the file." << std::endl;    
     }
+}
+
+void writeLog_Files(){
+    createFile(extractLogHeader(logHeader = logHeader, ";"), "csv");
+    createFile(extractUserInput(userInput, 30), "txt");
 }
 
 void writeLogs_Terminal(){
@@ -193,20 +192,20 @@ std::map<string, string> mapUserInput(const char * argv[]){
     std::ostringstream oss;
     oss << std::put_time(&now_tm, "%Y-%m-%d");
     userInput["Execution date"] = oss.str();
-    userInput["Input path"] = string(argv[1]);
-    userInput["Output path"] = string(argv[2]);
+    //userInput["Input path"] = string(argv[1]);
+    //userInput["Output path"] = string(argv[2]);
     userInput["Max cycle length"] = string(argv[3]);
     userInput["Max chain length"] = string(argv[4]);
     userInput["Degree type"] = string(argv[5]);
     userInput["Time limit"] = string(argv[6]);
-    userInput["Cycle/chain mdoe"] = string(argv[7]);
+    userInput["Cycle/chain mode"] = string(argv[7]);
     
 
     // find path, folder, file from inpiut_path 
     const string& inputPath = string(argv[1]);
     size_t lastSlash = inputPath.find_last_of('/');            
     size_t secondLastSlash = inputPath.find_last_of('/', lastSlash - 1);  
-    userInput["Path"] = inputPath.substr(0, secondLastSlash);          
+    //userInput["Path"] = inputPath.substr(0, secondLastSlash);          
     userInput["Folder"] = inputPath.substr(secondLastSlash + 1, lastSlash - secondLastSlash - 1); 
     string filename = inputPath.substr(lastSlash + 1);
     size_t dotPos = filename.find('.');
@@ -215,3 +214,23 @@ std::map<string, string> mapUserInput(const char * argv[]){
 
     return userInput;
 };
+
+
+// void writeLogs_CSV(){
+//     string filename = fileName(userInput, "csv").str();
+//     std::ofstream file(filename);
+//     int step = 0;
+
+//     if (file.is_open()) {
+//         //file << extractUserInput(userInput, ";").str();
+//         file << extractLogHeader(logHeader = logHeader, ";").str();
+//         for (const auto& entry : operationTraces) {
+//             file << extractLogEntry(entry, step, ";").str();
+//             ++step;}
+//         file.close();
+//     } else {
+//         std::cerr << "Error: Could not open the file." << std::endl;
+//     }
+
+//     createFile(extractUserInput(userInput, ";"), "txt");
+//}
