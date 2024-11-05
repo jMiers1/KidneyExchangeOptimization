@@ -81,7 +81,6 @@ int main(int argc, const char * argv[]) {
     prevSectionEnd = logging("Apply MDD", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
     
     // Apply BBTree
-    prevSectionEnd = logging("---- Begin BBTree ----", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     P.BBTree();
     
     cout << endl << "End \n" <<endl;

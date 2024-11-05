@@ -10,6 +10,11 @@
 #include <algorithm>
 
 void Problem::Lagrange(){
+
+    prevSectionEnd = logging("-> Start Lagrange ->", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+    //J ------------------- Start of preparations for Lagrange: Build a CPLEX model -------------------
+
     //Create model
     IloEnv env;
     IloModel Lag(env);
@@ -60,8 +65,8 @@ void Problem::Lagrange(){
     vector<vector<int>>LastCol;
     ThirdPhase = false;
 
-
-    prevSectionEnd = logging("Preparations", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    //J ------------------- End of preparations for Lagrange: Build a CPLEX model -------------------
+    prevSectionEnd = logging("[ Lagrange Preparations ]", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     while(NewCycleAdded == true){
 
@@ -75,7 +80,7 @@ void Problem::Lagrange(){
         MPTime += (clock() - tStartMP2)/double(CLOCKS_PER_SEC);
         
         if (cplex.getStatus() == IloAlgorithm::Infeasible) {
-            prevSectionEnd = logging("Infeasible", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+            prevSectionEnd = logging("CPLEX model Infeasible", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             cout << "Infeasible";
         }
         else{
@@ -421,5 +426,10 @@ void Problem::Lagrange(){
     if (trun >= TimeLimit){
         TimedOut = true;
     }
+
+
+    prevSectionEnd = logging("<- End Lagrange <-", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+
 }
 

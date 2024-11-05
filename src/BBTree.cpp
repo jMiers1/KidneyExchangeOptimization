@@ -185,8 +185,11 @@ void Problem::getChildren(){
 
 void Problem::BBTree(){
 
-    prevSectionEnd = logging("-> Start", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging("--> Start BBTree -->", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
+
+    //J ------------------- Start of preparations for BBTree -------------------
+
     //Modify Adjancency List: Super Source node
     AdjacencyList.add(IloNumArray(env,0));
     for (int i = Pairs; i < Nodes; i++){
@@ -207,19 +210,20 @@ void Problem::BBTree(){
         PredList[AdjacencyList.getSize() - 1].push_back(i);
     }
     
-    prevSectionEnd = logging("Preparations", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    //J ------------------- End of preparations for BBTree -------------------
     
     StartSolTime = clock();
     //Lagranagian relaxation
     VoyBB = make_pair(0, 0);
-    prevSectionEnd = logging("--- Lagrange ---", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     Lagrange();
-    prevSectionEnd = logging("--- Lagrange ---", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     if (TimedOut == false){
+
+        prevSectionEnd = logging("L NOT TimedOut", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+
         GlobalUB = UpperBound;
         GlobalLB = CFObj;
-        prevSectionEnd = logging("Not yet TimedOut", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
         if (CFObj < UpperBound - 0.00001){
             prevSectionEnd = logging("Close to upper bound", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             //Save Solution
@@ -335,6 +339,9 @@ void Problem::BBTree(){
         }
     }
     else{
+
+        prevSectionEnd = logging("L IS TimedOut", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
         //Save solution
         GlobalUB = UpperBound;
         GlobalLB = CFObj;
@@ -357,6 +364,6 @@ void Problem::BBTree(){
     }
 
 
-    prevSectionEnd = logging("<- End", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+   prevSectionEnd = logging("<-- End BBTree <--", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
 }
