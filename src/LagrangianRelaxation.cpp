@@ -11,7 +11,7 @@
 
 void Problem::Lagrange(){
 
-    prevSectionEnd = logging("-> Start Lagrange ->", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging(" ->>- Lagrange -<<- ", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
     //J ------------------- Start of preparations for Lagrange: Build a CPLEX model -------------------
 
@@ -66,7 +66,7 @@ void Problem::Lagrange(){
     ThirdPhase = false;
 
     //J ------------------- End of preparations for Lagrange: Build a CPLEX model -------------------
-    prevSectionEnd = logging("[ Lagrange Preparations ]", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging("Preparations", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     while(NewCycleAdded == true){
 
@@ -428,7 +428,7 @@ void Problem::Lagrange(){
     }
 
 
-    prevSectionEnd = logging("<- End Lagrange <-", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging(" ->>- Lagrange -<<- ", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
 
 }

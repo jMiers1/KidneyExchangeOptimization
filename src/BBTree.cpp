@@ -185,7 +185,7 @@ void Problem::getChildren(){
 
 void Problem::BBTree(){
 
-    prevSectionEnd = logging("--> Start BBTree -->", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging(" --->>--- BBTree ---<<--- ", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
 
     //J ------------------- Start of preparations for BBTree -------------------
@@ -218,14 +218,10 @@ void Problem::BBTree(){
     Lagrange();
     
     if (TimedOut == false){
-
-        prevSectionEnd = logging("L NOT TimedOut", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
-
-
         GlobalUB = UpperBound;
         GlobalLB = CFObj;
         if (CFObj < UpperBound - 0.00001){
-            prevSectionEnd = logging("Close to upper bound", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+            prevSectionEnd = logging("Save solution | Small gap", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             //Save Solution
             vBestSol = vFeasSol;
             //Get children
@@ -325,7 +321,7 @@ void Problem::BBTree(){
         }
         else{
             //Save solution
-            prevSectionEnd = logging("Far from upper bound", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+            prevSectionEnd = logging("Save solution | Large gap", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             vBestSol = vFeasSol;
             TBBtime = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
             if (DegreeType == "Best_K-VFS" && TooManyVFSCycles == true){
@@ -340,7 +336,7 @@ void Problem::BBTree(){
     }
     else{
 
-        prevSectionEnd = logging("L IS TimedOut", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+        prevSectionEnd = logging("Timed Out", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
         //Save solution
         GlobalUB = UpperBound;
@@ -364,6 +360,6 @@ void Problem::BBTree(){
     }
 
 
-   prevSectionEnd = logging("<-- End BBTree <--", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+   prevSectionEnd = logging(" --->>--- BBTree ---<<--- ", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
 }

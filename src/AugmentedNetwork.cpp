@@ -6,10 +6,14 @@
 
 #include "AugmentedNetwork.hpp"
 #include "Class_Problem_VFS.hpp"
+#include "Logger.hpp"
 
 random_device rd2;
 mt19937 gen(rd2());
 
+
+
+//J Very unclear what happens here  -----------------
 vector<int>::iterator nextVeciCade(state& esta, bool sillego, int lv, int k, map<int,bool>& mOrden, double porcentaje, vector<int>& vVeci){
     vector<int>::iterator resul;
     if (lv >= k or esta.vamosVeci/double(esta.totalVeci) >= porcentaje){
@@ -139,9 +143,14 @@ bool suceIguales (state& estoy, state& otro, vector<state>& vLosNew){ // compara
     
     return resp;
 }
+//J Very unclear what happens here  -----------------
 
 //chains /////////////////////////////////////////
 pair<vector<state>, vector<vector<int>>> Problem::BuildChainMDD(int iori, bool& hay, map<int,bool>& mOrden){
+
+    prevSectionEnd = logging("Build Chain MDD", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+
     int CuantosRegresosCero = 0;
     int origen = iori;
     map<int,vector<int>> Comp2 = Comp; // update comp for each copy
@@ -258,6 +267,10 @@ pair<vector<state>, vector<vector<int>>> Problem::BuildChainMDD(int iori, bool& 
 
 //cycles /////////////////////////////////////////
 pair<vector<state>, vector<vector<int>>> Problem::BuildCycleMDD(int iori, bool& hay, map<int,bool>& mOrden, int voyPeque, int cuantosMDDsPeque){
+
+    prevSectionEnd = logging("Build Cycle MDD", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+
     int CuantosRegresosCero = 0;
     int origen = iori;
     map<int,vector<int>> Comp2 = Comp; // update comp for each copy, without the previous origin vertices
@@ -366,6 +379,9 @@ pair<vector<state>, vector<vector<int>>> Problem::BuildCycleMDD(int iori, bool& 
 }
 
 void Problem::BuildMDDs(){
+
+
+    prevSectionEnd = logging("--->>--- MDD ---<<---", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     llenarComp();
     ordenFor = ordenDegre();
     clock_t tStart = clock();
@@ -377,6 +393,7 @@ void Problem::BuildMDDs(){
     int contaCade = 0;
     int cuantosMDDsCade = NDDs;
     for (auto i = 0; i < ordenFor.size(); i++){//
+
         hay = false;
         if (ordenFor[i].first > Pairs - 1 && ChainLength > 0){ // altruistic node
             if (cade == false){
@@ -384,11 +401,13 @@ void Problem::BuildMDDs(){
             }
             if (ChainLength >= 3) JustVisitedByState = vector<map<int,vector<int>>>(ChainLength);// Three is fixed
             if (contaCade < cuantosMDDsCade){
+                //J MDD for chains 
                 aux = BuildChainMDD(ordenFor[i].first, hay, mOrden);
                 contaCade++;
                 if(contaCade % 10 == 0) cout << "Chain number: " << contaCade << endl;
             }
         } else {  // cycle
+            //J MDD for cycles
             aux = BuildCycleMDD(ordenFor[i].first, hay, mOrden, conta, cuantosMDDsPeque);
         }
         if (hay == true){
@@ -400,4 +419,7 @@ void Problem::BuildMDDs(){
         mOrden[ordenFor[i].first] = true;
     }
     MDDTime = (clock() - tStart)/double(CLOCKS_PER_SEC);
+
+
+    prevSectionEnd = logging("--->>--- MDD ---<<---", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 }

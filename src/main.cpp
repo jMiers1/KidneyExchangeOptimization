@@ -78,7 +78,6 @@ int main(int argc, const char * argv[]) {
     
     // Apply MDD 
     P.BuildMDDs();
-    prevSectionEnd = logging("Apply MDD", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
     
     // Apply BBTree
     P.BBTree();
