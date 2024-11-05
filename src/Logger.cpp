@@ -30,7 +30,8 @@ int colWidth{15};
 std::vector<std::tuple<string, string, int, string, double, double, double, string>> operationTraces;
 std::tuple<string, string, string, string,string, string, string, string, string, string, string> logHeader{"Step", "Task", "File", "Line","Function", "Time(s)", "Time(%)","Memory(GB)", "Memory(%)", "CPU(%)", "Comment"};
 
-void startLogging(){
+void startLogging(const char * argv[]){
+    mapUserInput(argv);
     global_start_time = std::chrono::high_resolution_clock::now();
     global_start_memory = getMemory();
 }
@@ -126,7 +127,7 @@ std::ostringstream extractLogEntry(
     return oss;
 }
 
-std::ostringstream extractUserInput_CSV(
+std::ostringstream extractUserInput(
     std::map<string, string>& userInput, 
     string separator){
 
@@ -149,8 +150,6 @@ for (auto it = userInput.begin(); it != userInput.end(); ++it) {
     return oss;
 }
 
-
-
 void writeLogs_CSV(){
     std::ostringstream oss;
     oss << "../logs/" << userInput.at("Execution date") << "_:_" << userInput["Folder"] <<"_:_" << userInput["File"] << ".csv";
@@ -159,7 +158,7 @@ void writeLogs_CSV(){
     int step = 0;
 
     if (file.is_open()) {
-        file << extractUserInput_CSV(userInput, ";").str();
+        file << extractUserInput(userInput, ";").str();
         file << extractLogHeader(logHeader = logHeader, ";").str();
         for (const auto& entry : operationTraces) {
             file << extractLogEntry(entry, step, ";").str();
@@ -200,15 +199,17 @@ std::map<string, string> mapUserInput(const char * argv[]){
     userInput["Time limit"] = string(argv[6]);
     userInput["Cycle/chain mdoe"] = string(argv[7]);
     
+
+    // find path, folder, file from inpiut_path 
     const string& inputPath = string(argv[1]);
     size_t lastSlash = inputPath.find_last_of('/');            
     size_t secondLastSlash = inputPath.find_last_of('/', lastSlash - 1);  
-    size_t dotPos = inputPath.find('t');
-
     userInput["Path"] = inputPath.substr(0, secondLastSlash);          
     userInput["Folder"] = inputPath.substr(secondLastSlash + 1, lastSlash - secondLastSlash - 1); 
-    cout << inputPath.substr(lastSlash + 1).substr(0, dotPos) <<endl;
-    userInput["File"] = inputPath.substr(lastSlash + 1).substr(0, dotPos);
+    string filename = inputPath.substr(lastSlash + 1);
+    size_t dotPos = filename.find('.');
+    userInput["File"] = filename.substr(0, dotPos);
+    cout << userInput["File"] << endl;
 
     return userInput;
 };

@@ -26,8 +26,7 @@ int main(int argc, const char * argv[]) {
     }
     
     // Start measurements
-    mapUserInput(argv);
-    startLogging();
+    startLogging(argv);
     auto prevSectionEnd{std::chrono::high_resolution_clock::now()};
 
 

@@ -18,12 +18,11 @@ extern std::tuple<string, string, string, string, string, string,
                    string, string, string, string, string> logHeader;
 extern std::map<string, string> userInput;
 
-void startLogging();
+void startLogging(const char * argv[]);
 void finishLogging();
 double getMemory();
 void writeLogs_Terminal();
 void writeLogs_CSV();
-
 
 
 std::chrono::time_point<std::chrono::high_resolution_clock> logging(const string& description, 
@@ -43,7 +42,7 @@ std::ostringstream extractLogEntry(
     int step,
     string separator);
 
-std::ostringstream extractUserInput_CSV(std::map<string, string>& userInput, string separator);
+std::ostringstream extractUserInput(std::map<string, string>& userInput, string separator);
 
 
 
