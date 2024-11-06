@@ -66,11 +66,13 @@ void Problem::Lagrange(){
     ThirdPhase = false;
 
     //J ------------------- End of preparations for Lagrange: Build a CPLEX model -------------------
-    prevSectionEnd = logging("Preparations", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+
+    prevSectionEnd = logging("CPLEX - Model built", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     
     while(NewCycleAdded == true){
 
-        prevSectionEnd = logging("New Cycle added", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+        //prevSectionEnd = logging("New Cycle added", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
         cplex.setOut(env.getNullStream());
         clock_t tStartMP2 = clock();
@@ -80,7 +82,7 @@ void Problem::Lagrange(){
         MPTime += (clock() - tStartMP2)/double(CLOCKS_PER_SEC);
         
         if (cplex.getStatus() == IloAlgorithm::Infeasible) {
-            prevSectionEnd = logging("CPLEX model Infeasible", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+            prevSectionEnd = logging("CPLEX - Infeasible", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             cout << "Infeasible";
         }
         else{
@@ -88,7 +90,7 @@ void Problem::Lagrange(){
             IloNum trun = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
             if (trun >= TimeLimit){
                 CGNotOptimal = true;
-                prevSectionEnd = logging("Exceed Time Limit", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+                prevSectionEnd = logging("CPLEX - Timeout", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                 break;
             }
             //Get objective value
@@ -110,12 +112,12 @@ void Problem::Lagrange(){
             int counter = 0;
             countSame = 0;
 
-            prevSectionEnd = logging("Get cycle variables", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
-
+            prevSectionEnd = logging("CPLEX - Get some variables", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
            
             
             int nCHCols = 0;
             if (WarmUp == true){
+                prevSectionEnd = logging("Warm Up phase", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                 for (int i = 0; i < Order.size(); i++){
                     posMDD = Order[i].first;
                     next = false;
@@ -123,9 +125,11 @@ void Problem::Lagrange(){
                         //Solve subproblems
                         clock_t tStartSP = clock();
                         LongestPath.clear();
-                        //prevSectionEnd = logging("--- Start Find Longest Path ----", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+                        
+                        //J ------------- Find Longest path ( in MDD ? )
                         FindLongestPath();
-                        //prevSectionEnd = logging("--- End Find Longest Path ----", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+                        //J ------------- Find Longest path ( in MDD ? )
+                        
                         SPTime += (clock() - tStartSP)/double(CLOCKS_PER_SEC);
                         IloExpr NewCut(env,0);
                         for (int t = 0; t < LongestPath.size(); t++){
@@ -222,6 +226,9 @@ void Problem::Lagrange(){
                 FirstTime = false;
             }
             else{
+
+                prevSectionEnd = logging("No new Cycle added", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
                 UB_PH1 = UpperBound;
                 //Chains//
                 if (ChainLength == 0 || NDDs == 0) ThirdPhase = true;
@@ -229,6 +236,7 @@ void Problem::Lagrange(){
                 vector<vector<int>>vChains;
                 while(true){
                     if (ThirdPhase == false){
+                        prevSectionEnd = logging("Phase 2(?): Look for chain", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                         clock_t tStartSP = clock();
                         vChains = Chains();
                         TimePH2 += (clock() - tStartSP)/double(CLOCKS_PER_SEC);
@@ -244,6 +252,7 @@ void Problem::Lagrange(){
                         }
                     }
                     else{
+                        prevSectionEnd = logging("Phase 3", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                         if (CycleLength > 3 || ChainLength > 0){
                             clock_t tStartSP = clock();
                             vChains = LeftCycles();
@@ -393,6 +402,11 @@ void Problem::Lagrange(){
     Lag.add(IloConversion(env, z, ILOBOOL));
     //Set start MIP solution
     cplex.solve();
+
+    //J: What model is being solved here? 
+
+
+
     CFTime += (clock() - tStartCF)/double(CLOCKS_PER_SEC);
     if (cplex.getStatus() == IloAlgorithm::Infeasible) {
         env.out() << "No solution" << endl;
