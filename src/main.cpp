@@ -17,32 +17,32 @@
 
 int main(int argc, const char * argv[]) {
 
-    vector<vector<int>> AdjacencyList1 = {
-        {1, 2},  // Pair 0 can donate to pairs 1 and 2
-        {2},     // Pair 1 can donate to pair 2
-        {}       // Pair 2 has no donation possibilities
+    vector<vector<int>> AdjacencyList_Own = {
+        {2,4},
+        {0,2},
+        {0,1,4},
+        {0,1},
+        {}
+
     };
 
-    vector<vector<int>> PredList1 = {
-        {},      // Pair 0 has no incoming donors
-        {0},     // Pair 1 can receive from pair 0
-        {0, 1}   // Pair 2 can receive from pairs 0 and 1
+    vector<vector<int>> PredList_Own= {
+        {1,2,3},
+        {2,3},
+        {1},
+        {},
+        {0,2}
     };
 
-    map<pair<int, int>, double> Weights1 = {
-        {{0, 1}, 1.0},  // Weight for donation from 0 to 1
-        {{0, 2}, 2.0},  // Weight for donation from 0 to 2
-        {{1, 2}, 1.5}   // Weight for donation from 1 to 2
-    };
-
-    for (size_t i = 0; i < AdjacencyList1.size(); ++i) {
-        std::cout << "AdjacencyList1[" << i << "]: ";
-        for (size_t j = 0; j < AdjacencyList1[i].size(); ++j) {
-            std::cout << AdjacencyList1[i][j] << " ";
+    std::map<std::pair<int, int>, double> Weights_Own;
+    for (int i = 0; i < AdjacencyList_Own.size(); ++i) {
+        for (int j : AdjacencyList_Own[i]) {
+            Weights_Own[{i, j}] = 1;
         }
-        std::cout << std::endl;
-    }
-    std::cout << "\n"<< std::endl;
+    };
+
+    K = 2;
+    L = 1; 
 
 
 
