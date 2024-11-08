@@ -17,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o"
   "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o.d"
+  "CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o"
+  "CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/main.cpp.o"
   "CMakeFiles/KidneyProblem.dir/main.cpp.o.d"
   "bin/KidneyProblem"

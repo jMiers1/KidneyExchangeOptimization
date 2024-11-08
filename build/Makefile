@@ -345,6 +345,30 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
+_OwnModel.o: _OwnModel.cpp.o
+.PHONY : _OwnModel.o
+
+# target to build an object file
+_OwnModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o
+.PHONY : _OwnModel.cpp.o
+
+_OwnModel.i: _OwnModel.cpp.i
+.PHONY : _OwnModel.i
+
+# target to preprocess a source file
+_OwnModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.i
+.PHONY : _OwnModel.cpp.i
+
+_OwnModel.s: _OwnModel.cpp.s
+.PHONY : _OwnModel.s
+
+# target to generate assembly for a file
+_OwnModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.s
+.PHONY : _OwnModel.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -405,6 +429,9 @@ help:
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
+	@echo "... _OwnModel.o"
+	@echo "... _OwnModel.i"
+	@echo "... _OwnModel.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

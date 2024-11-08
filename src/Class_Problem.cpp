@@ -20,6 +20,7 @@ Problem::Problem(string _FilePath, string _OutputPath, string _DegreeType, IloIn
     NDDs = _NDDs;
     Preference = _Preference;
     tCicloFin = make_tuple(-1, -1, -10000, -1, -10000);
+    cout << "--- We are in the constructor ---" <<endl;
 }
 void Problem::SetName(IloNumVar& var, const char* prefix, IloInt i){
     string _prefix = prefix;

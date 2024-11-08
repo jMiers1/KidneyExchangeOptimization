@@ -11,12 +11,14 @@
 
 int Problem::ReadData() {
     
+    // Check that instance file is valid 
     ifstream inFile(FilePath, ifstream::in);
     if (!inFile) {
         cout << endl << "Instance's files not found. " << FilePath << endl;
         return 0;
     }
-    //Get FileName
+
+    //Extrcat the file name (i.e. remove the path)
     string new_name = FilePath; long pos_str = -1; long size_str = FilePath.size();
     while(pos_str <= size_str){
         new_name = new_name.substr(pos_str + 1);
@@ -24,6 +26,9 @@ int Problem::ReadData() {
         if (pos_str < 0) break;
     }
     FileName = new_name;
+
+
+    //------ Preparations 
     
     //Read Data
     PairsType = IloNumArray(env);
@@ -43,6 +48,56 @@ int Problem::ReadData() {
             }
         }
     }
+
+    vector<vector<int>> NewPredList;
+    NewPredList = vector<vector<int>>(AdjacencyList.getSize());
+    for (int i = 0; i < AdjacencyList.getSize(); i++) {
+        for (int j = 0; j < AdjacencyList.getSize(); j++) {
+            if (i != j) {  // Skip self-loops
+                for (int h = 0; h < AdjacencyList[j].getSize(); h++) {
+                    // Compare the destination of node j's edges to node i
+                    if (AdjacencyList[j][h] == i) {
+                        NewPredList[i].push_back(j);  // Add node j as a predecessor of node i
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Printing AdjacencyList
+    for (size_t i = 0; i < AdjacencyList.getSize(); ++i) {
+        std::cout << "AdjacencyList[" << i << "]: ";
+        for (size_t j = 0; j < AdjacencyList[i].getSize(); ++j) {
+            std::cout << AdjacencyList[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << "\n"<< std::endl;
+    
+
+    // Print PredList
+    for (size_t i = 0; i < PredList.size(); ++i) {
+        std::cout << "PredList[" << i << "]: ";
+        for (size_t j = 0; j < PredList[i].size(); ++j) {
+            std::cout << PredList[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << "\n"<< std::endl;
+
+    // Printing NewPredList
+    for (size_t i = 0; i < NewPredList.size(); ++i) {
+        std::cout << "NewPredList[" << i << "]: ";
+        for (size_t j = 0; j < NewPredList[i].size(); ++j) {
+            std::cout << NewPredList[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << "\n"<< std::endl;
+
+
+
     
     //Build weights matrix
     for (int i = 0; i < AdjacencyList.getSize(); i++){

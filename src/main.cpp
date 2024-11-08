@@ -10,10 +10,18 @@
 #include <mach/mach.h>
 #include "main_VFS.hpp"
 #include "BBTree.hpp"
+
 #include "Logger.hpp"
+#include "_OwnModel.hpp"
 
 
 int main(int argc, const char * argv[]) {
+
+    // cout << " \n #### \n Start own model \n #### \n" << endl;
+    // ModelSolver solver;
+    // solver.solve();  
+    // solver.~ModelSolver();
+    // cout << " \n #### \n End own model \n #### \n" << endl;
 
     if (argc < 8) {
         cout << "The program expects 7 additional arguments" << endl;
@@ -43,14 +51,15 @@ int main(int argc, const char * argv[]) {
     prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
     
+
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
     cout << "Reading input graph..." << endl;
     if (P.ReadData() == 0) {
         cout << "Failed while reading input..." << endl;
         return -1;
     }
+
     prevSectionEnd = logging("Read instance file", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
-   
 
     
     // Configure solution mode
@@ -86,6 +95,6 @@ int main(int argc, const char * argv[]) {
 
 
     //Traces
-    finishLogging();
+    //finishLogging();
     return 0;
 }
