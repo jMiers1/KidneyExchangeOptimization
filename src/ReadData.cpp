@@ -10,6 +10,9 @@
 //Implementations
 
 int Problem::ReadData() {
+
+
+    // ----- Start Preparations --------
     
     // Check that instance file is valid 
     ifstream inFile(FilePath, ifstream::in);
@@ -28,13 +31,16 @@ int Problem::ReadData() {
     FileName = new_name;
 
 
-    //------ Preparations 
-    
+    // ----- End Preparations --------
+
     //Read Data
     PairsType = IloNumArray(env);
     inFile >> Nodes >> NDDs >> Pairs >> NumArcs >> AdjacencyList >> WeightMatrix >> PairsType;
     
+
+    // ----- Start build weighted compaitbility graph --------
     
+     
     //Build Predeccessors List
     PredList = vector<vector<int>>(AdjacencyList.getSize());
     for (int i = 0; i < AdjacencyList.getSize(); i++){
@@ -49,66 +55,39 @@ int Problem::ReadData() {
         }
     }
 
-    vector<vector<int>> NewPredList;
-    NewPredList = vector<vector<int>>(AdjacencyList.getSize());
-    for (int i = 0; i < AdjacencyList.getSize(); i++) {
-        for (int j = 0; j < AdjacencyList.getSize(); j++) {
-            if (i != j) {  // Skip self-loops
-                for (int h = 0; h < AdjacencyList[j].getSize(); h++) {
-                    // Compare the destination of node j's edges to node i
-                    if (AdjacencyList[j][h] == i) {
-                        NewPredList[i].push_back(j);  // Add node j as a predecessor of node i
-                    }
-                }
-            }
-        }
-    }
 
-
-    // Printing AdjacencyList
-    for (size_t i = 0; i < AdjacencyList.getSize(); ++i) {
-        std::cout << "AdjacencyList[" << i << "]: ";
-        for (size_t j = 0; j < AdjacencyList[i].getSize(); ++j) {
-            std::cout << AdjacencyList[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << "\n"<< std::endl;
-    
-
-    // Print PredList
-    for (size_t i = 0; i < PredList.size(); ++i) {
-        std::cout << "PredList[" << i << "]: ";
-        for (size_t j = 0; j < PredList[i].size(); ++j) {
-            std::cout << PredList[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << "\n"<< std::endl;
-
-    // Printing NewPredList
-    for (size_t i = 0; i < NewPredList.size(); ++i) {
-        std::cout << "NewPredList[" << i << "]: ";
-        for (size_t j = 0; j < NewPredList[i].size(); ++j) {
-            std::cout << NewPredList[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << "\n"<< std::endl;
-
-
-
-    
     //Build weights matrix
     for (int i = 0; i < AdjacencyList.getSize(); i++){
         for (int j = 0; j < AdjacencyList[i].getSize(); j++){
             Weights[make_pair(i,AdjacencyList[i][j] - 1)] = WeightMatrix[i][j];
         }
     }
+
+    // // Printing AdjacencyList
+    // for (size_t i = 0; i < AdjacencyList.getSize(); ++i) {
+    //     std::cout << "AdjList[" << i << "]: ";
+    //     for (size_t j = 0; j < AdjacencyList[i].getSize(); ++j) {
+    //         std::cout << AdjacencyList[i][j] << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
+    // std::cout << "\n"<< std::endl;
+
+    // // Printing Weights
+    //     for (const auto& entry : Weights) {
+    //     std::cout << "(" << entry.first.first << ", " << entry.first.second << ") -> " 
+    //               << entry.second << std::endl;
+    // }
+
+
+    // ----- End build weighted compaitbility graph --------
     
+
+    // ----- Start build structure for search on the fly -----
+
     int pimany = 0;
     if (ChainLength == 0){
-        pimany = int(Pairs);
+        pimany = int(Pairs); // cycle-only 
     }
     else{
         pimany = int(Nodes);
@@ -121,6 +100,7 @@ int Problem::ReadData() {
             ArcsinSol.push_back(CheckedArc(i,j,0));
         }
     }
+
 
     //To find positive-priced chains on the go
     for (int i = AdjacencyList.getSize() - 1; i >= 0 ; i--){
@@ -138,8 +118,22 @@ int Problem::ReadData() {
             break;
         }
     }
+
+
+    cout << "AdjacencyList :" << AdjacencyList.getSize() << "\n"   // for each pdp the compatible recipients
+       << "PredList :" << PredList.size() << "\n"                  // for each pdp the compatible donors
+       << "WeightMatrix :" << WeightMatrix.getSize() << "\n"      
+       << "Weights :" << Weights.size() << "\n"                    // value of an assignment
+       << "pimany :" << pimany << "\n"                            
+       << "solpi :" << solpi.getSize() << "\n" 
+       << "ArcsinSol :" << ArcsinSol.size() << "\n"  
+       << "VertexinSolChain :" << VertexinSolChain.size() << "\n" <<endl;   
+
+
     
     z_sol = IloNumArray(this->env);
+
+    // ----- End build structure for search on the fly -----
     
     return 1;
 }

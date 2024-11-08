@@ -3,7 +3,7 @@
 base_path="Users/juliusmiers/CodingWS24/ORSeminar"
 instance_type="PrefLib"
 instance_folder="Kidney_Matching_16_0"
-instance="KP_Num2_N16_A0.txt"
+instance="KP_Num1_N16_A0.txt"
 
 input_path="/$base_path/instances/$instance_type/$instance_folder/$instance"
 output_path="/$base_path/out/$instance_type/$instance_folder/$instance"
