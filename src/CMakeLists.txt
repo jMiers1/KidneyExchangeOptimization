@@ -50,7 +50,7 @@ set(CMAKE_CXX_COMPILER "clang++")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(KidneyProblem "_OwnModel.cpp"
+add_executable(KidneyProblem "KidneyModel.cpp"
                              "ReadData.cpp"
                              "AugmentedNetwork.cpp"
                              "BBTree.cpp"

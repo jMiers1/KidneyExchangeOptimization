@@ -249,6 +249,30 @@ FindCycles.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/FindCycles.cpp.s
 .PHONY : FindCycles.cpp.s
 
+KidneyModel.o: KidneyModel.cpp.o
+.PHONY : KidneyModel.o
+
+# target to build an object file
+KidneyModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.o
+.PHONY : KidneyModel.cpp.o
+
+KidneyModel.i: KidneyModel.cpp.i
+.PHONY : KidneyModel.i
+
+# target to preprocess a source file
+KidneyModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.i
+.PHONY : KidneyModel.cpp.i
+
+KidneyModel.s: KidneyModel.cpp.s
+.PHONY : KidneyModel.s
+
+# target to generate assembly for a file
+KidneyModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.s
+.PHONY : KidneyModel.cpp.s
+
 LagrangianRelaxation.o: LagrangianRelaxation.cpp.o
 .PHONY : LagrangianRelaxation.o
 
@@ -345,30 +369,6 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
-_OwnModel.o: _OwnModel.cpp.o
-.PHONY : _OwnModel.o
-
-# target to build an object file
-_OwnModel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o
-.PHONY : _OwnModel.cpp.o
-
-_OwnModel.i: _OwnModel.cpp.i
-.PHONY : _OwnModel.i
-
-# target to preprocess a source file
-_OwnModel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.i
-.PHONY : _OwnModel.cpp.i
-
-_OwnModel.s: _OwnModel.cpp.s
-.PHONY : _OwnModel.s
-
-# target to generate assembly for a file
-_OwnModel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.s
-.PHONY : _OwnModel.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -417,6 +417,9 @@ help:
 	@echo "... FindCycles.o"
 	@echo "... FindCycles.i"
 	@echo "... FindCycles.s"
+	@echo "... KidneyModel.o"
+	@echo "... KidneyModel.i"
+	@echo "... KidneyModel.s"
 	@echo "... LagrangianRelaxation.o"
 	@echo "... LagrangianRelaxation.i"
 	@echo "... LagrangianRelaxation.s"
@@ -429,9 +432,6 @@ help:
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
-	@echo "... _OwnModel.o"
-	@echo "... _OwnModel.i"
-	@echo "... _OwnModel.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

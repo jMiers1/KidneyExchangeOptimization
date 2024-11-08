@@ -10,18 +10,41 @@
 #include <mach/mach.h>
 #include "main_VFS.hpp"
 #include "BBTree.hpp"
-
+#include <vector>
 #include "Logger.hpp"
 #include "_OwnModel.hpp"
 
 
 int main(int argc, const char * argv[]) {
 
-    // cout << " \n #### \n Start own model \n #### \n" << endl;
-    // ModelSolver solver;
-    // solver.solve();  
-    // solver.~ModelSolver();
-    // cout << " \n #### \n End own model \n #### \n" << endl;
+    vector<vector<int>> AdjacencyList1 = {
+        {1, 2},  // Pair 0 can donate to pairs 1 and 2
+        {2},     // Pair 1 can donate to pair 2
+        {}       // Pair 2 has no donation possibilities
+    };
+
+    vector<vector<int>> PredList1 = {
+        {},      // Pair 0 has no incoming donors
+        {0},     // Pair 1 can receive from pair 0
+        {0, 1}   // Pair 2 can receive from pairs 0 and 1
+    };
+
+    map<pair<int, int>, double> Weights1 = {
+        {{0, 1}, 1.0},  // Weight for donation from 0 to 1
+        {{0, 2}, 2.0},  // Weight for donation from 0 to 2
+        {{1, 2}, 1.5}   // Weight for donation from 1 to 2
+    };
+
+    for (size_t i = 0; i < AdjacencyList1.size(); ++i) {
+        std::cout << "AdjacencyList1[" << i << "]: ";
+        for (size_t j = 0; j < AdjacencyList1[i].size(); ++j) {
+            std::cout << AdjacencyList1[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << "\n"<< std::endl;
+
+
 
     if (argc < 8) {
         cout << "The program expects 7 additional arguments" << endl;
