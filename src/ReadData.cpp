@@ -81,7 +81,11 @@ int Problem::ReadData() {
 
 
     // ----- End build weighted compaitbility graph --------
-    
+
+
+    // AdjacencyList: for each pdp the compatible recipients
+    // PredList: for each pdp the compatible donors
+    // Weights: value of an assignment
 
     // ----- Start build structure for search on the fly -----
 
@@ -118,16 +122,6 @@ int Problem::ReadData() {
             break;
         }
     }
-
-
-    cout << "AdjacencyList :" << AdjacencyList.getSize() << "\n"   // for each pdp the compatible recipients
-       << "PredList :" << PredList.size() << "\n"                  // for each pdp the compatible donors
-       << "WeightMatrix :" << WeightMatrix.getSize() << "\n"      
-       << "Weights :" << Weights.size() << "\n"                    // value of an assignment
-       << "pimany :" << pimany << "\n"                            
-       << "solpi :" << solpi.getSize() << "\n" 
-       << "ArcsinSol :" << ArcsinSol.size() << "\n"  
-       << "VertexinSolChain :" << VertexinSolChain.size() << "\n" <<endl;   
 
 
     
