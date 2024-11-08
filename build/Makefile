@@ -249,6 +249,30 @@ FindCycles.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/FindCycles.cpp.s
 .PHONY : FindCycles.cpp.s
 
+KIDNEY_EXCHANGE_MODEL.o: KIDNEY_EXCHANGE_MODEL.cpp.o
+.PHONY : KIDNEY_EXCHANGE_MODEL.o
+
+# target to build an object file
+KIDNEY_EXCHANGE_MODEL.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o
+.PHONY : KIDNEY_EXCHANGE_MODEL.cpp.o
+
+KIDNEY_EXCHANGE_MODEL.i: KIDNEY_EXCHANGE_MODEL.cpp.i
+.PHONY : KIDNEY_EXCHANGE_MODEL.i
+
+# target to preprocess a source file
+KIDNEY_EXCHANGE_MODEL.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.i
+.PHONY : KIDNEY_EXCHANGE_MODEL.cpp.i
+
+KIDNEY_EXCHANGE_MODEL.s: KIDNEY_EXCHANGE_MODEL.cpp.s
+.PHONY : KIDNEY_EXCHANGE_MODEL.s
+
+# target to generate assembly for a file
+KIDNEY_EXCHANGE_MODEL.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.s
+.PHONY : KIDNEY_EXCHANGE_MODEL.cpp.s
+
 LagrangianRelaxation.o: LagrangianRelaxation.cpp.o
 .PHONY : LagrangianRelaxation.o
 
@@ -345,30 +369,6 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
-_OwnModel.o: _OwnModel.cpp.o
-.PHONY : _OwnModel.o
-
-# target to build an object file
-_OwnModel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o
-.PHONY : _OwnModel.cpp.o
-
-_OwnModel.i: _OwnModel.cpp.i
-.PHONY : _OwnModel.i
-
-# target to preprocess a source file
-_OwnModel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.i
-.PHONY : _OwnModel.cpp.i
-
-_OwnModel.s: _OwnModel.cpp.s
-.PHONY : _OwnModel.s
-
-# target to generate assembly for a file
-_OwnModel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.s
-.PHONY : _OwnModel.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -417,6 +417,9 @@ help:
 	@echo "... FindCycles.o"
 	@echo "... FindCycles.i"
 	@echo "... FindCycles.s"
+	@echo "... KIDNEY_EXCHANGE_MODEL.o"
+	@echo "... KIDNEY_EXCHANGE_MODEL.i"
+	@echo "... KIDNEY_EXCHANGE_MODEL.s"
 	@echo "... LagrangianRelaxation.o"
 	@echo "... LagrangianRelaxation.i"
 	@echo "... LagrangianRelaxation.s"
@@ -429,9 +432,6 @@ help:
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
-	@echo "... _OwnModel.o"
-	@echo "... _OwnModel.i"
-	@echo "... _OwnModel.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

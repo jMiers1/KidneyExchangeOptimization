@@ -8,20 +8,61 @@
 
 #include <chrono>
 #include <mach/mach.h>
+#include <unordered_map>
+//#include <boost/functional/hash.hpp>
+#include <map>
 #include "main_VFS.hpp"
 #include "BBTree.hpp"
-
 #include "Logger.hpp"
-#include "_OwnModel.hpp"
+#include "KIDNEY_EXCHANGE_MODEL.hpp"
+
+
+
 
 
 int main(int argc, const char * argv[]) {
+    try {
+        // Initialize CPLEX environment
+        IloEnv env;
 
-    // cout << " \n #### \n Start own model \n #### \n" << endl;
-    // ModelSolver solver;
-    // solver.solve();  
-    // solver.~ModelSolver();
-    // cout << " \n #### \n End own model \n #### \n" << endl;
+        // Define the AdjacencyList, PredList, and Weights
+        std::vector<std::vector<int>> AdjacencyList = {
+            {1, 2},      // Pair 0 can donate to pairs 1 and 2
+            {2},         // Pair 1 can donate to pair 2
+            {}           // Pair 2 has no donation possibilities
+        };
+
+        std::vector<std::vector<int>> PredList = {
+            {},          // Pair 0 has no incoming donors
+            {0},         // Pair 1 can receive from pair 0
+            {0, 1}       // Pair 2 can receive from pairs 0 and 1
+        };
+
+        std::map<myEdge, double> Weights = {
+            {{0, 1}, 1.0},    // Weight for donation from 0 to 1
+            {{0, 2}, 2.0},    // Weight for donation from 0 to 2
+            {{1, 2}, 1.5}     // Weight for donation from 1 to 2
+        };
+
+        // Instantiate the KidneyExchangeModel with provided data
+        KidneyExchangeModel model(env, AdjacencyList, PredList, Weights);
+
+        // Build and solve the model
+        model.buildModel();
+        model.solve();
+
+        // End the CPLEX environment
+        env.end();
+    } catch (const IloException& e) {
+        std::cerr << "Error: " << e << std::endl;
+    } catch (...) {
+        std::cerr << "Unknown error." << std::endl;
+    }
+
+
+
+
+
 
     if (argc < 8) {
         cout << "The program expects 7 additional arguments" << endl;

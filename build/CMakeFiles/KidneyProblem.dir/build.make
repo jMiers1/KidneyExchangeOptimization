@@ -69,19 +69,19 @@ include CMakeFiles/KidneyProblem.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/KidneyProblem.dir/flags.make
 
-CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
-CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/_OwnModel.cpp
-CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o -MF CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o.d -o CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/_OwnModel.cpp
+CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
+CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp
+CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o -MF CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o.d -o CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp
 
-CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.i"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/juliusmiers/CodingWS24/ORSeminar/src/_OwnModel.cpp > CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.i
+CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp > CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.i
 
-CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.s"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/_OwnModel.cpp -o CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.s
+CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp -o CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.s
 
 CMakeFiles/KidneyProblem.dir/ReadData.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
 CMakeFiles/KidneyProblem.dir/ReadData.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/ReadData.cpp
@@ -225,7 +225,7 @@ CMakeFiles/KidneyProblem.dir/main.cpp.s: cmake_force
 
 # Object files for target KidneyProblem
 KidneyProblem_OBJECTS = \
-"CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o" \
+"CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/AugmentedNetwork.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/BBTree.cpp.o" \
@@ -240,7 +240,7 @@ KidneyProblem_OBJECTS = \
 # External object files for target KidneyProblem
 KidneyProblem_EXTERNAL_OBJECTS =
 
-bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/_OwnModel.cpp.o
+bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/ReadData.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/AugmentedNetwork.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/BBTree.cpp.o
