@@ -33,6 +33,7 @@ public:
     void findCycles();
     void printAdjacencyList();
     void printAllCycles();
+    vector<int> normalizeCycle(const vector<int>& cycle);
     string printVector(const std::vector<int>& stack);
 };
 

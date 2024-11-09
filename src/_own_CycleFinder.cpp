@@ -10,6 +10,7 @@ CycleFinder::CycleFinder(IloEnv& env,
                         const int& k) : _env(env), _AdjacencyList(adjacencyList), _K(k) {}
 
 
+//TODO: make more efficient
 void CycleFinder::findCycles() {
     cycles.clear();
     int numNodes = _AdjacencyList.getSize();
@@ -20,13 +21,19 @@ void CycleFinder::findCycles() {
         dfs(node, stack, visited);
     }
 
-    // Remove duplicate cycles
-    set<vector<int>> unique_cycles(cycles.begin(), cycles.end());
-    cycles.assign(unique_cycles.begin(), unique_cycles.end());
+    // Remove duplicates
+    set<vector<int>> unique_cycles;
+    for (const auto& cycle : cycles) {
+        vector<int> normalized_cycle = normalizeCycle(cycle); 
+        unique_cycles.insert(normalized_cycle);  
+    }
 
+    cycles.assign(unique_cycles.begin(), unique_cycles.end());
     this -> printAdjacencyList(); 
     cout << "\n"<<endl;
     this -> printAllCycles();
+
+
 }
 
 void CycleFinder::dfs(int currentNode, vector<int>& stack, set<int>& visited) {
@@ -90,7 +97,6 @@ void CycleFinder::dfs(int currentNode, vector<int>& stack, set<int>& visited) {
     visited.erase(currentNode);
 }
 
-
 void CycleFinder::printAdjacencyList(){
     for (int i = 0; i < _AdjacencyList.getSize(); ++i) { 
         IloNumArray& row = _AdjacencyList[i];  
@@ -115,7 +121,6 @@ string CycleFinder::printVector(const std::vector<int>& neighbors) {
     return neighbors_str;
 }
 
-
 void CycleFinder::printAllCycles() {
     cout << "Unique cycles: " << to_string(cycles.size()) << endl;
     
@@ -131,4 +136,10 @@ void CycleFinder::printAllCycles() {
     }
 }
 
-
+vector<int> CycleFinder::normalizeCycle(const vector<int>& cycle) {
+    auto min_it = min_element(cycle.begin(), cycle.end());
+    int min_index = distance(cycle.begin(), min_it);
+    vector<int> normalized(cycle.begin() + min_index, cycle.end());
+    normalized.insert(normalized.end(), cycle.begin(), cycle.begin() + min_index);
+    return normalized;
+}
