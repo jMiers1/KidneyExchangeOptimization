@@ -35,8 +35,6 @@ int DataReader::readFile() {
     _PairsType = IloNumArray(_env);
     inFile >> _Nodes >> _NDDs >> _Pairs >> _NumArcs >> _AdjacencyList >> _WeightMatrix >> _PairsType;
 
-
-
     //Build Predeccessors List
     _PredList = vector<vector<int>>(_AdjacencyList.getSize());
     for (int i = 0; i < _AdjacencyList.getSize(); i++){

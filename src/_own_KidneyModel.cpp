@@ -6,13 +6,10 @@ KidneyExchangeModel::KidneyExchangeModel(const IloNumArray2& adjacencyList,
                                          const std::map<std::pair<int, int>, double>& weights, 
                                          const int& k, 
                                          const int& l)
-    : env(),  // Initialize CPLEX environment
-      _AdjacencyList(adjacencyList), _PredList(predList), _Weights(weights), K(k), L(l) {
-    // Constructor body (if needed)
-}
+    : env(), _AdjacencyList(adjacencyList), _PredList(predList), _Weights(weights), K(k), L(l) {}
 
 KidneyExchangeModel::~KidneyExchangeModel() {
-    env.end();  // Properly close the CPLEX environment
+    env.end();  
 }
 
 
@@ -33,14 +30,14 @@ double KidneyExchangeModel::solvePcTsp() {
             }
         }
 
-        cout << "Decision variables: " <<x<<endl;
+        cout << "Decision variables x: " <<x.getSize()<<endl;
 
-        IloBoolVarArray y(env, numNodes);  // y[i] indicates if node i is included in the cycle
+        IloBoolVarArray y(env, numNodes);  // y[i] indi cates if node i is included in the cycle
         for (int i = 0; i < numNodes; ++i) {
             y[i] = IloBoolVar(env);
         }
 
-        cout << "Is node i in the cycle: " << y <<endl; 
+        cout << "Decision variables y: " <<y.getSize()<<endl;
 
         // Objective: Maximize total prize (sum of weights)
         IloExpr objective(env);
@@ -52,7 +49,7 @@ double KidneyExchangeModel::solvePcTsp() {
             }
         }
 
-        cout << "Objective: " <<objective <<endl; 
+        cout << "Objective: " <<endl; 
 
         
         model.add(IloMaximize(env, objective));

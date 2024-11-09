@@ -11,13 +11,14 @@
 #include "main_VFS.hpp"
 #include "BBTree.hpp"
 #include <vector>
+#include "_own_CycleFinder.hpp"
+#include "_own_ChainFinder.hpp"
 #include "_own_Logger.hpp"
 #include "_own_KidneyModel.hpp"
 #include "_own_DataReader.hpp"
 
 
 int main(int argc, const char * argv[]) {
-
 
     if (argc < 8) {
         cout << "The program expects 7 additional rguments" << endl;
@@ -47,15 +48,22 @@ int main(int argc, const char * argv[]) {
     prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
 
-
-    // Own data reader 
-    IloEnv data_env;
-    DataReader reader(FilePath, data_env);
+    // Own 
+    
+    //Data reader 
+    IloEnv _env;
+    DataReader reader(FilePath, _env);
     reader.readFile();
+
+    //Cycle finder
+    CycleFinder cycleFinder(_env, reader._AdjacencyList, CycleLength);
+    cycleFinder.findCycles();
+    return 0;
 
     //Own CPLEX model
     IloEnv pcTsp_env;
-    KidneyExchangeModel PCTSP(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
+    KidneyExchangeModel model(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
+    model.solvePcTsp();
     cout << "Created own model" <<endl; 
 
 
