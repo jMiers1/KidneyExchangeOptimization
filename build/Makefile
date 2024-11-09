@@ -225,6 +225,30 @@ Class_Problem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.s
 .PHONY : Class_Problem.cpp.s
 
+DataReader.o: DataReader.cpp.o
+.PHONY : DataReader.o
+
+# target to build an object file
+DataReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/DataReader.cpp.o
+.PHONY : DataReader.cpp.o
+
+DataReader.i: DataReader.cpp.i
+.PHONY : DataReader.i
+
+# target to preprocess a source file
+DataReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/DataReader.cpp.i
+.PHONY : DataReader.cpp.i
+
+DataReader.s: DataReader.cpp.s
+.PHONY : DataReader.s
+
+# target to generate assembly for a file
+DataReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/DataReader.cpp.s
+.PHONY : DataReader.cpp.s
+
 FindCycles.o: FindCycles.cpp.o
 .PHONY : FindCycles.o
 
@@ -414,6 +438,9 @@ help:
 	@echo "... Class_Problem.o"
 	@echo "... Class_Problem.i"
 	@echo "... Class_Problem.s"
+	@echo "... DataReader.o"
+	@echo "... DataReader.i"
+	@echo "... DataReader.s"
 	@echo "... FindCycles.o"
 	@echo "... FindCycles.i"
 	@echo "... FindCycles.s"

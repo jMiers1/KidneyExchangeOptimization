@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/KidneyProblem.dir/Chains.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o"
   "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o.d"
+  "CMakeFiles/KidneyProblem.dir/DataReader.cpp.o"
+  "CMakeFiles/KidneyProblem.dir/DataReader.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o"
   "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.o"

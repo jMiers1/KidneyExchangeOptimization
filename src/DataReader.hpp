@@ -1,38 +1,48 @@
 // DataReader.hpp
 
-#ifndef DATAREADER_HPP
-#define DATAREADER_HPP
+#pragma once 
 
-#include <ilcplex/ilocplex.h>
-#include <vector>
 #include <map>
+#include <vector>
+#include <stdio.h>
 #include <string>
-#include <iostream>
-#include <fstream>
+#include <ilcplex/ilocplex.h>
+
+using namespace std;
+
+ILOSTLBEGIN
 
 class DataReader {
+
+private:
+    // input path 
+    string _filePath; 
+   
+    // read this from the file
+    int _Nodes{0}; 
+    int _NDDs{0};
+    int _Pairs{0};
+    int _NumArcs{0};
+    IloNumArray2 _AdjacencyList; // identical
+    IloNumArray2 _WeightMatrix;  
+    IloNumArray _PairsType;
+
+
+    // create this in call
+    string _fileName; 
+    vector<vector<int>> _PredList;
+    map<pair<int,int>,double> _Weights;
+
 public:
-    DataReader(const std::string& filePath, IloEnv& environment, int chainLength)
-        : FilePath(filePath), env(environment), ChainLength(chainLength) {}
+    // Constructor
+    IloEnv _env;
+    DataReader(const string& path,  IloEnv& env);
 
-    virtual ~DataReader() {}  // Virtual destructor for polymorphic use
+    // Member function declarations
+    int readFile();
 
-    int ReadData();  // Shared ReadData function
+    void print(const string& content);
 
-protected:
-    // Common data members used by ReadData
-    std::string FilePath;
-    IloEnv& env;
-    int ChainLength;
-    int Nodes, NDDs, Pairs, NumArcs;
-
-    IloNumArray2 AdjacencyList, WeightMatrix;
-    IloNumArray PairsType, solpi, z_sol;
-    std::vector<std::vector<int>> PredList;
-    std::map<std::pair<int, int>, double> Weights;
-    std::vector<CheckedArc> ArcsinSol;
-    std::vector<vChain> VertexinSolChain;
-    bool AllArcWeightsInt;
+    // Getter for filePath
+    string getFilePath() const;
 };
-
-#endif // DATAREADER_HPP

@@ -1,33 +1,50 @@
 // DataReader.cpp
-#include "DataReader.hpp"
-#include <cmath>  // For floor
 
-int DataReader::ReadData() {
-    // Original ReadData implementation, with data members accessed directly
-    // Check if the instance file is valid
-    std::ifstream inFile(FilePath, std::ifstream::in);
+#include "DataReader.hpp"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
+// Constructor
+DataReader::DataReader(const std::string& path,  IloEnv& env) : _filePath(path), _env(env), _AdjacencyList(env), _WeightMatrix(env), _PairsType(env) {}
+
+
+// readFile 
+int DataReader::readFile() {
+    cout << "Reading file: " << _filePath << endl;
+
+    // check if valid file
+    ifstream inFile(_filePath, ifstream::in);
     if (!inFile) {
-        std::cout << "\nInstance's files not found: " << FilePath << std::endl;
+        this -> print("File does not exist");
         return 0;
+    }else{
     }
 
-    // Extract the file name (remove the path)
-    std::string new_name = FilePath;
-    long pos_str = -1;
-    long size_str = FilePath.size();
-    while (pos_str <= size_str) {
+    // extract file name 
+    string new_name = _filePath; long pos_str = -1; long size_str = _filePath.size();
+    while(pos_str <= size_str){
         new_name = new_name.substr(pos_str + 1);
         pos_str = new_name.find("/");
         if (pos_str < 0) break;
     }
+    _fileName = new_name;
 
-    // Reading data into members
-    PairsType = IloNumArray(env);
-    inFile >> Nodes >> NDDs >> Pairs >> NumArcs >> AdjacencyList >> WeightMatrix >> PairsType;
+    _PairsType = IloNumArray(_env);
+    inFile >> _Nodes >> _NDDs >> _Pairs >> _NumArcs >> _AdjacencyList >> _WeightMatrix >> _PairsType;
 
-    // Build the Predecessors List and Weights matrix, similar to your original function
 
-    // ... rest of your code as-is ...
+    // Actual file reading logic can be added here
+    return 0;
+}
 
-    return 1;
+// getFilePath method implementation
+std::string DataReader::getFilePath() const {
+    return _fileName;
+}
+
+void DataReader::print(const string& content){
+    cout << "--- Data Reader: " << content <<endl;
 }

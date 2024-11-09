@@ -13,6 +13,7 @@
 #include <vector>
 #include "Logger.hpp"
 #include "KidneyModel.hpp"
+#include "DataReader.hpp"
 
 
 int main(int argc, const char * argv[]) {
@@ -53,15 +54,6 @@ int main(int argc, const char * argv[]) {
     // int K = 2;
     // int L = 1; 
 
-    cout << "Created dummy params" <<endl; 
-
-    //KidneyExchangeModel PC_TSP (AdjacencyList_Own, PredList_Own, Weights_Own, K, L);
-
-    cout << "Created Kidney Model" <<endl; 
-
-    return 0;
-
-
     if (argc < 8) {
         cout << "The program expects 7 additional rguments" << endl;
         cout << "Received: \n";
@@ -88,6 +80,18 @@ int main(int argc, const char * argv[]) {
     IloNum TimeLimit; str >> TimeLimit;
     string Preference = argv[7];
     prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+
+    IloEnv data_env;
+    DataReader reader(FilePath, data_env);
+    reader.readFile();
+
+
+
+    return 0;
+
+    //cout << "Created Kidney Model" <<endl; 
+
 
     
 

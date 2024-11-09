@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/BBTree.cpp" "CMakeFiles/KidneyProblem.dir/BBTree.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/BBTree.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/Chains.cpp" "CMakeFiles/KidneyProblem.dir/Chains.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/Chains.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/Class_Problem.cpp" "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o.d"
+  "/Users/juliusmiers/CodingWS24/ORSeminar/src/DataReader.cpp" "CMakeFiles/KidneyProblem.dir/DataReader.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/DataReader.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/FindCycles.cpp" "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/KidneyModel.cpp" "CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/LagrangianRelaxation.cpp" "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o.d"
