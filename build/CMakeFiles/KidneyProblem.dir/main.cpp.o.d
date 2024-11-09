@@ -1159,4 +1159,4 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/BBTree.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/Logger.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/KidneyModel.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/DataReader.hpp
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_ownDataReader.hpp

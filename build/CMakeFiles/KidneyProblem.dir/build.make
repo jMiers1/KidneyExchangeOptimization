@@ -83,19 +83,19 @@ CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.s"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/KidneyModel.cpp -o CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.s
 
-CMakeFiles/KidneyProblem.dir/DataReader.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
-CMakeFiles/KidneyProblem.dir/DataReader.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/DataReader.cpp
-CMakeFiles/KidneyProblem.dir/DataReader.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/KidneyProblem.dir/DataReader.cpp.o"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/DataReader.cpp.o -MF CMakeFiles/KidneyProblem.dir/DataReader.cpp.o.d -o CMakeFiles/KidneyProblem.dir/DataReader.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/DataReader.cpp
+CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
+CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/_ownDataReader.cpp
+CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o -MF CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o.d -o CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/_ownDataReader.cpp
 
-CMakeFiles/KidneyProblem.dir/DataReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/KidneyProblem.dir/DataReader.cpp.i"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/juliusmiers/CodingWS24/ORSeminar/src/DataReader.cpp > CMakeFiles/KidneyProblem.dir/DataReader.cpp.i
+CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/juliusmiers/CodingWS24/ORSeminar/src/_ownDataReader.cpp > CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.i
 
-CMakeFiles/KidneyProblem.dir/DataReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/DataReader.cpp.s"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/DataReader.cpp -o CMakeFiles/KidneyProblem.dir/DataReader.cpp.s
+CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/_ownDataReader.cpp -o CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.s
 
 CMakeFiles/KidneyProblem.dir/ReadData.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
 CMakeFiles/KidneyProblem.dir/ReadData.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/ReadData.cpp
@@ -240,7 +240,7 @@ CMakeFiles/KidneyProblem.dir/main.cpp.s: cmake_force
 # Object files for target KidneyProblem
 KidneyProblem_OBJECTS = \
 "CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.o" \
-"CMakeFiles/KidneyProblem.dir/DataReader.cpp.o" \
+"CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/AugmentedNetwork.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/BBTree.cpp.o" \
@@ -256,7 +256,7 @@ KidneyProblem_OBJECTS = \
 KidneyProblem_EXTERNAL_OBJECTS =
 
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.o
-bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/DataReader.cpp.o
+bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/ReadData.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/AugmentedNetwork.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/BBTree.cpp.o

@@ -225,30 +225,6 @@ Class_Problem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.s
 .PHONY : Class_Problem.cpp.s
 
-DataReader.o: DataReader.cpp.o
-.PHONY : DataReader.o
-
-# target to build an object file
-DataReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/DataReader.cpp.o
-.PHONY : DataReader.cpp.o
-
-DataReader.i: DataReader.cpp.i
-.PHONY : DataReader.i
-
-# target to preprocess a source file
-DataReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/DataReader.cpp.i
-.PHONY : DataReader.cpp.i
-
-DataReader.s: DataReader.cpp.s
-.PHONY : DataReader.s
-
-# target to generate assembly for a file
-DataReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/DataReader.cpp.s
-.PHONY : DataReader.cpp.s
-
 FindCycles.o: FindCycles.cpp.o
 .PHONY : FindCycles.o
 
@@ -393,6 +369,30 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
+_ownDataReader.o: _ownDataReader.cpp.o
+.PHONY : _ownDataReader.o
+
+# target to build an object file
+_ownDataReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o
+.PHONY : _ownDataReader.cpp.o
+
+_ownDataReader.i: _ownDataReader.cpp.i
+.PHONY : _ownDataReader.i
+
+# target to preprocess a source file
+_ownDataReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.i
+.PHONY : _ownDataReader.cpp.i
+
+_ownDataReader.s: _ownDataReader.cpp.s
+.PHONY : _ownDataReader.s
+
+# target to generate assembly for a file
+_ownDataReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.s
+.PHONY : _ownDataReader.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -438,9 +438,6 @@ help:
 	@echo "... Class_Problem.o"
 	@echo "... Class_Problem.i"
 	@echo "... Class_Problem.s"
-	@echo "... DataReader.o"
-	@echo "... DataReader.i"
-	@echo "... DataReader.s"
 	@echo "... FindCycles.o"
 	@echo "... FindCycles.i"
 	@echo "... FindCycles.s"
@@ -459,6 +456,9 @@ help:
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
+	@echo "... _ownDataReader.o"
+	@echo "... _ownDataReader.i"
+	@echo "... _ownDataReader.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

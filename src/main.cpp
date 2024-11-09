@@ -13,46 +13,11 @@
 #include <vector>
 #include "Logger.hpp"
 #include "KidneyModel.hpp"
-#include "DataReader.hpp"
+#include "_ownDataReader.hpp"
 
 
 int main(int argc, const char * argv[]) {
 
-    // std::vector<std::vector<int>> adjacencyListData = {
-    //         {2, 4},
-    //         {0, 2},
-    //         {0, 1, 4},
-    //         {0, 1},
-    //         {}
-    //     };
-
-       
-    // IloNumArray2 AdjacencyList_Own(env, adjacencyListData.size());
-    // for (size_t i = 0; i < adjacencyListData.size(); ++i) {
-    //     IloNumArray row(env, adjacencyListData[i].size());
-    //     for (size_t j = 0; j < adjacencyListData[i].size(); ++j) {
-    //         row[j] = adjacencyListData[i][j];
-    //     }
-    //     AdjacencyList_Own[i] = row;
-    // }
-
-    // vector<vector<int>> PredList_Own= {
-    //     {1,2,3},
-    //     {2,3},
-    //     {1},
-    //     {},
-    //     {0,2}
-    // };
-
-    // std::map<std::pair<int, int>, double> Weights_Own;
-    // for (int i = 0; i < AdjacencyList_Own.getSize(); ++i) {
-    //     for (int j = 0; j < AdjacencyList_Own[i].getSize(); j++) {
-    //         Weights_Own[{i, j}] = 1;
-    //     }
-    // };
-
-    // int K = 2;
-    // int L = 1; 
 
     if (argc < 8) {
         cout << "The program expects 7 additional rguments" << endl;
@@ -82,18 +47,13 @@ int main(int argc, const char * argv[]) {
     prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
 
+
+    // Own data reader 
     IloEnv data_env;
     DataReader reader(FilePath, data_env);
     reader.readFile();
+    //reader.print(to_string(reader._AdjacencyList.getSize()));
 
-
-
-    return 0;
-
-    //cout << "Created Kidney Model" <<endl; 
-
-
-    
 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
     cout << "Reading input graph..." << endl;

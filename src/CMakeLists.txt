@@ -51,7 +51,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(KidneyProblem "KidneyModel.cpp"
-                             "DataReader.cpp"
+                             "_ownDataReader.cpp"
                              "ReadData.cpp"
                              "AugmentedNetwork.cpp"
                              "BBTree.cpp"
