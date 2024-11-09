@@ -12,42 +12,58 @@
 #include "BBTree.hpp"
 #include <vector>
 #include "Logger.hpp"
-#include "_OwnModel.hpp"
+#include "KidneyModel.hpp"
 
 
 int main(int argc, const char * argv[]) {
 
-    vector<vector<int>> AdjacencyList_Own = {
-        {2,4},
-        {0,2},
-        {0,1,4},
-        {0,1},
-        {}
+    // std::vector<std::vector<int>> adjacencyListData = {
+    //         {2, 4},
+    //         {0, 2},
+    //         {0, 1, 4},
+    //         {0, 1},
+    //         {}
+    //     };
 
-    };
+       
+    // IloNumArray2 AdjacencyList_Own(env, adjacencyListData.size());
+    // for (size_t i = 0; i < adjacencyListData.size(); ++i) {
+    //     IloNumArray row(env, adjacencyListData[i].size());
+    //     for (size_t j = 0; j < adjacencyListData[i].size(); ++j) {
+    //         row[j] = adjacencyListData[i][j];
+    //     }
+    //     AdjacencyList_Own[i] = row;
+    // }
 
-    vector<vector<int>> PredList_Own= {
-        {1,2,3},
-        {2,3},
-        {1},
-        {},
-        {0,2}
-    };
+    // vector<vector<int>> PredList_Own= {
+    //     {1,2,3},
+    //     {2,3},
+    //     {1},
+    //     {},
+    //     {0,2}
+    // };
 
-    std::map<std::pair<int, int>, double> Weights_Own;
-    for (int i = 0; i < AdjacencyList_Own.size(); ++i) {
-        for (int j : AdjacencyList_Own[i]) {
-            Weights_Own[{i, j}] = 1;
-        }
-    };
+    // std::map<std::pair<int, int>, double> Weights_Own;
+    // for (int i = 0; i < AdjacencyList_Own.getSize(); ++i) {
+    //     for (int j = 0; j < AdjacencyList_Own[i].getSize(); j++) {
+    //         Weights_Own[{i, j}] = 1;
+    //     }
+    // };
 
-    K = 2;
-    L = 1; 
+    // int K = 2;
+    // int L = 1; 
 
+    cout << "Created dummy params" <<endl; 
+
+    //KidneyExchangeModel PC_TSP (AdjacencyList_Own, PredList_Own, Weights_Own, K, L);
+
+    cout << "Created Kidney Model" <<endl; 
+
+    return 0;
 
 
     if (argc < 8) {
-        cout << "The program expects 7 additional arguments" << endl;
+        cout << "The program expects 7 additional rguments" << endl;
         cout << "Received: \n";
         for(int i{0}; i < argc; i++) {
             cout << "Argument " << i << ": " << std::string{argv[i]} << "\n";

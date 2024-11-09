@@ -20,6 +20,8 @@ double KidneyExchangeModel::PC_TSP() {
         IloModel model(env);
         int numNodes = AdjacencyList.getSize();
 
+        cout << "numNodes: " << numNodes << endl; 
+
         // Decision variables
         IloArray<IloBoolVarArray> x(env, numNodes);  // x[i][j] indicates if edge (i, j) is chosen
         for (int i = 0; i < numNodes; ++i) {
@@ -29,10 +31,14 @@ double KidneyExchangeModel::PC_TSP() {
             }
         }
 
+        cout << "Decision variables: " <<x<<endl;
+
         IloBoolVarArray y(env, numNodes);  // y[i] indicates if node i is included in the cycle
         for (int i = 0; i < numNodes; ++i) {
             y[i] = IloBoolVar(env);
         }
+
+        cout << "Is node i in the cycle: " << y <<endl; 
 
         // Objective: Maximize total prize (sum of weights)
         IloExpr objective(env);
@@ -43,6 +49,10 @@ double KidneyExchangeModel::PC_TSP() {
                 }
             }
         }
+
+        cout << "Objective: " <<objective <<endl; 
+
+        
         model.add(IloMaximize(env, objective));
         objective.end();
 

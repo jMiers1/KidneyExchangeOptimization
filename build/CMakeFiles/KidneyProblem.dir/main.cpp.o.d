@@ -1158,4 +1158,4 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__random/weibull_distribution.h \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/BBTree.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/Logger.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_OwnModel.hpp
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/KidneyModel.hpp
