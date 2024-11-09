@@ -55,18 +55,18 @@ int main(int argc, const char * argv[]) {
     DataReader reader(FilePath, _env);
     reader.readFile();
 
-    
+
 
     //Cycle finder
     CycleFinder cycleFinder(_env, reader._AdjacencyList, CycleLength);
     cycleFinder.findCycles();
-    return 0;
+    //return 0;
 
     //Own CPLEX model
-    IloEnv pcTsp_env;
-    KidneyExchangeModel model(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
-    model.solvePcTsp();
-    cout << "Created own model" <<endl; 
+    // IloEnv pcTsp_env;
+    // KidneyExchangeModel model(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
+    // model.solvePcTsp();
+    // cout << "Created own model" <<endl; 
 
 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
