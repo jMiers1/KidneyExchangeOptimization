@@ -984,4 +984,4 @@ CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o: \
   /Applications/CPLEX_Studio2211/cplex/include/ilcplex/iloCPXCALLBACKSOLUTIONSTRATEGYenum.h \
   /Applications/CPLEX_Studio2211/cplex/include/ilcplex/ilogoals.h \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/map \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/Logger.hpp
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Logger.hpp

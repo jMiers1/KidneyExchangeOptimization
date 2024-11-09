@@ -11,9 +11,9 @@
 #include "main_VFS.hpp"
 #include "BBTree.hpp"
 #include <vector>
-#include "Logger.hpp"
-#include "_ownKidneyModel.hpp"
-#include "_ownDataReader.hpp"
+#include "_own_Logger.hpp"
+#include "_own_KidneyModel.hpp"
+#include "_own_DataReader.hpp"
 
 
 int main(int argc, const char * argv[]) {
@@ -55,11 +55,8 @@ int main(int argc, const char * argv[]) {
 
     //Own CPLEX model
     IloEnv pcTsp_env;
-
-
-    
-
-
+    KidneyExchangeModel PCTSP(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
+    cout << "Created own model" <<endl; 
 
 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);

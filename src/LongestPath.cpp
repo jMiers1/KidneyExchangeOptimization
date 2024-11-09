@@ -6,7 +6,7 @@
 //
 
 #include "LongestPath.hpp"
-#include "Logger.hpp"
+#include "_own_Logger.hpp"
 
 tuple<int,int,double,int,double> Problem::maxMenosOcho(vector<state>& vLosNew, state& estoy, int i, bool cadena, int CuantosPahtsQueres){
     tuple<int,int,double,int,double> tCicloFinAux; double peso = 0; double mmax = -1000000.0;//-10000000.0;

@@ -249,30 +249,6 @@ FindCycles.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/FindCycles.cpp.s
 .PHONY : FindCycles.cpp.s
 
-KidneyModel.o: KidneyModel.cpp.o
-.PHONY : KidneyModel.o
-
-# target to build an object file
-KidneyModel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.o
-.PHONY : KidneyModel.cpp.o
-
-KidneyModel.i: KidneyModel.cpp.i
-.PHONY : KidneyModel.i
-
-# target to preprocess a source file
-KidneyModel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.i
-.PHONY : KidneyModel.cpp.i
-
-KidneyModel.s: KidneyModel.cpp.s
-.PHONY : KidneyModel.s
-
-# target to generate assembly for a file
-KidneyModel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KidneyModel.cpp.s
-.PHONY : KidneyModel.cpp.s
-
 LagrangianRelaxation.o: LagrangianRelaxation.cpp.o
 .PHONY : LagrangianRelaxation.o
 
@@ -296,30 +272,6 @@ LagrangianRelaxation.s: LagrangianRelaxation.cpp.s
 LagrangianRelaxation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.s
 .PHONY : LagrangianRelaxation.cpp.s
-
-Logger.o: Logger.cpp.o
-.PHONY : Logger.o
-
-# target to build an object file
-Logger.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.o
-.PHONY : Logger.cpp.o
-
-Logger.i: Logger.cpp.i
-.PHONY : Logger.i
-
-# target to preprocess a source file
-Logger.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.i
-.PHONY : Logger.cpp.i
-
-Logger.s: Logger.cpp.s
-.PHONY : Logger.s
-
-# target to generate assembly for a file
-Logger.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.s
-.PHONY : Logger.cpp.s
 
 LongestPath.o: LongestPath.cpp.o
 .PHONY : LongestPath.o
@@ -369,29 +321,77 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
-_ownDataReader.o: _ownDataReader.cpp.o
-.PHONY : _ownDataReader.o
+_own_DataReader.o: _own_DataReader.cpp.o
+.PHONY : _own_DataReader.o
 
 # target to build an object file
-_ownDataReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.o
-.PHONY : _ownDataReader.cpp.o
+_own_DataReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.o
+.PHONY : _own_DataReader.cpp.o
 
-_ownDataReader.i: _ownDataReader.cpp.i
-.PHONY : _ownDataReader.i
+_own_DataReader.i: _own_DataReader.cpp.i
+.PHONY : _own_DataReader.i
 
 # target to preprocess a source file
-_ownDataReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.i
-.PHONY : _ownDataReader.cpp.i
+_own_DataReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.i
+.PHONY : _own_DataReader.cpp.i
 
-_ownDataReader.s: _ownDataReader.cpp.s
-.PHONY : _ownDataReader.s
+_own_DataReader.s: _own_DataReader.cpp.s
+.PHONY : _own_DataReader.s
 
 # target to generate assembly for a file
-_ownDataReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_ownDataReader.cpp.s
-.PHONY : _ownDataReader.cpp.s
+_own_DataReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.s
+.PHONY : _own_DataReader.cpp.s
+
+_own_KidneyModel.o: _own_KidneyModel.cpp.o
+.PHONY : _own_KidneyModel.o
+
+# target to build an object file
+_own_KidneyModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o
+.PHONY : _own_KidneyModel.cpp.o
+
+_own_KidneyModel.i: _own_KidneyModel.cpp.i
+.PHONY : _own_KidneyModel.i
+
+# target to preprocess a source file
+_own_KidneyModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.i
+.PHONY : _own_KidneyModel.cpp.i
+
+_own_KidneyModel.s: _own_KidneyModel.cpp.s
+.PHONY : _own_KidneyModel.s
+
+# target to generate assembly for a file
+_own_KidneyModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.s
+.PHONY : _own_KidneyModel.cpp.s
+
+_own_Logger.o: _own_Logger.cpp.o
+.PHONY : _own_Logger.o
+
+# target to build an object file
+_own_Logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o
+.PHONY : _own_Logger.cpp.o
+
+_own_Logger.i: _own_Logger.cpp.i
+.PHONY : _own_Logger.i
+
+# target to preprocess a source file
+_own_Logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.i
+.PHONY : _own_Logger.cpp.i
+
+_own_Logger.s: _own_Logger.cpp.s
+.PHONY : _own_Logger.s
+
+# target to generate assembly for a file
+_own_Logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.s
+.PHONY : _own_Logger.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -441,24 +441,24 @@ help:
 	@echo "... FindCycles.o"
 	@echo "... FindCycles.i"
 	@echo "... FindCycles.s"
-	@echo "... KidneyModel.o"
-	@echo "... KidneyModel.i"
-	@echo "... KidneyModel.s"
 	@echo "... LagrangianRelaxation.o"
 	@echo "... LagrangianRelaxation.i"
 	@echo "... LagrangianRelaxation.s"
-	@echo "... Logger.o"
-	@echo "... Logger.i"
-	@echo "... Logger.s"
 	@echo "... LongestPath.o"
 	@echo "... LongestPath.i"
 	@echo "... LongestPath.s"
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
-	@echo "... _ownDataReader.o"
-	@echo "... _ownDataReader.i"
-	@echo "... _ownDataReader.s"
+	@echo "... _own_DataReader.o"
+	@echo "... _own_DataReader.i"
+	@echo "... _own_DataReader.s"
+	@echo "... _own_KidneyModel.o"
+	@echo "... _own_KidneyModel.i"
+	@echo "... _own_KidneyModel.s"
+	@echo "... _own_Logger.o"
+	@echo "... _own_Logger.i"
+	@echo "... _own_Logger.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
