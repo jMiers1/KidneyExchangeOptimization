@@ -13,8 +13,7 @@ DataReader::DataReader(const std::string& path,  IloEnv& env) : _filePath(path),
 
 // readFile 
 int DataReader::readFile() {
-    cout << "Reading file: " << _filePath << endl;
-
+    
     // check if valid file
     ifstream inFile(_filePath, ifstream::in);
     if (!inFile) {
@@ -34,6 +33,14 @@ int DataReader::readFile() {
 
     _PairsType = IloNumArray(_env);
     inFile >> _Nodes >> _NDDs >> _Pairs >> _NumArcs >> _AdjacencyList >> _WeightMatrix >> _PairsType;
+
+    // Reduce elemnts in _AdjacencyList by 1 to account for shift from data source
+    for (int i = 0; i < _AdjacencyList.getSize(); ++i) {
+        for (int j = 0; j < _AdjacencyList[i].getSize(); ++j) {
+            _AdjacencyList[i][j] -= 1;  // Reduce each element by 1
+        }
+    }
+
 
     //Build Predeccessors List
     _PredList = vector<vector<int>>(_AdjacencyList.getSize());

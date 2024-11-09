@@ -210,7 +210,6 @@ std::map<string, string> mapUserInput(const char * argv[]){
     string filename = inputPath.substr(lastSlash + 1);
     size_t dotPos = filename.find('.');
     userInput["File"] = filename.substr(0, dotPos);
-    cout << userInput["File"] << endl;
 
     return userInput;
 };

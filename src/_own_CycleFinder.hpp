@@ -31,6 +31,9 @@ public:
                 const int& k);
 
     void findCycles();
+    void printAdjacencyList();
+    void printAllCycles();
+    string printVector(const std::vector<int>& stack);
 };
 
 #endif // CYCLEFINDER_HPP

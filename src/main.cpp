@@ -55,6 +55,8 @@ int main(int argc, const char * argv[]) {
     DataReader reader(FilePath, _env);
     reader.readFile();
 
+    
+
     //Cycle finder
     CycleFinder cycleFinder(_env, reader._AdjacencyList, CycleLength);
     cycleFinder.findCycles();
