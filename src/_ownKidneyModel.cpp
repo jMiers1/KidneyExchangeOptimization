@@ -1,13 +1,13 @@
-#include "KidneyModel.hpp"
+#include "_ownKidneyModel.hpp"
 
 // Constructor definition
 KidneyExchangeModel::KidneyExchangeModel(const IloNumArray2& adjacencyList, 
                                          const std::vector<std::vector<int>>& predList, 
                                          const std::map<std::pair<int, int>, double>& weights, 
-                                         int K, 
-                                         int L)
+                                         const int& k, 
+                                         const int& l)
     : env(),  // Initialize CPLEX environment
-      AdjacencyList(adjacencyList), PredList(predList), Weights(weights), k(K) {
+      _AdjacencyList(adjacencyList), _PredList(predList), _Weights(weights), K(k), L(l) {
     // Constructor body (if needed)
 }
 

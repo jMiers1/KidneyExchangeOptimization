@@ -50,8 +50,9 @@ set(CMAKE_CXX_COMPILER "clang++")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(KidneyProblem "KidneyModel.cpp"
+add_executable(KidneyProblem "_ownKidneyModel.cpp"
                              "_ownDataReader.cpp"
+                             "_ownLogger.cpp"
                              "ReadData.cpp"
                              "AugmentedNetwork.cpp"
                              "BBTree.cpp"
@@ -59,7 +60,6 @@ add_executable(KidneyProblem "KidneyModel.cpp"
                              "Class_Problem.cpp"
                              "FindCycles.cpp" 
                              # "FindCycles_VFS.cpp"
-                             "Logger.cpp"
                              "LagrangianRelaxation.cpp"
                              "LongestPath.cpp"
                              "main.cpp" )

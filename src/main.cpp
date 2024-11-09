@@ -12,7 +12,7 @@
 #include "BBTree.hpp"
 #include <vector>
 #include "Logger.hpp"
-#include "KidneyModel.hpp"
+#include "_ownKidneyModel.hpp"
 #include "_ownDataReader.hpp"
 
 
@@ -52,7 +52,14 @@ int main(int argc, const char * argv[]) {
     IloEnv data_env;
     DataReader reader(FilePath, data_env);
     reader.readFile();
-    //reader.print(to_string(reader._AdjacencyList.getSize()));
+
+    //Own CPLEX model
+    IloEnv pcTsp_env;
+
+
+    
+
+
 
 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
