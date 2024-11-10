@@ -12,9 +12,8 @@ CycleChainFinder::CycleChainFinder(const vector<vector<int>>& adjacencyList,
                                     const int& l) : _AdjacencyList(adjacencyList), _PredList(predList), _K(k), _L(l) {
                                         separateNodeSet();
                                         findCycles();
-                                        
                                         findChains();
-
+                                        mapNodestoCyclesAndChains();
                                     }
 
 
@@ -35,36 +34,55 @@ void CycleChainFinder::separateNodeSet(){
 }
 
 void CycleChainFinder::findChains(){
-    cout << ""<<endl;
+
+    // Assumption: Chains have to start at an NDD 
+
     chains.clear();
+    _NDDs = {3};
     for (int node : _NDDs) {
         set<int> visited;
         vector<int> path;
         chain_dfs(node, path, visited, 0);
     }
-     extractUniques("chains");
+    extractUniques("chains");
 }
 
-
 void CycleChainFinder::chain_dfs(int currentNode, vector<int>& path, set<int>& visited, int depth){
-
     path.push_back(currentNode);
-
-    if (depth >= _L) {
+    if (depth == _L) {
         chains.push_back(path);  // Add the current path (chain) to the list of chains
         path.pop_back();  // Remove the current node as we're not continuing the path
         return;
     }
 
-
-
     // Traverse all neighbors of currentNode
-    bool hasOutgoingEdge = false;
+    cout <<"Current node "<<currentNode<< endl;
+    printVector(_AdjacencyList[currentNode]);
+
+    vector<int> successors = _AdjacencyList[currentNode];
+    int outDegree = successors.size();
+    if (outDegree > 0){
+        for (int sucessor : successors){
+            if (containedInSet(sucessor, visited)){
+                // this is a cycle
+                break;
+            }else{
+                visited.insert(sucessor);
+                path.push_back(sucessor);
+                chain_dfs(sucessor, path, visited, depth+1);}
+        }
+    }else{
+        
+    }
+
     for (int neighbor : _AdjacencyList[currentNode]) {
-        if (visited.find(neighbor) == visited.end()) {
+        if (!containedInSet(neighbor, visited)) {
             hasOutgoingEdge = true;
             visited.insert(neighbor);
+            cout << "New neighbor " <<neighbor<<endl;
             chain_dfs(neighbor, path, visited, depth+1);  // Recursively search for a path
+        }else{
+            cout <<"cycle"<<endl;
         }
     }
 
@@ -78,8 +96,9 @@ void CycleChainFinder::chain_dfs(int currentNode, vector<int>& path, set<int>& v
     visited.erase(currentNode);
 }
 
-
 void CycleChainFinder::findCycles() {
+
+    // Cycles must start at a PDP -> not include NDDs
     cycles.clear();
     for (int node : _PDPs) {
         set<int> visited;
@@ -151,5 +170,35 @@ void CycleChainFinder::extractUniques(const string& type) {
         extractUnique(cycles);  // Extract unique cycles
     } else if (type == "chains") {
         extractUnique(chains);  // Extract unique chains
+    }
+}
+
+void CycleChainFinder::mapNodestoCyclesAndChains(){
+
+    int _numChains = chains.size();
+    int _numCycles = cycles.size();
+    for (int node: _PDPs){
+         // can be in cycles and in chains 
+        for (int chain_index = 0; chain_index< _numChains; chain_index++){
+            const vector<int>& chain = chains[chain_index];
+            if (containedInVector(node,chain)){
+                mapNodes[node].first.push_back(chain_index);
+            }
+        }
+        for (int cycle_index = 0; cycle_index< _numCycles; cycle_index++){
+            const vector<int>& cycle = cycles[cycle_index];
+            if (containedInVector(node,cycle)){
+                mapNodes[node].second.push_back(cycle_index);
+            }
+        }
+    }
+    for (int node: _NDDs){
+    // has to be the start of a chain 
+        for (int chain_index = 0; chain_index< _numChains; chain_index++){
+            const vector<int>& chain = chains[chain_index];
+            if (chain.front() == node){
+                mapNodes[node].first.push_back(chain_index);
+            }
+        }
     }
 }

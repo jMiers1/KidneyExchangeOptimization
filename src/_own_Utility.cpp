@@ -1,10 +1,11 @@
 #include "_own_Utility.hpp"
 #include <vector>
+#include <set>
 #include <ilcplex/ilocplex.h>
 
 void print2DArray(const std::vector<std::vector<int>>& array){
     for (int i = 0; i < array.size(); ++i) {
-        std::cout << "Sucessor Vetrex " << i << " : ";
+        std::cout << i << " : ";
         for (int j = 0; j < array[i].size(); ++j) {
             std::cout << array[i][j] << " ";
         }
@@ -63,6 +64,39 @@ vector<int> sortVector(const vector<int>& vec) {
     return normalized;
 }
 
+bool containedInVector(const int& target, const vector<int>& vec){
+    return std::find(vec.begin(), vec.end(), target) != vec.end();
+}
+
+bool containedInSet(const int& target, const std::set<int>& set) {
+    return set.find(target) != set.end();
+}
+
+void print2DMap(const std::map<int, std::pair<std::vector<int>, std::vector<int>>>& map) {
+    for (const auto& [node, vectors] : map) {
+        const auto& vector1 = vectors.first;  // First vector in the pair
+        const auto& vector2 = vectors.second; // Second vector in the pair
+        
+        // Print the node (key)
+        std::cout << node << ": ";
+        
+        // Print the first vector
+        std::cout << "<";
+        for (size_t i = 0; i < vector1.size(); ++i) {
+            std::cout << vector1[i];
+            if (i < vector1.size() - 1) std::cout << ","; 
+        }
+        std::cout << "> --- ";
+
+        // Print the second vector
+        std::cout << "<";
+        for (size_t i = 0; i < vector2.size(); ++i) {
+            std::cout << vector2[i];
+            if (i < vector2.size() - 1) std::cout << ","; 
+        }
+        std::cout << ">" << std::endl;
+    }
+}
 
 
 

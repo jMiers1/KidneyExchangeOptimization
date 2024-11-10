@@ -5,6 +5,7 @@
 #include <ilcplex/ilocplex.h>
 #include <vector>
 #include <set>
+#include <map>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ public:
     vector<vector<int>> _PredList; 
     vector<int> _PDPs;
     vector<int> _NDDs;
+    map<int,pair<vector<int>,vector<int>>> mapNodes; //for ech nodes the chains and cycles containing that node
     int _K{99};
     int _L{99};
 
@@ -40,6 +42,7 @@ public:
     void findChains();
     void separateNodeSet();
     void extractUniques(const string& type);
+    void mapNodestoCyclesAndChains();
 };
 
 #endif // CycleChainFinder_HPP

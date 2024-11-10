@@ -50,27 +50,31 @@ int main(int argc, const char * argv[]) {
 
 
     // Own 
+    ChainLength = 4;
     
     //Data reader 
     IloEnv _env;
     DataReader reader(FilePath, _env);
+    CycleChainFinder finder(reader._AdjacencyList, reader._PredList, CycleLength, ChainLength);
+    //KidneyModel(env_, reader._AdjacencyList, finder.cycles, finder.chains, )
 
-    vector<vector<int>> adjList = {{1,2}, 
-                                    {2,3,4}, 
-                                    {}, 
-                                    {},
-                                    {5,6},
-                                    {2,4},
-                                    {5}};
-    vector<vector<int>> predList = buildPredecessorList(adjList);
+    cout <<"Sucessors"<<endl;
+    print2DArray(reader._AdjacencyList);
+    cout <<"Predecessors"<<endl;
+    print2DArray(reader._PredList);
+    cout <<"NDDs"<<endl;
+    printVector(finder._NDDs);
+    cout <<"PDPs"<<endl;
+    printVector(finder._PDPs);
+    cout <<"Cycles"<<endl;
+    print2DArray(finder.cycles);
+    cout <<"Chains"<<endl;
+    print2DArray(finder.chains);
+    cout <<"Mapped"<<endl;
+    print2DMap(finder.mapNodes);
 
-    //Cycle finder
-    CycleChainFinder finder(adjList, predList, 10, 2);
-
-    for (int i = 0; i< finder.chains.size(); i++){
-        printVector(finder.chains[i]);
-    }
     return 0;
+
 
 
 

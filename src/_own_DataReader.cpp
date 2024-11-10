@@ -33,8 +33,6 @@ int DataReader::readFile() {
     }
     _fileName = new_name;
 
-    cout << "got name"<<endl;
-
     _PairsType = IloNumArray(_env);
     inFile >> _Nodes >> _NDDs >> _Pairs >> _NumArcs >> _AdjacencyList_ILO >> _Weights_ILO >> _PairsType;
 
@@ -47,7 +45,6 @@ int DataReader::readFile() {
 
     _AdjacencyList = convertIloNumArray2To2DArray(_AdjacencyList_ILO);
     _PredList = buildPredecessorList(_AdjacencyList);
-    print2DArray(_AdjacencyList);
 
     //Build weights matrix
     for (int i = 0; i < _AdjacencyList.size(); i++){
