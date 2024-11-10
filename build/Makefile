@@ -417,6 +417,30 @@ _own_Logger.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.s
 .PHONY : _own_Logger.cpp.s
 
+_own_Utility.o: _own_Utility.cpp.o
+.PHONY : _own_Utility.o
+
+# target to build an object file
+_own_Utility.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o
+.PHONY : _own_Utility.cpp.o
+
+_own_Utility.i: _own_Utility.cpp.i
+.PHONY : _own_Utility.i
+
+# target to preprocess a source file
+_own_Utility.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.i
+.PHONY : _own_Utility.cpp.i
+
+_own_Utility.s: _own_Utility.cpp.s
+.PHONY : _own_Utility.s
+
+# target to generate assembly for a file
+_own_Utility.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.s
+.PHONY : _own_Utility.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -486,6 +510,9 @@ help:
 	@echo "... _own_Logger.o"
 	@echo "... _own_Logger.i"
 	@echo "... _own_Logger.s"
+	@echo "... _own_Utility.o"
+	@echo "... _own_Utility.i"
+	@echo "... _own_Utility.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

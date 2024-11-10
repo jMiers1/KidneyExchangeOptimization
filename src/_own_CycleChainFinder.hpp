@@ -19,9 +19,8 @@ private:
 public:
 
     // input 
-    IloEnv _env;
-    IloNumArray2 _AdjacencyList; 
-    IloNumArray2 _PredList; 
+    vector<vector<int>> _AdjacencyList; 
+    vector<vector<int>> _PredList; 
     int _K{99};
     int _L{99};
 
@@ -30,9 +29,8 @@ public:
     vector<vector<int>> chains{{}};
 
     //constructor
-    CycleChainFinder(IloEnv& env, 
-                    const IloNumArray2& adjacencyList, 
-                    const IloNumArray2& predList, 
+    CycleChainFinder(const vector<vector<int>>& adjacencyList,  
+                    const vector<vector<int>>& predList,  
                     const int& k,
                     const int& l);
 
@@ -42,16 +40,7 @@ public:
     void findPDPs();
     void findNDDs();
 
-
     vector<vector<int>> extractUniques(const string& type);
-    vector<int> sortVector(const vector<int>& cycle);
-    void printAll();
-
-    //vector<int> normalizeCycle(const vector<int>& cycle);
-    
-    string printVector(const std::vector<int>& stack);
-    void printAdjacencyList();
-
 };
 
 #endif // CycleChainFinder_HPP

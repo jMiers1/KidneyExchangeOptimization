@@ -1,6 +1,7 @@
 // DataReader.cpp
 
 #include "_own_DataReader.hpp"
+#include "_own_Utility.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -8,7 +9,7 @@ using namespace std;
 
 
 // Constructor
-DataReader::DataReader(const std::string& path,  IloEnv& env) : _filePath(path), _env(env), _AdjacencyList(env), _WeightMatrix(env), _PairsType(env) {}
+DataReader::DataReader(const std::string& path,  IloEnv& env) : _filePath(path), _env(env), _AdjacencyList_ILO(env), _Weights_ILO(env), _PairsType(env) {}
 
 
 // readFile 
@@ -17,7 +18,6 @@ int DataReader::readFile() {
     // check if valid file
     ifstream inFile(_filePath, ifstream::in);
     if (!inFile) {
-        this -> print("File does not exist");
         return 0;
     }else{
     }
@@ -31,41 +31,27 @@ int DataReader::readFile() {
     }
     _fileName = new_name;
 
+    cout << "got name"<<endl;
+
     _PairsType = IloNumArray(_env);
-    inFile >> _Nodes >> _NDDs >> _Pairs >> _NumArcs >> _AdjacencyList >> _WeightMatrix >> _PairsType;
+    inFile >> _Nodes >> _NDDs >> _Pairs >> _NumArcs >> _AdjacencyList_ILO >> _Weights_ILO >> _PairsType;
 
     // Reduce elemnts in _AdjacencyList by 1 to account for shift from data source
-    for (int i = 0; i < _AdjacencyList.getSize(); ++i) {
-        for (int j = 0; j < _AdjacencyList[i].getSize(); ++j) {
-            _AdjacencyList[i][j] -= 1;  // Reduce each element by 1
+    for (int i = 0; i < _AdjacencyList_ILO.getSize(); ++i) {
+        for (int j = 0; j < _AdjacencyList_ILO[i].getSize(); ++j) {
+            _AdjacencyList_ILO[i][j] -= 1; 
         }
     }
 
-
-    //Build Predeccessors List
-    _PredList = vector<vector<int>>(_AdjacencyList.getSize());
-    for (int i = 0; i < _AdjacencyList.getSize(); i++){
-        for (int j = 0; j < _AdjacencyList.getSize(); j++){
-            if (i != j){
-                for (int h = 0; h < _AdjacencyList[j].getSize(); h++){
-                    if (_AdjacencyList[j][h] == i + 1){
-                        _PredList[i].push_back(j);
-                    }
-                }
-            }
-        }
-    }
+    _AdjacencyList = convertIloNumArray2To2DArray(_AdjacencyList_ILO);
+    _PredList = buildPredecessorList(_AdjacencyList);
+    print2DArray(_AdjacencyList);
 
     //Build weights matrix
-    for (int i = 0; i < _AdjacencyList.getSize(); i++){
-        for (int j = 0; j < _AdjacencyList[i].getSize(); j++){
-            _Weights[make_pair(i,_AdjacencyList[i][j] - 1)] = _WeightMatrix[i][j];
+    for (int i = 0; i < _AdjacencyList.size(); i++){
+        for (int j = 0; j < _AdjacencyList[i].size(); j++){
+            _Weights[make_pair(i,_AdjacencyList[i][j] - 1)] = _Weights_ILO[i][j];
         }
     }
-
     return 0;
-}
-
-void DataReader::print(const string& content){
-    cout << "--- Data Reader: " << content <<endl;
 }

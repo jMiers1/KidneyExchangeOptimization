@@ -6,10 +6,30 @@ set(CMAKE_CXX_COMPILER "clang++")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Add all source files from the "own" folder
+# file(GLOB OWN_SOURCES "src/own/*.cpp")
+
+
+# set(OTHER_SOURCES "ReadData.cpp"
+#                 "AugmentedNetwork.cpp"
+#                 "BBTree.cpp"
+#                 "Chains.cpp"
+#                 "Class_Problem.cpp"
+#                 "FindCycles.cpp"
+#                 # "FindCycles_VFS.cpp"  # Uncomment if needed
+#                 "LagrangianRelaxation.cpp"
+#                 "LongestPath.cpp"
+#                 "main.cpp" )
+
+# # Add executable with all source files
+# add_executable(KidneyProblem ${OWN_SOURCES} ${OTHER_SOURCES})
+
+
 add_executable(KidneyProblem "_own_KidneyModel.cpp"
                              "_own_DataReader.cpp"
                              "_own_CycleChainFinder.cpp"
                              "_own_Logger.cpp"
+                             "_own_Utility.cpp"
                              "ReadData.cpp"
                              "AugmentedNetwork.cpp"
                              "BBTree.cpp"
@@ -21,6 +41,8 @@ add_executable(KidneyProblem "_own_KidneyModel.cpp"
                              "LongestPath.cpp"
                              "main.cpp" )
 
+
+                            
 
                                                                                  
                                                                 

@@ -23,6 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o"
   "CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o.d"
+  "CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o"
+  "CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/main.cpp.o"
   "CMakeFiles/KidneyProblem.dir/main.cpp.o.d"
   "bin/KidneyProblem"
