@@ -55,14 +55,33 @@ int main(int argc, const char * argv[]) {
     DataReader reader(FilePath, _env);
     reader.readFile();
 
+    // IloNumArray2 numArray2(env, 7); 
+    // numArray2[0] = IloNumArray(env, 2, 1, 4); 
+    // numArray2[1] = IloNumArray(env, 1, 2); 
+    // numArray2[2] = IloNumArray(env, 5, 1, 3, 4, 5, 6); 
+    // numArray2[3] = IloNumArray(env, 1, 4);
+    // numArray2[4] = IloNumArray(env, 2, 0, 3); 
+    // numArray2[5] = IloNumArray(env, 1, 6);     
+    // numArray2[6] = IloNumArray(env, 2, 3, 5); 
 
+    // // Print the array (for testing purposes)
+    //     for (int i = 0; i < numArray2.getSize(); i++) {
+    //         std::cout << "Vertex " << i << " : " ;
+    //         for (int j = 0; j < numArray2[i].getSize(); j++) {
+    //              std::cout << numArray2[i][j] << " ";
+    //         }
+    //         std::cout << std::endl;
+    //     }
 
     //Cycle finder
     CycleFinder cycleFinder(_env, reader._AdjacencyList, CycleLength);
     cycleFinder.findCycles();
-    //return 0;
+    return 0;
 
-    //Own CPLEX model
+    //Chain finder
+    
+
+    // Own CPLEX model
     // IloEnv pcTsp_env;
     // KidneyExchangeModel model(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
     // model.solvePcTsp();

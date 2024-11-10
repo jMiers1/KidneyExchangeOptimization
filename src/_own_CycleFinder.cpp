@@ -46,22 +46,15 @@ void CycleFinder::dfs(int currentNode, vector<int>& stack, set<int>& visited) {
     
     std::vector<int> visited_vec(visited.begin(), visited.end());
 
-    // cout << "Current node: " <<to_string(currentNode) <<"\n"
-    //      << "Number of neighbors: " << _AdjacencyList[currentNode].getSize()<<"\n"
-    //      << "Neighbors: " << printVector(neighbors) <<"\n"
-    //      << "Stack: " << printVector(stack) <<"\n"
-    //      << "Visited: " << printVector(visited_vec) << endl; 
-
     // Check if currentNode is already in the stack to detect a cycle
     auto it = find(stack.begin(), stack.end(), currentNode);
 
     if (it != stack.end()) {
         // Cycle detected; add it to cycles
-
-        // cout << "Cycle found" <<endl;
-        this -> printVector(stack);
         vector<int> cycle(it, stack.end());
-        cycles.push_back(cycle);
+        if (cycle.size() <= _K) {
+            cycles.push_back(cycle);
+        }
         return;
     }
 
@@ -70,25 +63,19 @@ void CycleFinder::dfs(int currentNode, vector<int>& stack, set<int>& visited) {
     stack.push_back(currentNode);
 
     // Traverse all neighbors of currentNode
-
     for (int j = 0; j < _AdjacencyList[currentNode].getSize(); ++j) {
         int neighbor = static_cast<int>(_AdjacencyList[currentNode][j]);
-        // cout << "-> Get neigbor: "<< to_string(neighbor) <<endl;
-
-
         if (visited.find(neighbor) == visited.end()) {
-            // cout << " ->->Recursive call\n" <<endl;
             dfs(neighbor, stack, visited);
         } else {
             // Check if the neighbor is part of the current stack (cycle)
-            // cout << "->->NOT recurive call" <<endl;
             auto it = find(stack.begin(), stack.end(), neighbor);
             if (it != stack.end()) {
-                // cout << "Found a cycle"<<endl;
                 vector<int> cycle(it, stack.end());
-                cycles.push_back(cycle);
+                if (cycle.size() <= _K) {
+                    cycles.push_back(cycle);
+                }
             }
-            // cout << "\n "<<endl;
         }
     }
 
@@ -143,3 +130,14 @@ vector<int> CycleFinder::normalizeCycle(const vector<int>& cycle) {
     normalized.insert(normalized.end(), cycle.begin(), cycle.begin() + min_index);
     return normalized;
 }
+
+
+
+
+
+
+// cout << "Current node: " <<to_string(currentNode) <<"\n"
+//      << "Number of neighbors: " << _AdjacencyList[currentNode].getSize()<<"\n"
+//      << "Neighbors: " << printVector(neighbors) <<"\n"
+//      << "Stack: " << printVector(stack) <<"\n"
+//      << "Visited: " << printVector(visited_vec) << endl; 
