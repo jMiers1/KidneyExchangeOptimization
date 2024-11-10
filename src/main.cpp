@@ -54,30 +54,75 @@ int main(int argc, const char * argv[]) {
     DataReader reader(FilePath, _env);
     reader.readFile();
 
-    // IloNumArray2 numArray2(env, 7); 
-    // numArray2[0] = IloNumArray(env, 2, 1, 4); 
-    // numArray2[1] = IloNumArray(env, 1, 2); 
-    // numArray2[2] = IloNumArray(env, 5, 1, 3, 4, 5, 6); 
-    // numArray2[3] = IloNumArray(env, 1, 4);
-    // numArray2[4] = IloNumArray(env, 2, 0, 3); 
-    // numArray2[5] = IloNumArray(env, 1, 6);     
-    // numArray2[6] = IloNumArray(env, 2, 3, 5); 
 
-    // // Print the array (for testing purposes)
-    //     for (int i = 0; i < numArray2.getSize(); i++) {
-    //         std::cout << "Vertex " << i << " : " ;
-    //         for (int j = 0; j < numArray2[i].getSize(); j++) {
-    //              std::cout << numArray2[i][j] << " ";
-    //         }
-    //         std::cout << std::endl;
-    //     }
+    // Print the predecessor matrix
+    for (int i = 0; i < reader._AdjacencyList.getSize(); ++i) {
+        std::cout << "Sucessor Vetrex " << i << " : ";
+        for (int j = 0; j < reader._AdjacencyList[i].getSize(); ++j) {
+            std::cout << reader._AdjacencyList[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 
-    //Cycle finder
-    CycleChainFinder finder(_env, reader._AdjacencyList, CycleLength, ChainLength);
-    finder.findCycles();
+    std::cout << "\n "<< std::endl;
+
+    // Print the array (for testing purposes)
+    for (int i = 0; i < reader._PredList.size(); i++) {
+        std::cout << "Predecessors Vertex " << i << " : " ;
+        for (int j = 0; j < reader._PredList[i].size(); j++) {
+                std::cout << reader._PredList[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
     return 0;
 
-    //Chain finder
+    // IloNumArray2 adjList(env, 7); 
+    // adjList[0] = IloNumArray(env, 2, 1, 4); 
+    // adjList[1] = IloNumArray(env, 1, 2); 
+    // adjList[2] = IloNumArray(env, 5, 1, 3, 4, 5, 6); 
+    // adjList[3] = IloNumArray(env, 1, 4);
+    // adjList[4] = IloNumArray(env, 2, 0, 3); 
+    // adjList[5] = IloNumArray(env, 1, 6);     
+    // adjList[6] = IloNumArray(env, 2, 3, 5); 
+
+    
+
+    // IloNumArray2 predList(env, 7);
+    // for (int i = 0; i < 7; ++i) {
+    //     predList[i] = IloNumArray(env);
+    // }
+    // for (int i = 0; i < adjList.getSize(); ++i) {
+    //     for (int j = 0; j < adjList[i].getSize(); ++j) {
+    //         int successor = adjList[i][j];
+    //         predList[successor].add(i); 
+    //     }
+    // }
+
+    // // Print the predecessor matrix
+    // for (int i = 0; i < predList.getSize(); ++i) {
+    //     std::cout << "Sucessor Vetrex " << i << " : ";
+    //     for (int j = 0; j < predList[i].getSize(); ++j) {
+    //         std::cout << predList[i][j] << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
+
+    // std::cout << "\n "<< std::endl;
+
+    // // Print the array (for testing purposes)
+    // for (int i = 0; i < adjList.getSize(); i++) {
+    //     std::cout << "Predecessors Vertex " << i << " : " ;
+    //     for (int j = 0; j < adjList[i].getSize(); j++) {
+    //             std::cout << adjList[i][j] << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
+
+    // //Cycle finder
+    // CycleChainFinder finder(_env, adjList, predList, 10, 10);
+    // finder.findCycles();
+    // return 0;
+
 
 
     // Own CPLEX model

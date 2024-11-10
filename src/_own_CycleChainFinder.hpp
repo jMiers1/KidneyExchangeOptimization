@@ -21,6 +21,7 @@ public:
     // input 
     IloEnv _env;
     IloNumArray2 _AdjacencyList; 
+    IloNumArray2 _PredList; 
     int _K{99};
     int _L{99};
 
@@ -31,16 +32,23 @@ public:
     //constructor
     CycleChainFinder(IloEnv& env, 
                     const IloNumArray2& adjacencyList, 
+                    const IloNumArray2& predList, 
                     const int& k,
                     const int& l);
 
     void findCycles();
     void findChains();
-    void extractUnique(const string& type);
+
+    void findPDPs();
+    void findNDDs();
+
+
+    vector<vector<int>> extractUniques(const string& type);
+    vector<int> sortVector(const vector<int>& cycle);
     void printAll();
 
-    vector<int> normalizeCycle(const vector<int>& cycle);
-    vector<int> sortVector(const vector<int>& cycle);
+    //vector<int> normalizeCycle(const vector<int>& cycle);
+    
     string printVector(const std::vector<int>& stack);
     void printAdjacencyList();
 

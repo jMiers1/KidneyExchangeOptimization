@@ -7,13 +7,23 @@
 // Constructor
 CycleChainFinder::CycleChainFinder(IloEnv& env,
                                 const IloNumArray2& adjacencyList,  
+                                const IloNumArray2& predList,  
                                 const int& k,
                                 const int& l) : _env(env), _AdjacencyList(adjacencyList), _K(k), _L(l) {}
 
-void CycleChainFinder::extractUnique(const string& mode){
-    cout << "get unique" <<endl; 
+
+void CycleChainFinder::findPDPs(){
+    cout << ""<<endl;
 }
 
+void CycleChainFinder::findNDDs(){
+    cout << ""<<endl;
+}
+
+
+void CycleChainFinder::findChains(){
+    cout << ""<<endl;
+}
 
 void CycleChainFinder::findCycles() {
     cycles.clear();
@@ -26,19 +36,11 @@ void CycleChainFinder::findCycles() {
         cycle_dfs(node, stack, visited);
     }
 
-    // Remove duplicates
-    set<vector<int>> unique_cycles;
-    for (const auto& cycle : cycles) {
-        vector<int> normalized_cycle = normalizeCycle(cycle); 
-        unique_cycles.insert(normalized_cycle);  
-    }
+    cycles = extractUniques("cycle");
 
-    cycles.assign(unique_cycles.begin(), unique_cycles.end());
-    this -> printAdjacencyList(); 
-    cout << "\n"<<endl;
-    this -> printAll();
-
-
+    // this -> printAdjacencyList(); 
+    // cout << "\n"<<endl;
+    // this -> printAll();
 }
 
 void CycleChainFinder::cycle_dfs(int currentNode, vector<int>& stack, set<int>& visited) {
@@ -128,21 +130,27 @@ void CycleChainFinder::printAll() {
     }
 }
 
-vector<int> CycleChainFinder::normalizeCycle(const vector<int>& cycle) {
-    auto min_it = min_element(cycle.begin(), cycle.end());
-    int min_index = distance(cycle.begin(), min_it);
-    vector<int> normalized(cycle.begin() + min_index, cycle.end());
-    normalized.insert(normalized.end(), cycle.begin(), cycle.begin() + min_index);
-    return normalized;
+vector<vector<int>> CycleChainFinder::extractUniques(const string& type){
+    set<vector<int>> uniques;
+    if (type == "cycle"){
+        for (const auto& cycle : cycles) {
+            vector<int> sorted_cycle = sortVector(cycle); 
+            uniques.insert(sorted_cycle);  
+        }
+    }else{
+        for (const auto& chain : chains) {
+            vector<int> sorted_chain = sortVector(chain); 
+            uniques.insert(sorted_chain);  
+        }
+    }
+    vector<vector<int>> unqiues_vec (uniques.begin(), uniques.end());
+    return unqiues_vec;
 }
 
-
-
-
-
-
-// cout << "Current node: " <<to_string(currentNode) <<"\n"
-//      << "Number of neighbors: " << _AdjacencyList[currentNode].getSize()<<"\n"
-//      << "Neighbors: " << printVector(neighbors) <<"\n"
-//      << "Stack: " << printVector(stack) <<"\n"
-//      << "Visited: " << printVector(visited_vec) << endl; 
+vector<int> CycleChainFinder::sortVector(const vector<int>& vec) {
+    auto min_it = min_element(vec.begin(), vec.end());
+    int min_index = distance(vec.begin(), min_it);
+    vector<int> normalized(vec.begin() + min_index, vec.end());
+    normalized.insert(normalized.end(), vec.begin(), vec.begin() + min_index);
+    return normalized;
+}
