@@ -9,34 +9,73 @@
 CycleChainFinder::CycleChainFinder(const vector<vector<int>>& adjacencyList,  
                                     const vector<vector<int>>& predList,  
                                     const int& k,
-                                    const int& l) : _AdjacencyList(adjacencyList), _PredList(predList), _K(k), _L(l) {}
+                                    const int& l) : _AdjacencyList(adjacencyList), _PredList(predList), _K(k), _L(l) {
+                                        separateNodeSet();
+                                        findCycles();
+
+                                    }
 
 
-void CycleChainFinder::findPDPs(){
-    cout << ""<<endl;
+void CycleChainFinder::separateNodeSet(){
+    // Separates the node set intop PDPs(have incoming arcs) and NDDs(no incoming arcs)
+    vector<int> pdps;
+    vector<int> ndds;
+    for (int i = 0; i < _PredList.size(); ++i) {
+        if (_PredList[i].size() > 0){
+            pdps.push_back(i);
+            }
+        else{
+            ndds.push_back(i);
+        }
+    }
+    _PDPs =  pdps;
+    _NDDs = ndds;
 }
-
-void CycleChainFinder::findNDDs(){
-    cout << ""<<endl;
-}
-
 
 void CycleChainFinder::findChains(){
     cout << ""<<endl;
+    chains.clear();
+    for (int node : _NDDs) {
+        set<int> visited;
+        vector<int> path;
+        chain_dfs(node, path, visited);
+    }
 }
+
+
+void CycleChainFinder::chain_dfs(int currentNode, vector<int>& path, set<int>& visited){
+
+    path.push_back(currentNode);
+
+    // Traverse all neighbors of currentNode
+    bool hasOutgoingEdge = false;
+    for (int neighbor : _AdjacencyList[currentNode]) {
+        if (visited.find(neighbor) == visited.end()) {
+            hasOutgoingEdge = true;
+            visited.insert(neighbor);
+            chain_dfs(neighbor, path, visited);  // Recursively search for a path
+        }
+    }
+
+    // If there are no more neighbors (leaf node or dead-end), we store the chain
+    if (!hasOutgoingEdge) {
+        chains.push_back(path);  // Add the current path (chain) to the list of chains
+    }
+
+    // Backtrack: remove currentNode from path and visited set
+    path.pop_back();
+    visited.erase(currentNode);
+}
+
 
 void CycleChainFinder::findCycles() {
     cycles.clear();
-    int numNodes = _AdjacencyList.size();
-
-    //TODO: make more efficient
-    for (int node = 0; node < numNodes; ++node) {
+    for (int node : _PDPs) {
         set<int> visited;
         vector<int> stack;
         cycle_dfs(node, stack, visited);
     }
-
-    cycles = extractUniques("cycle");
+    extractUniques("cycles");
 }
 
 void CycleChainFinder::cycle_dfs(int currentNode, vector<int>& stack, set<int>& visited) {
@@ -87,24 +126,19 @@ void CycleChainFinder::cycle_dfs(int currentNode, vector<int>& stack, set<int>& 
     visited.erase(currentNode);
 }
 
-
-
-
-
-vector<vector<int>> CycleChainFinder::extractUniques(const string& type){
-    set<vector<int>> uniques;
-    if (type == "cycle"){
-        for (const auto& cycle : cycles) {
-            vector<int> sorted_cycle = sortVector(cycle); 
-            uniques.insert(sorted_cycle);  
+void CycleChainFinder::extractUniques(const string& type) {
+    // Helper lambda function to handle the unique extraction process
+    auto extractUnique = [this](vector<vector<int>>& container) {
+        set<vector<int>> unique_set;
+        for (auto& x : container) {
+            unique_set.insert(sortVector(x));  // Sort and insert into the set
         }
-    }else{
-        for (const auto& chain : chains) {
-            vector<int> sorted_chain = sortVector(chain); 
-            uniques.insert(sorted_chain);  
-        }
+        container.assign(unique_set.begin(), unique_set.end());  // Assign unique elements back to the container
+    };
+
+    if (type == "cycles") {
+        extractUnique(cycles);  // Extract unique cycles
+    } else if (type == "chains") {
+        extractUnique(chains);  // Extract unique chains
     }
-    vector<vector<int>> unqiues_vec (uniques.begin(), uniques.end());
-    return unqiues_vec;
 }
-

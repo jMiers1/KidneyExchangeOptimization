@@ -9,7 +9,9 @@ using namespace std;
 
 
 // Constructor
-DataReader::DataReader(const std::string& path,  IloEnv& env) : _filePath(path), _env(env), _AdjacencyList_ILO(env), _Weights_ILO(env), _PairsType(env) {}
+DataReader::DataReader(const std::string& path,  IloEnv& env) : _filePath(path), _env(env), _AdjacencyList_ILO(env), _Weights_ILO(env), _PairsType(env) {
+        readFile();
+}
 
 
 // readFile 

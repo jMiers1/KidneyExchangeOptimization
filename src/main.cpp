@@ -54,21 +54,18 @@ int main(int argc, const char * argv[]) {
     //Data reader 
     IloEnv _env;
     DataReader reader(FilePath, _env);
-    reader.readFile();
 
-    vector<vector<int>> adjList = {{1,4}, 
-                                    {2}, 
-                                    {1,3,4,5,6}, 
-                                    {4},
-                                    {0,3},
-                                    {6},
-                                    {3,5}};
-    
+    vector<vector<int>> adjList = {{1,2}, 
+                                    {2,3,4}, 
+                                    {}, 
+                                    {},
+                                    {5,6},
+                                    {2,4},
+                                    {5}};
     vector<vector<int>> predList = buildPredecessorList(adjList);
 
     //Cycle finder
     CycleChainFinder finder(adjList, predList, 10, 10);
-    finder.findCycles();
 
     for (int i = 0; i< finder.cycles.size(); i++){
         printVector(finder.cycles[i]);

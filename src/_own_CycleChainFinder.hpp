@@ -21,6 +21,8 @@ public:
     // input 
     vector<vector<int>> _AdjacencyList; 
     vector<vector<int>> _PredList; 
+    vector<int> _PDPs;
+    vector<int> _NDDs;
     int _K{99};
     int _L{99};
 
@@ -36,11 +38,8 @@ public:
 
     void findCycles();
     void findChains();
-
-    void findPDPs();
-    void findNDDs();
-
-    vector<vector<int>> extractUniques(const string& type);
+    void separateNodeSet();
+    void extractUniques(const string& type);
 };
 
 #endif // CycleChainFinder_HPP
