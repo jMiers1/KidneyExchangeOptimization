@@ -12,6 +12,8 @@ CycleChainFinder::CycleChainFinder(const vector<vector<int>>& adjacencyList,
                                     const int& l) : _AdjacencyList(adjacencyList), _PredList(predList), _K(k), _L(l) {
                                         separateNodeSet();
                                         findCycles();
+                                        
+                                        findChains();
 
                                     }
 
@@ -38,14 +40,23 @@ void CycleChainFinder::findChains(){
     for (int node : _NDDs) {
         set<int> visited;
         vector<int> path;
-        chain_dfs(node, path, visited);
+        chain_dfs(node, path, visited, 0);
     }
+     extractUniques("chains");
 }
 
 
-void CycleChainFinder::chain_dfs(int currentNode, vector<int>& path, set<int>& visited){
+void CycleChainFinder::chain_dfs(int currentNode, vector<int>& path, set<int>& visited, int depth){
 
     path.push_back(currentNode);
+
+    if (depth >= _L) {
+        chains.push_back(path);  // Add the current path (chain) to the list of chains
+        path.pop_back();  // Remove the current node as we're not continuing the path
+        return;
+    }
+
+
 
     // Traverse all neighbors of currentNode
     bool hasOutgoingEdge = false;
@@ -53,7 +64,7 @@ void CycleChainFinder::chain_dfs(int currentNode, vector<int>& path, set<int>& v
         if (visited.find(neighbor) == visited.end()) {
             hasOutgoingEdge = true;
             visited.insert(neighbor);
-            chain_dfs(neighbor, path, visited);  // Recursively search for a path
+            chain_dfs(neighbor, path, visited, depth+1);  // Recursively search for a path
         }
     }
 

@@ -14,7 +14,7 @@ class CycleChainFinder {
 
 private:
     void cycle_dfs(int currentNode, vector<int>& stack, set<int>& visited);
-    void chain_dfs(int currentNode, vector<int>& stack, set<int>& visited);
+    void chain_dfs(int currentNode, vector<int>& stack, set<int>& visited, int depth);
 
 public:
 

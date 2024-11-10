@@ -65,10 +65,10 @@ int main(int argc, const char * argv[]) {
     vector<vector<int>> predList = buildPredecessorList(adjList);
 
     //Cycle finder
-    CycleChainFinder finder(adjList, predList, 10, 10);
+    CycleChainFinder finder(adjList, predList, 10, 2);
 
-    for (int i = 0; i< finder.cycles.size(); i++){
-        printVector(finder.cycles[i]);
+    for (int i = 0; i< finder.chains.size(); i++){
+        printVector(finder.chains[i]);
     }
     return 0;
 
