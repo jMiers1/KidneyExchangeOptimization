@@ -7996,9 +7996,7 @@ CMakeFiles/KidneyProblem.dir/ReadData.cpp.o: /Users/juliusmiers/CodingWS24/ORSem
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stddef.h \
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdint.h
 
-CMakeFiles/KidneyProblem.dir/_own_ChainFinder.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_ChainFinder.cpp
-
-CMakeFiles/KidneyProblem.dir/_own_CycleFinder.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleFinder.cpp \
+CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.cpp \
   /Applications/CPLEX_Studio2211/concert/include/ilconcert/iloalg.h \
   /Applications/CPLEX_Studio2211/concert/include/ilconcert/iloalgi.h \
   /Applications/CPLEX_Studio2211/concert/include/ilconcert/iloallocator.h \
@@ -8204,7 +8202,7 @@ CMakeFiles/KidneyProblem.dir/_own_CycleFinder.cpp.o: /Users/juliusmiers/CodingWS
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_time.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_wchar.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_wctype.h \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleFinder.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.hpp \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/adjacent_find.h \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/all_of.h \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/any_of.h \
@@ -12315,8 +12313,7 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar
   /Users/juliusmiers/CodingWS24/ORSeminar/src/Class_Problem_VFS.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/FindCycles.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/ReadData.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_ChainFinder.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleFinder.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_DataReader.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_KidneyModel.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Logger.hpp \
@@ -13299,11 +13296,7 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar
 
 /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_DataReader.hpp:
 
-/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleFinder.hpp:
-
-/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleFinder.cpp:
-
-/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_ChainFinder.cpp:
+/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.hpp:
 
 /Users/juliusmiers/CodingWS24/ORSeminar/src/LagrangianRelaxation.hpp:
 
@@ -13574,8 +13567,6 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar
 /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__type_traits/is_constant_evaluated.h:
 
 /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__type_traits/is_const.h:
-
-/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_ChainFinder.hpp:
 
 /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__type_traits/is_callable.h:
 
@@ -14124,6 +14115,8 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/processor_set.h:
 
 /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__concepts/invocable.h:
+
+/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_null.h:
 

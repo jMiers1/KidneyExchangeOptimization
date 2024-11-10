@@ -8,8 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(KidneyProblem "_own_KidneyModel.cpp"
                              "_own_DataReader.cpp"
-                             "_own_CycleFinder.cpp"
-                             "_own_ChainFinder.cpp"
+                             "_own_CycleChainFinder.cpp"
                              "_own_Logger.cpp"
                              "ReadData.cpp"
                              "AugmentedNetwork.cpp"

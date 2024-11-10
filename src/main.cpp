@@ -11,8 +11,7 @@
 #include "main_VFS.hpp"
 #include "BBTree.hpp"
 #include <vector>
-#include "_own_CycleFinder.hpp"
-#include "_own_ChainFinder.hpp"
+#include "_own_CycleChainFinder.hpp"
 #include "_own_Logger.hpp"
 #include "_own_KidneyModel.hpp"
 #include "_own_DataReader.hpp"
@@ -74,12 +73,12 @@ int main(int argc, const char * argv[]) {
     //     }
 
     //Cycle finder
-    CycleFinder cycleFinder(_env, reader._AdjacencyList, CycleLength);
-    cycleFinder.findCycles();
+    CycleChainFinder finder(_env, reader._AdjacencyList, CycleLength, ChainLength);
+    finder.findCycles();
     return 0;
 
     //Chain finder
-    
+
 
     // Own CPLEX model
     // IloEnv pcTsp_env;

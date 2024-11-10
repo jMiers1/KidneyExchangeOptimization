@@ -1157,8 +1157,7 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__random/student_t_distribution.h \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__random/weibull_distribution.h \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/BBTree.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleFinder.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_ChainFinder.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Logger.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_KidneyModel.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_DataReader.hpp

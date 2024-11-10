@@ -321,53 +321,29 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
-_own_ChainFinder.o: _own_ChainFinder.cpp.o
-.PHONY : _own_ChainFinder.o
+_own_CycleChainFinder.o: _own_CycleChainFinder.cpp.o
+.PHONY : _own_CycleChainFinder.o
 
 # target to build an object file
-_own_ChainFinder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_ChainFinder.cpp.o
-.PHONY : _own_ChainFinder.cpp.o
+_own_CycleChainFinder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o
+.PHONY : _own_CycleChainFinder.cpp.o
 
-_own_ChainFinder.i: _own_ChainFinder.cpp.i
-.PHONY : _own_ChainFinder.i
-
-# target to preprocess a source file
-_own_ChainFinder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_ChainFinder.cpp.i
-.PHONY : _own_ChainFinder.cpp.i
-
-_own_ChainFinder.s: _own_ChainFinder.cpp.s
-.PHONY : _own_ChainFinder.s
-
-# target to generate assembly for a file
-_own_ChainFinder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_ChainFinder.cpp.s
-.PHONY : _own_ChainFinder.cpp.s
-
-_own_CycleFinder.o: _own_CycleFinder.cpp.o
-.PHONY : _own_CycleFinder.o
-
-# target to build an object file
-_own_CycleFinder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleFinder.cpp.o
-.PHONY : _own_CycleFinder.cpp.o
-
-_own_CycleFinder.i: _own_CycleFinder.cpp.i
-.PHONY : _own_CycleFinder.i
+_own_CycleChainFinder.i: _own_CycleChainFinder.cpp.i
+.PHONY : _own_CycleChainFinder.i
 
 # target to preprocess a source file
-_own_CycleFinder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleFinder.cpp.i
-.PHONY : _own_CycleFinder.cpp.i
+_own_CycleChainFinder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.i
+.PHONY : _own_CycleChainFinder.cpp.i
 
-_own_CycleFinder.s: _own_CycleFinder.cpp.s
-.PHONY : _own_CycleFinder.s
+_own_CycleChainFinder.s: _own_CycleChainFinder.cpp.s
+.PHONY : _own_CycleChainFinder.s
 
 # target to generate assembly for a file
-_own_CycleFinder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleFinder.cpp.s
-.PHONY : _own_CycleFinder.cpp.s
+_own_CycleChainFinder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.s
+.PHONY : _own_CycleChainFinder.cpp.s
 
 _own_DataReader.o: _own_DataReader.cpp.o
 .PHONY : _own_DataReader.o
@@ -498,12 +474,9 @@ help:
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
-	@echo "... _own_ChainFinder.o"
-	@echo "... _own_ChainFinder.i"
-	@echo "... _own_ChainFinder.s"
-	@echo "... _own_CycleFinder.o"
-	@echo "... _own_CycleFinder.i"
-	@echo "... _own_CycleFinder.s"
+	@echo "... _own_CycleChainFinder.o"
+	@echo "... _own_CycleChainFinder.i"
+	@echo "... _own_CycleChainFinder.s"
 	@echo "... _own_DataReader.o"
 	@echo "... _own_DataReader.i"
 	@echo "... _own_DataReader.s"
