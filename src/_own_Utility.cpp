@@ -98,5 +98,37 @@ void print2DMap(const std::map<int, std::pair<std::vector<int>, std::vector<int>
     }
 }
 
+void printWeights(const std::map<std::pair<int, int>, double>& weights) {
+    for (const auto& entry : weights) {
+        std::pair<int, int> key = entry.first;
+        double value = entry.second;
 
+        std::cout << "Arc (" << key.first << ", " << key.second << "): " << value << std::endl;
+    }
+}
+
+void printAdjacency(const std::vector<std::vector<int>>& vecOfVecs) {
+    for (size_t i = 0; i < vecOfVecs.size(); ++i) {
+        std::cout << "Row " << i << ": [";
+        for (size_t j = 0; j < vecOfVecs[i].size(); ++j) {
+            std::cout << vecOfVecs[i][j];
+            if (j != vecOfVecs[i].size() - 1) std::cout << ", ";
+        }
+        std::cout << "]" << std::endl;
+    }
+}
+
+void printPath(const std::vector<int>& vec){
+    printVector(vec);
+}
+
+void printCycleWeights(const std::map<int, int>& cycleWeights) {
+    for (const auto& entry : cycleWeights) {
+        std::cout << "Cycle/Chain " << entry.first << " has a total weight of " << entry.second << std::endl;
+    }
+}
+
+void printCycles(const vector<vector<int>>& cycles){
+    print2DArray(cycles);
+}
 

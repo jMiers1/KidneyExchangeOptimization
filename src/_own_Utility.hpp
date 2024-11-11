@@ -18,5 +18,9 @@ void print2DMap(const map<int, pair<vector<int>, vector<int>>>& map);
 vector<int> sortVector(const vector<int>& vec);
 bool containedInVector(const int& target, const vector<int>& vec);
 bool containedInSet(const int& target, const set<int>& s);
-
+void printWeights(const std::map<std::pair<int, int>, double>& weights);
+void printAdjacency(const std::vector<std::vector<int>>& vecOfVecs);
+void printPath(const std::vector<int>& vec);
+void printCycleWeights(const std::map<int, int>& cycleWeights);
+void printCycles(const vector<vector<int>>& cycles);
 #endif // UTILS_H

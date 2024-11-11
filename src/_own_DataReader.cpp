@@ -49,7 +49,7 @@ int DataReader::readFile() {
     //Build weights matrix
     for (int i = 0; i < _AdjacencyList.size(); i++){
         for (int j = 0; j < _AdjacencyList[i].size(); j++){
-            _Weights[make_pair(i,_AdjacencyList[i][j] - 1)] = _Weights_ILO[i][j];
+            _Weights[make_pair(i,_AdjacencyList[i][j])] = _Weights_ILO[i][j];
         }
     }
     return 0;

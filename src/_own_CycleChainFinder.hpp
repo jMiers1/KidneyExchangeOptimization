@@ -21,7 +21,9 @@ private:
     void separateNodeSet();
     void extractUniques(const string& type);
     void mapNodestoCyclesAndChains();
+    void mapCycleAndChainWeights();
     void printResults();
+
 
 
 public:
@@ -29,9 +31,14 @@ public:
     // input 
     vector<vector<int>> _AdjacencyList; 
     vector<vector<int>> _PredList; 
+    map<pair<int,int>,double> _Weights;
     vector<int> _PDPs;
     vector<int> _NDDs;
-    map<int,pair<vector<int>,vector<int>>> mapNodes; //for ech nodes the chains and cycles containing that node
+    int _numChains{-1};
+    int _numCycles{-1};
+    map<int,pair<vector<int>,vector<int>>> mapNodes; //for ech nodes the indecies of the chains and cycles containing that node
+    map<int,int> _cycleWeights; // for each cycle (repesented by its index in cycles) the total value of all contained edges 
+    map<int,int> _chainWeights;
     int _K{-1};
     int _L{-1};
 
@@ -41,7 +48,8 @@ public:
 
     //constructor
     CycleChainFinder(const vector<vector<int>>& adjacencyList,  
-                    const vector<vector<int>>& predList,  
+                    const vector<vector<int>>& predList, 
+                    const map<pair<int,int>,double>& _weights, 
                     const int& k,
                     const int& l);
 

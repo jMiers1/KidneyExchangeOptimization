@@ -17,41 +17,23 @@ KidneyModel::~KidneyModel() {
 
 
 double KidneyModel::solvePatternFormulation() {
-    cout <<""<<endl;
+    int _numCycles = _Cycles.size();
+    int _numChains = _Chains.size();
+
+    // Decision variables
+    IloArray<IloBoolVarArray> z_c(env, _numCycles);  // 1 if cycle i is chosen
+    IloArray<IloBoolVarArray> z_p(env, _numChains);  // 1 if chain i is chosen
+
+
+    //Objective 
+
+
+
+
     return 0.0;
     // try {
-    //     IloModel model(env);
 
-
-    //     // Decision variables
-    //     IloArray<IloBoolVarArray> x(env, numNodes);  // x[i][j] indicates if edge (i, j) is chosen
-    //     for (int i = 0; i < numNodes; ++i) {
-    //         x[i] = IloBoolVarArray(env, numNodes);
-    //         for (int j = 0; j < numNodes; ++j) {
-    //             x[i][j] = IloBoolVar(env);
-    //         }
-    //     }
-
-    //     cout << "Decision variables x: " <<x.getSize()<<endl;
-
-    //     IloBoolVarArray y(env, numNodes);  // y[i] indi cates if node i is included in the cycle
-    //     for (int i = 0; i < numNodes; ++i) {
-    //         y[i] = IloBoolVar(env);
-    //     }
-
-    //     cout << "Decision variables y: " <<y.getSize()<<endl;
-
-    //     // Objective: Maximize total prize (sum of weights)
-    //     IloExpr objective(env);
-    //     for (int i = 0; i < numNodes; ++i) {
-    //         for (int j = 0; j < numNodes; ++j) {
-    //             if (_AdjacencyList[i][j] > 0) {  // Check if edge (i, j) exists
-    //                 objective += _Weights.at({i, j}) * x[i][j];
-    //             }
-    //         }
-    //     }
-
-    //     cout << "Objective: " <<endl; 
+        
 
         
     //     model.add(IloMaximize(env, objective));

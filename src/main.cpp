@@ -52,8 +52,9 @@ int main(int argc, const char * argv[]) {
     // Own     
     IloEnv _env;
     DataReader reader(FilePath, _env);
-    CycleChainFinder finder(reader._AdjacencyList, reader._PredList, CycleLength, ChainLength);
+    CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
     KidneyModel model (_env, finder.cycles, finder.chains, reader._Weights, finder.mapNodes, finder._NDDs, finder._PDPs);
+    return 0; 
     model.solvePatternFormulation();
 
 

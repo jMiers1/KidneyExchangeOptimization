@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <stack>
 #include <tuple>
+#include <map>
 #include <queue>
 #include <iostream>
 
@@ -11,12 +12,16 @@
 // Constructor
 CycleChainFinder::CycleChainFinder(const vector<vector<int>>& adjacencyList,  
                                     const vector<vector<int>>& predList,  
+                                    const map<pair<int,int>,double>& _weights,
                                     const int& k,
-                                    const int& l) : _AdjacencyList(adjacencyList), _PredList(predList), _K(k), _L(l) {
-                                        separateNodeSet();
-                                        findCycles();
-                                        findChains();
-                                        mapNodestoCyclesAndChains();
+                                    const int& l) : _AdjacencyList(adjacencyList), _PredList(predList), _Weights(_weights), _K(k), _L(l) {
+                                    separateNodeSet();
+                                    findCycles();
+                                    findChains();
+                                    _numChains = chains.size();
+                                    _numCycles = cycles.size();
+                                    mapNodestoCyclesAndChains();
+                                    mapCycleAndChainWeights();
                                     }
 
 
@@ -144,10 +149,16 @@ void CycleChainFinder::cycle_depth_first_search(int currentNode, vector<int>& st
 
 void CycleChainFinder::extractUniques(const std::string& type) {
     if (type == "cycles") {
+        std::set<std::vector<int>> uniqueCycles_sorted;
         std::set<std::vector<int>> uniqueCycles;
         for (auto& cycle : cycles) {
-            std::sort(cycle.begin(), cycle.end()); 
-            uniqueCycles.insert(cycle); 
+            vector<int> cycle_sorted = cycle;
+            std::sort(cycle_sorted.begin(), cycle_sorted.end()); 
+            if (uniqueCycles_sorted.find(cycle_sorted) == uniqueCycles_sorted.end()){
+                // cycle not yet in the unique set 
+                uniqueCycles.insert(cycle); 
+                uniqueCycles_sorted.insert(cycle_sorted);
+            }
         }
         cycles.assign(uniqueCycles.begin(), uniqueCycles.end());
 
@@ -161,9 +172,6 @@ void CycleChainFinder::extractUniques(const std::string& type) {
 }
 
 void CycleChainFinder::mapNodestoCyclesAndChains(){
-
-    int _numChains = chains.size();
-    int _numCycles = cycles.size();
     for (int node: _PDPs){
          // can be in cycles and in chains 
         for (int chain_index = 0; chain_index< _numChains; chain_index++){
@@ -187,6 +195,34 @@ void CycleChainFinder::mapNodestoCyclesAndChains(){
                 mapNodes[node].first.push_back(chain_index);
             }
         }
+    }
+}
+
+void CycleChainFinder::mapCycleAndChainWeights(){
+    // Cycles  
+    for (size_t i = 0; i < _numCycles; i++){
+        vector<int> x = cycles[i];
+        int total = 0;
+        for (size_t j = 0; j < x.size() - 1; ++j) {
+            int start = x[j];
+            int end = x[j + 1];
+            total +=  _Weights.find({start, end})->second;
+        }
+        // Close up the cycle: check for the last arc
+        auto it = _Weights.find({x[x.size()-1], x[0]});
+        total += it->second;
+        _cycleWeights[i] = total;
+    }
+    // Chains
+    for (size_t i = 0; i < _numChains; i++){
+        vector<int> x = chains[i];
+        int total = 0;
+        for (size_t j = 0; j < x.size() - 1; ++j) {
+            int start = x[j];
+            int end = x[j + 1];
+            total += _Weights.find({start, end})->second;
+        }
+        _chainWeights[i] = total; 
     }
 }
 
