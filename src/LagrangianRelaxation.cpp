@@ -6,7 +6,7 @@
 //
 
 #include "LagrangianRelaxation.hpp"
-#include "Logger.hpp"
+#include "_own_Logger.hpp"
 #include <algorithm>
 
 void Problem::Lagrange(){

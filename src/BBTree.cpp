@@ -6,7 +6,7 @@
 //  Copyright © 2020 Carolina Riascos Alvarez. All rights reserved.
 //
 
-#include "Logger.hpp"
+#include "_own_Logger.hpp"
 #include "BBTree.hpp"
 
 void Problem::getChildren(){

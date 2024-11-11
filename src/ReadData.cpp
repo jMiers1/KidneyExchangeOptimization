@@ -63,22 +63,6 @@ int Problem::ReadData() {
         }
     }
 
-    // // Printing AdjacencyList
-    // for (size_t i = 0; i < AdjacencyList.getSize(); ++i) {
-    //     std::cout << "AdjList[" << i << "]: ";
-    //     for (size_t j = 0; j < AdjacencyList[i].getSize(); ++j) {
-    //         std::cout << AdjacencyList[i][j] << " ";
-    //     }
-    //     std::cout << std::endl;
-    // }
-    // std::cout << "\n"<< std::endl;
-
-    // // Printing Weights
-    //     for (const auto& entry : Weights) {
-    //     std::cout << "(" << entry.first.first << ", " << entry.first.second << ") -> " 
-    //               << entry.second << std::endl;
-    // }
-
 
     // ----- End build weighted compaitbility graph --------
 

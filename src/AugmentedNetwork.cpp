@@ -6,7 +6,7 @@
 
 #include "AugmentedNetwork.hpp"
 #include "Class_Problem_VFS.hpp"
-#include "Logger.hpp"
+#include "_own_Logger.hpp"
 
 random_device rd2;
 mt19937 gen(rd2());

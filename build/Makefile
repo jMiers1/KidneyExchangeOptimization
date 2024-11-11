@@ -297,30 +297,6 @@ LagrangianRelaxation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.s
 .PHONY : LagrangianRelaxation.cpp.s
 
-Logger.o: Logger.cpp.o
-.PHONY : Logger.o
-
-# target to build an object file
-Logger.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.o
-.PHONY : Logger.cpp.o
-
-Logger.i: Logger.cpp.i
-.PHONY : Logger.i
-
-# target to preprocess a source file
-Logger.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.i
-.PHONY : Logger.cpp.i
-
-Logger.s: Logger.cpp.s
-.PHONY : Logger.s
-
-# target to generate assembly for a file
-Logger.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/Logger.cpp.s
-.PHONY : Logger.cpp.s
-
 LongestPath.o: LongestPath.cpp.o
 .PHONY : LongestPath.o
 
@@ -369,6 +345,129 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
+<<<<<<< HEAD
+=======
+_own_CycleChainFinder.o: _own_CycleChainFinder.cpp.o
+.PHONY : _own_CycleChainFinder.o
+
+# target to build an object file
+_own_CycleChainFinder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o
+.PHONY : _own_CycleChainFinder.cpp.o
+
+_own_CycleChainFinder.i: _own_CycleChainFinder.cpp.i
+.PHONY : _own_CycleChainFinder.i
+
+# target to preprocess a source file
+_own_CycleChainFinder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.i
+.PHONY : _own_CycleChainFinder.cpp.i
+
+_own_CycleChainFinder.s: _own_CycleChainFinder.cpp.s
+.PHONY : _own_CycleChainFinder.s
+
+# target to generate assembly for a file
+_own_CycleChainFinder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.s
+.PHONY : _own_CycleChainFinder.cpp.s
+
+_own_DataReader.o: _own_DataReader.cpp.o
+.PHONY : _own_DataReader.o
+
+# target to build an object file
+_own_DataReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.o
+.PHONY : _own_DataReader.cpp.o
+
+_own_DataReader.i: _own_DataReader.cpp.i
+.PHONY : _own_DataReader.i
+
+# target to preprocess a source file
+_own_DataReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.i
+.PHONY : _own_DataReader.cpp.i
+
+_own_DataReader.s: _own_DataReader.cpp.s
+.PHONY : _own_DataReader.s
+
+# target to generate assembly for a file
+_own_DataReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.s
+.PHONY : _own_DataReader.cpp.s
+
+_own_KidneyModel.o: _own_KidneyModel.cpp.o
+.PHONY : _own_KidneyModel.o
+
+# target to build an object file
+_own_KidneyModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o
+.PHONY : _own_KidneyModel.cpp.o
+
+_own_KidneyModel.i: _own_KidneyModel.cpp.i
+.PHONY : _own_KidneyModel.i
+
+# target to preprocess a source file
+_own_KidneyModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.i
+.PHONY : _own_KidneyModel.cpp.i
+
+_own_KidneyModel.s: _own_KidneyModel.cpp.s
+.PHONY : _own_KidneyModel.s
+
+# target to generate assembly for a file
+_own_KidneyModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.s
+.PHONY : _own_KidneyModel.cpp.s
+
+_own_Logger.o: _own_Logger.cpp.o
+.PHONY : _own_Logger.o
+
+# target to build an object file
+_own_Logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o
+.PHONY : _own_Logger.cpp.o
+
+_own_Logger.i: _own_Logger.cpp.i
+.PHONY : _own_Logger.i
+
+# target to preprocess a source file
+_own_Logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.i
+.PHONY : _own_Logger.cpp.i
+
+_own_Logger.s: _own_Logger.cpp.s
+.PHONY : _own_Logger.s
+
+# target to generate assembly for a file
+_own_Logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.s
+.PHONY : _own_Logger.cpp.s
+
+_own_Utility.o: _own_Utility.cpp.o
+.PHONY : _own_Utility.o
+
+# target to build an object file
+_own_Utility.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o
+.PHONY : _own_Utility.cpp.o
+
+_own_Utility.i: _own_Utility.cpp.i
+.PHONY : _own_Utility.i
+
+# target to preprocess a source file
+_own_Utility.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.i
+.PHONY : _own_Utility.cpp.i
+
+_own_Utility.s: _own_Utility.cpp.s
+.PHONY : _own_Utility.s
+
+# target to generate assembly for a file
+_own_Utility.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.s
+.PHONY : _own_Utility.cpp.s
+
+>>>>>>> Import-python-code
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -423,15 +522,30 @@ help:
 	@echo "... LagrangianRelaxation.o"
 	@echo "... LagrangianRelaxation.i"
 	@echo "... LagrangianRelaxation.s"
-	@echo "... Logger.o"
-	@echo "... Logger.i"
-	@echo "... Logger.s"
 	@echo "... LongestPath.o"
 	@echo "... LongestPath.i"
 	@echo "... LongestPath.s"
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
+<<<<<<< HEAD
+=======
+	@echo "... _own_CycleChainFinder.o"
+	@echo "... _own_CycleChainFinder.i"
+	@echo "... _own_CycleChainFinder.s"
+	@echo "... _own_DataReader.o"
+	@echo "... _own_DataReader.i"
+	@echo "... _own_DataReader.s"
+	@echo "... _own_KidneyModel.o"
+	@echo "... _own_KidneyModel.i"
+	@echo "... _own_KidneyModel.s"
+	@echo "... _own_Logger.o"
+	@echo "... _own_Logger.i"
+	@echo "... _own_Logger.s"
+	@echo "... _own_Utility.o"
+	@echo "... _own_Utility.i"
+	@echo "... _own_Utility.s"
+>>>>>>> Import-python-code
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

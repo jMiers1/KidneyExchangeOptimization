@@ -1157,5 +1157,13 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__random/student_t_distribution.h \
   /opt/homebrew/Cellar/llvm/19.1.3/bin/../include/c++/v1/__random/weibull_distribution.h \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/BBTree.hpp \
+<<<<<<< HEAD
   /Users/juliusmiers/CodingWS24/ORSeminar/src/Logger.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.hpp
+=======
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Logger.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_KidneyModel.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_DataReader.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Utility.hpp
+>>>>>>> Import-python-code

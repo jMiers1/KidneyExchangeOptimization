@@ -13,59 +13,19 @@
 #include <map>
 #include "main_VFS.hpp"
 #include "BBTree.hpp"
-#include "Logger.hpp"
-#include "KIDNEY_EXCHANGE_MODEL.hpp"
+#include <vector>
+#include "_own_CycleChainFinder.hpp"
+#include "_own_Logger.hpp"
+#include "_own_KidneyModel.hpp"
+#include "_own_DataReader.hpp"
 
-
-
+#include "_own_Utility.hpp"
 
 
 int main(int argc, const char * argv[]) {
-    try {
-        // Initialize CPLEX environment
-        IloEnv env;
-
-        // Define the AdjacencyList, PredList, and Weights
-        std::vector<std::vector<int>> AdjacencyList = {
-            {1, 2},      // Pair 0 can donate to pairs 1 and 2
-            {2},         // Pair 1 can donate to pair 2
-            {}           // Pair 2 has no donation possibilities
-        };
-
-        std::vector<std::vector<int>> PredList = {
-            {},          // Pair 0 has no incoming donors
-            {0},         // Pair 1 can receive from pair 0
-            {0, 1}       // Pair 2 can receive from pairs 0 and 1
-        };
-
-        std::map<myEdge, double> Weights = {
-            {{0, 1}, 1.0},    // Weight for donation from 0 to 1
-            {{0, 2}, 2.0},    // Weight for donation from 0 to 2
-            {{1, 2}, 1.5}     // Weight for donation from 1 to 2
-        };
-
-        // Instantiate the KidneyExchangeModel with provided data
-        KidneyExchangeModel model(env, AdjacencyList, PredList, Weights);
-
-        // Build and solve the model
-        model.buildModel();
-        model.solve();
-
-        // End the CPLEX environment
-        env.end();
-    } catch (const IloException& e) {
-        std::cerr << "Error: " << e << std::endl;
-    } catch (...) {
-        std::cerr << "Unknown error." << std::endl;
-    }
-
-
-
-
-
 
     if (argc < 8) {
-        cout << "The program expects 7 additional arguments" << endl;
+        cout << "The program expects 7 additional rguments" << endl;
         cout << "Received: \n";
         for(int i{0}; i < argc; i++) {
             cout << "Argument " << i << ": " << std::string{argv[i]} << "\n";
@@ -91,7 +51,26 @@ int main(int argc, const char * argv[]) {
     string Preference = argv[7];
     prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
-    
+
+    // Own     
+    IloEnv _env;
+    DataReader reader(FilePath, _env);
+    CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
+
+    KidneyModel model (_env, 
+                        finder.cycles, 
+                        finder.chains, 
+                        reader._Weights, 
+                        finder.mapNodes, 
+                        finder._chainWeights,
+                        finder._cycleWeights,
+                        finder._NDDs, 
+                        finder._PDPs);
+    double result = model.solvePatternFormulation();
+
+    cout << "PatternFormulation: "<<result<<endl;
+
+
 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
     cout << "Reading input graph..." << endl;
