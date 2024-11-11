@@ -66,7 +66,7 @@ int main(int argc, const char * argv[]) {
     double result = model.solvePatternFormulation();
 
     cout << "PatternFormulation: "<<result<<endl;
-    return 0;
+
 
 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
