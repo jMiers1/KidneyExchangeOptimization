@@ -49,40 +49,12 @@ int main(int argc, const char * argv[]) {
     prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
 
-    // Own 
-    ChainLength = 4;
-    
-    //Data reader 
+    // Own     
     IloEnv _env;
     DataReader reader(FilePath, _env);
     CycleChainFinder finder(reader._AdjacencyList, reader._PredList, CycleLength, ChainLength);
-    //KidneyModel(env_, reader._AdjacencyList, finder.cycles, finder.chains, )
-
-    cout <<"Sucessors"<<endl;
-    print2DArray(reader._AdjacencyList);
-    cout <<"Predecessors"<<endl;
-    print2DArray(reader._PredList);
-    cout <<"NDDs"<<endl;
-    printVector(finder._NDDs);
-    cout <<"PDPs"<<endl;
-    printVector(finder._PDPs);
-    cout <<"Cycles"<<endl;
-    print2DArray(finder.cycles);
-    cout <<"Chains"<<endl;
-    print2DArray(finder.chains);
-    cout <<"Mapped"<<endl;
-    print2DMap(finder.mapNodes);
-
-    return 0;
-
-
-
-
-    // Own CPLEX model
-    // IloEnv pcTsp_env;
-    // KidneyExchangeModel model(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
-    // model.solvePcTsp();
-    // cout << "Created own model" <<endl; 
+    KidneyModel model (_env, finder.cycles, finder.chains, reader._Weights, finder.mapNodes, finder._NDDs, finder._PDPs);
+    model.solvePatternFormulation();
 
 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);

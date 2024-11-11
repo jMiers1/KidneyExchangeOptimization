@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <map>
+#include <set>
 #include <iostream>
 #include <ilcplex/ilocplex.h>
 
@@ -16,6 +17,6 @@ void printVector(const std::vector<int>& vec);
 void print2DMap(const map<int, pair<vector<int>, vector<int>>>& map);
 vector<int> sortVector(const vector<int>& vec);
 bool containedInVector(const int& target, const vector<int>& vec);
-bool containedInSet(const int& target, const set<int>& set);
+bool containedInSet(const int& target, const set<int>& s);
 
 #endif // UTILS_H

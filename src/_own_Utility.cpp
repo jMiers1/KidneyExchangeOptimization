@@ -68,8 +68,8 @@ bool containedInVector(const int& target, const vector<int>& vec){
     return std::find(vec.begin(), vec.end(), target) != vec.end();
 }
 
-bool containedInSet(const int& target, const std::set<int>& set) {
-    return set.find(target) != set.end();
+bool containedInSet(const int& target, const std::set<int>& s) {
+    return s.find(target) != s.end();
 }
 
 void print2DMap(const std::map<int, std::pair<std::vector<int>, std::vector<int>>>& map) {

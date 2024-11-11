@@ -2,6 +2,9 @@
 #include "_own_CycleChainFinder.hpp"
 #include "_own_Utility.hpp"
 #include <algorithm>
+#include <stack>
+#include <tuple>
+#include <queue>
 #include <iostream>
 
 
@@ -34,66 +37,49 @@ void CycleChainFinder::separateNodeSet(){
 }
 
 void CycleChainFinder::findChains(){
-
-    // Assumption: Chains have to start at an NDD 
-
+    // Chains have to start at an NDD 
     chains.clear();
-    _NDDs = {3};
     for (int node : _NDDs) {
         set<int> visited;
         vector<int> path;
-        chain_dfs(node, path, visited, 0);
+        chain_breadth_first_serach(node);
     }
     extractUniques("chains");
 }
 
-void CycleChainFinder::chain_dfs(int currentNode, vector<int>& path, set<int>& visited, int depth){
-    path.push_back(currentNode);
-    if (depth == _L) {
-        chains.push_back(path);  // Add the current path (chain) to the list of chains
-        path.pop_back();  // Remove the current node as we're not continuing the path
-        return;
-    }
+void CycleChainFinder::chain_breadth_first_serach(int startNode) {
+    // queue: (current node, path, visited set, depth)
+    std::queue<std::tuple<int, std::vector<int>, std::set<int>, int>> queue;
+    queue.push({startNode, {startNode}, {startNode}, 0}); 
 
-    // Traverse all neighbors of currentNode
-    cout <<"Current node "<<currentNode<< endl;
-    printVector(_AdjacencyList[currentNode]);
-
-    vector<int> successors = _AdjacencyList[currentNode];
-    int outDegree = successors.size();
-    if (outDegree > 0){
-        for (int sucessor : successors){
-            if (containedInSet(sucessor, visited)){
-                // this is a cycle
-                break;
-            }else{
-                visited.insert(sucessor);
-                path.push_back(sucessor);
-                chain_dfs(sucessor, path, visited, depth+1);}
+    while (!queue.empty()) {
+        auto [currentNode, path, visited, depth] = queue.front();
+        queue.pop();
+        if (depth == _L) {
+            // max depth reached
+            chains.push_back(path);  
+            continue;                // Move to the next item in the queue
         }
-    }else{
-        
-    }
+        // Traverse all neighbors of the current node
+        for (int successor : _AdjacencyList[currentNode]) {
+            if (visited.find(successor) == visited.end()) {  
+                // Only process unvisited nodes to avoid cycles
+                // Prepare new path and visited set for the successor
+                std::vector<int> newPath = path;
+                std::set<int> newVisited = visited;
+                newPath.push_back(successor);
+                newVisited.insert(successor);
 
-    for (int neighbor : _AdjacencyList[currentNode]) {
-        if (!containedInSet(neighbor, visited)) {
-            hasOutgoingEdge = true;
-            visited.insert(neighbor);
-            cout << "New neighbor " <<neighbor<<endl;
-            chain_dfs(neighbor, path, visited, depth+1);  // Recursively search for a path
-        }else{
-            cout <<"cycle"<<endl;
+                // Enqueue the successor with the new path, visited set, and incremented depth
+                queue.push({successor, newPath, newVisited, depth + 1});
+            }
+        }
+
+        // If no outgoing edges (leaf node or dead-end), add the current path to chains as a terminal path
+        if (_AdjacencyList[currentNode].empty()) {
+            chains.push_back(path);
         }
     }
-
-    // If there are no more neighbors (leaf node or dead-end), we store the chain
-    if (!hasOutgoingEdge) {
-        chains.push_back(path);  // Add the current path (chain) to the list of chains
-    }
-
-    // Backtrack: remove currentNode from path and visited set
-    path.pop_back();
-    visited.erase(currentNode);
 }
 
 void CycleChainFinder::findCycles() {
@@ -103,12 +89,12 @@ void CycleChainFinder::findCycles() {
     for (int node : _PDPs) {
         set<int> visited;
         vector<int> stack;
-        cycle_dfs(node, stack, visited);
+        cycle_depth_first_search(node, stack, visited);
     }
     extractUniques("cycles");
 }
 
-void CycleChainFinder::cycle_dfs(int currentNode, vector<int>& stack, set<int>& visited) {
+void CycleChainFinder::cycle_depth_first_search(int currentNode, vector<int>& stack, set<int>& visited) {
 
     // neigbors of current node 
     vector<int> neighbors;
@@ -138,7 +124,7 @@ void CycleChainFinder::cycle_dfs(int currentNode, vector<int>& stack, set<int>& 
     for (int j = 0; j < _AdjacencyList[currentNode].size(); ++j) {
         int neighbor = static_cast<int>(_AdjacencyList[currentNode][j]);
         if (visited.find(neighbor) == visited.end()) {
-            cycle_dfs(neighbor, stack, visited);
+            cycle_depth_first_search(neighbor, stack, visited);
         } else {
             // Check if the neighbor is part of the current stack (cycle)
             auto it = find(stack.begin(), stack.end(), neighbor);
@@ -156,20 +142,21 @@ void CycleChainFinder::cycle_dfs(int currentNode, vector<int>& stack, set<int>& 
     visited.erase(currentNode);
 }
 
-void CycleChainFinder::extractUniques(const string& type) {
-    // Helper lambda function to handle the unique extraction process
-    auto extractUnique = [this](vector<vector<int>>& container) {
-        set<vector<int>> unique_set;
-        for (auto& x : container) {
-            unique_set.insert(sortVector(x));  // Sort and insert into the set
-        }
-        container.assign(unique_set.begin(), unique_set.end());  // Assign unique elements back to the container
-    };
-
+void CycleChainFinder::extractUniques(const std::string& type) {
     if (type == "cycles") {
-        extractUnique(cycles);  // Extract unique cycles
+        std::set<std::vector<int>> uniqueCycles;
+        for (auto& cycle : cycles) {
+            std::sort(cycle.begin(), cycle.end()); 
+            uniqueCycles.insert(cycle); 
+        }
+        cycles.assign(uniqueCycles.begin(), uniqueCycles.end());
+
     } else if (type == "chains") {
-        extractUnique(chains);  // Extract unique chains
+        std::set<std::vector<int>> uniqueChains;
+        for (auto& chain : chains) {
+            uniqueChains.insert(chain);  
+        }
+        chains.assign(uniqueChains.begin(), uniqueChains.end());
     }
 }
 
@@ -201,4 +188,21 @@ void CycleChainFinder::mapNodestoCyclesAndChains(){
             }
         }
     }
+}
+
+void CycleChainFinder::printResults(){
+    cout <<"\n "<<"Sucessors"<<endl;
+    print2DArray(_AdjacencyList);
+    cout <<"\n"<<" Predecessors"<<endl;
+    print2DArray(_PredList);
+    cout <<"\n "<<"NDDs"<<endl;
+    printVector(_NDDs);
+    cout <<"\n"<<" PDPs"<<endl;
+    printVector(_PDPs);
+    cout <<"\n "<<"Cycles"<<endl;
+    print2DArray(cycles);
+    cout <<"\n"<<" Chains"<<endl;
+    print2DArray(chains);
+    cout <<"\n "<<"Mapped"<<endl;
+    print2DMap(mapNodes);
 }

@@ -14,8 +14,15 @@ ILOSTLBEGIN
 class CycleChainFinder {
 
 private:
-    void cycle_dfs(int currentNode, vector<int>& stack, set<int>& visited);
-    void chain_dfs(int currentNode, vector<int>& stack, set<int>& visited, int depth);
+    void cycle_depth_first_search(int currentNode, vector<int>& stack, set<int>& visited);
+    void chain_breadth_first_serach(int currentNode);
+    void findCycles();
+    void findChains();
+    void separateNodeSet();
+    void extractUniques(const string& type);
+    void mapNodestoCyclesAndChains();
+    void printResults();
+
 
 public:
 
@@ -25,8 +32,8 @@ public:
     vector<int> _PDPs;
     vector<int> _NDDs;
     map<int,pair<vector<int>,vector<int>>> mapNodes; //for ech nodes the chains and cycles containing that node
-    int _K{99};
-    int _L{99};
+    int _K{-1};
+    int _L{-1};
 
     // output
     vector<vector<int>> cycles{{}};
@@ -38,11 +45,6 @@ public:
                     const int& k,
                     const int& l);
 
-    void findCycles();
-    void findChains();
-    void separateNodeSet();
-    void extractUniques(const string& type);
-    void mapNodestoCyclesAndChains();
 };
 
 #endif // CycleChainFinder_HPP
