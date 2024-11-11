@@ -9,16 +9,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o"
   "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o.d"
-  "CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o"
-  "CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o"
   "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o"
   "CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o"
   "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o.d"
-<<<<<<< HEAD
-=======
   "CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o"
   "CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.o"
@@ -29,7 +25,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o.d"
   "CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o"
   "CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o.d"
->>>>>>> Import-python-code
   "CMakeFiles/KidneyProblem.dir/main.cpp.o"
   "CMakeFiles/KidneyProblem.dir/main.cpp.o.d"
   "bin/KidneyProblem"

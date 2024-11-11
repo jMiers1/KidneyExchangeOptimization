@@ -69,21 +69,6 @@ include CMakeFiles/KidneyProblem.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/KidneyProblem.dir/flags.make
 
-<<<<<<< HEAD
-CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
-CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp
-CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/juliusmiers/CodingWS24/ORSeminar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o -MF CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o.d -o CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o -c /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp
-
-CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.i"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp > CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.i
-
-CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.s"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp -o CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.s
-=======
 CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
 CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_KidneyModel.cpp
 CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o: CMakeFiles/KidneyProblem.dir/compiler_depend.ts
@@ -153,7 +138,6 @@ CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.i: cmake_force
 CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.s"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Utility.cpp -o CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.s
->>>>>>> Import-python-code
 
 CMakeFiles/KidneyProblem.dir/ReadData.cpp.o: CMakeFiles/KidneyProblem.dir/flags.make
 CMakeFiles/KidneyProblem.dir/ReadData.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/ReadData.cpp
@@ -283,15 +267,11 @@ CMakeFiles/KidneyProblem.dir/main.cpp.s: cmake_force
 
 # Object files for target KidneyProblem
 KidneyProblem_OBJECTS = \
-<<<<<<< HEAD
-"CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o" \
-=======
 "CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o" \
->>>>>>> Import-python-code
 "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/AugmentedNetwork.cpp.o" \
 "CMakeFiles/KidneyProblem.dir/BBTree.cpp.o" \
@@ -305,15 +285,11 @@ KidneyProblem_OBJECTS = \
 # External object files for target KidneyProblem
 KidneyProblem_EXTERNAL_OBJECTS =
 
-<<<<<<< HEAD
-bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o
-=======
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o
->>>>>>> Import-python-code
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/ReadData.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/AugmentedNetwork.cpp.o
 bin/KidneyProblem: CMakeFiles/KidneyProblem.dir/BBTree.cpp.o

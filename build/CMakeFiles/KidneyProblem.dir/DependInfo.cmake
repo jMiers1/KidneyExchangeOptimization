@@ -13,18 +13,14 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/Chains.cpp" "CMakeFiles/KidneyProblem.dir/Chains.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/Chains.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/Class_Problem.cpp" "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/Class_Problem.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/FindCycles.cpp" "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/FindCycles.cpp.o.d"
-  "/Users/juliusmiers/CodingWS24/ORSeminar/src/KIDNEY_EXCHANGE_MODEL.cpp" "CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/LagrangianRelaxation.cpp" "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/LagrangianRelaxation.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/LongestPath.cpp" "CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/LongestPath.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/ReadData.cpp" "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/ReadData.cpp.o.d"
-<<<<<<< HEAD
-=======
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.cpp" "CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_DataReader.cpp" "CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/_own_DataReader.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_KidneyModel.cpp" "CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/_own_KidneyModel.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Logger.cpp" "CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/_own_Logger.cpp.o.d"
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Utility.cpp" "CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o.d"
->>>>>>> Import-python-code
   "/Users/juliusmiers/CodingWS24/ORSeminar/src/main.cpp" "CMakeFiles/KidneyProblem.dir/main.cpp.o" "gcc" "CMakeFiles/KidneyProblem.dir/main.cpp.o.d"
   )
 

@@ -249,30 +249,6 @@ FindCycles.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/FindCycles.cpp.s
 .PHONY : FindCycles.cpp.s
 
-KIDNEY_EXCHANGE_MODEL.o: KIDNEY_EXCHANGE_MODEL.cpp.o
-.PHONY : KIDNEY_EXCHANGE_MODEL.o
-
-# target to build an object file
-KIDNEY_EXCHANGE_MODEL.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.o
-.PHONY : KIDNEY_EXCHANGE_MODEL.cpp.o
-
-KIDNEY_EXCHANGE_MODEL.i: KIDNEY_EXCHANGE_MODEL.cpp.i
-.PHONY : KIDNEY_EXCHANGE_MODEL.i
-
-# target to preprocess a source file
-KIDNEY_EXCHANGE_MODEL.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.i
-.PHONY : KIDNEY_EXCHANGE_MODEL.cpp.i
-
-KIDNEY_EXCHANGE_MODEL.s: KIDNEY_EXCHANGE_MODEL.cpp.s
-.PHONY : KIDNEY_EXCHANGE_MODEL.s
-
-# target to generate assembly for a file
-KIDNEY_EXCHANGE_MODEL.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/KIDNEY_EXCHANGE_MODEL.cpp.s
-.PHONY : KIDNEY_EXCHANGE_MODEL.cpp.s
-
 LagrangianRelaxation.o: LagrangianRelaxation.cpp.o
 .PHONY : LagrangianRelaxation.o
 
@@ -345,8 +321,6 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
-<<<<<<< HEAD
-=======
 _own_CycleChainFinder.o: _own_CycleChainFinder.cpp.o
 .PHONY : _own_CycleChainFinder.o
 
@@ -467,7 +441,6 @@ _own_Utility.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KidneyProblem.dir/build.make CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.s
 .PHONY : _own_Utility.cpp.s
 
->>>>>>> Import-python-code
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -516,9 +489,6 @@ help:
 	@echo "... FindCycles.o"
 	@echo "... FindCycles.i"
 	@echo "... FindCycles.s"
-	@echo "... KIDNEY_EXCHANGE_MODEL.o"
-	@echo "... KIDNEY_EXCHANGE_MODEL.i"
-	@echo "... KIDNEY_EXCHANGE_MODEL.s"
 	@echo "... LagrangianRelaxation.o"
 	@echo "... LagrangianRelaxation.i"
 	@echo "... LagrangianRelaxation.s"
@@ -528,8 +498,6 @@ help:
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
-<<<<<<< HEAD
-=======
 	@echo "... _own_CycleChainFinder.o"
 	@echo "... _own_CycleChainFinder.i"
 	@echo "... _own_CycleChainFinder.s"
@@ -545,7 +513,6 @@ help:
 	@echo "... _own_Utility.o"
 	@echo "... _own_Utility.i"
 	@echo "... _own_Utility.s"
->>>>>>> Import-python-code
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -7996,8 +7996,6 @@ CMakeFiles/KidneyProblem.dir/ReadData.cpp.o: /Users/juliusmiers/CodingWS24/ORSem
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stddef.h \
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdint.h
 
-<<<<<<< HEAD
-=======
 CMakeFiles/KidneyProblem.dir/_own_CycleChainFinder.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.cpp \
   /Applications/CPLEX_Studio2211/concert/include/ilconcert/iloalg.h \
   /Applications/CPLEX_Studio2211/concert/include/ilconcert/iloalgi.h \
@@ -13005,7 +13003,6 @@ CMakeFiles/KidneyProblem.dir/_own_Utility.cpp.o: /Users/juliusmiers/CodingWS24/O
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stddef.h \
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdint.h
 
->>>>>>> Import-python-code
 CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar/src/main.cpp \
   /Applications/CPLEX_Studio2211/concert/include/ilconcert/iloalg.h \
   /Applications/CPLEX_Studio2211/concert/include/ilconcert/iloalgi.h \
@@ -13307,11 +13304,6 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar
   /Users/juliusmiers/CodingWS24/ORSeminar/src/Class_Problem_VFS.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/FindCycles.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/ReadData.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_DataReader.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_KidneyModel.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Logger.hpp \
-  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Utility.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/main_VFS.hpp \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/adjacent_find.h \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/all_of.h \
@@ -14168,8 +14160,14 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/limits.h \
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdarg.h \
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stddef.h \
-  /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdint.h
+  /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdint.h \
+  <<<<<<< \
+  HEAD
 
+
+HEAD:
+
+<<<<<<<:
 
 /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/chrono:
 
