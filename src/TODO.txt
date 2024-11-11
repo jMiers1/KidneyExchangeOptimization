@@ -8,3 +8,4 @@ KidneyModel:
 
 NEW:
 - wrapper class to execute both models and compare 
+- move own files into own folder
