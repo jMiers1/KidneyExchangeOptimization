@@ -37,8 +37,8 @@ public:
     int _numChains{-1};
     int _numCycles{-1};
     map<int,pair<vector<int>,vector<int>>> mapNodes; //for ech nodes the indecies of the chains and cycles containing that node
-    map<int,int> _cycleWeights; // for each cycle (repesented by its index in cycles) the total value of all contained edges 
-    map<int,int> _chainWeights;
+    map<int,double> _cycleWeights; // for each cycle (repesented by its index in cycles) the total value of all contained edges 
+    map<int,double> _chainWeights;
     int _K{-1};
     int _L{-1};
 

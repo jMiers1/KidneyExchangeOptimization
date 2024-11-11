@@ -53,9 +53,20 @@ int main(int argc, const char * argv[]) {
     IloEnv _env;
     DataReader reader(FilePath, _env);
     CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
-    KidneyModel model (_env, finder.cycles, finder.chains, reader._Weights, finder.mapNodes, finder._NDDs, finder._PDPs);
-    return 0; 
-    model.solvePatternFormulation();
+
+    KidneyModel model (_env, 
+                        finder.cycles, 
+                        finder.chains, 
+                        reader._Weights, 
+                        finder.mapNodes, 
+                        finder._chainWeights,
+                        finder._cycleWeights,
+                        finder._NDDs, 
+                        finder._PDPs);
+    double result = model.solvePatternFormulation();
+
+    cout << "PatternFormulation: "<<result<<endl;
+    return 0;
 
 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);

@@ -1,95 +1,73 @@
 #include "_own_KidneyModel.hpp"
+#include "_own_Utility.hpp"
+#include <vector>
+#include <map>
+
 
 // Constructor definition
 KidneyModel::KidneyModel(IloEnv& _env,
-                                        const vector<vector<int>>& _cycles, 
-                                        const vector<vector<int>>& _chains, 
-                                        const map<pair<int,int>,double>& _weights, 
-                                        map<int,pair<vector<int>,vector<int>>> _mapNodes,
-                                        vector<int> _ndds,
-                                        vector<int> _pdps)
-    : env(_env), _Cycles(_cycles), _Chains(_chains), _Weights(_weights), _mapNodes(_mapNodes), _NDDs(_ndds), _PDPs(_pdps){}
+                        const vector<vector<int>>& _cycles, 
+                        const vector<vector<int>>& _chains, 
+                        const map<pair<int,int>,double>& _weights, 
+                        const map<int,pair<vector<int>,vector<int>>>& _mapNodes,
+                        const map<int,double>& _chainWeights,
+                        const map<int,double>& _cycleWeights,
+                        const vector<int>& _ndds,
+                        const vector<int>& _pdps)
+    : env(_env), _Cycles(_cycles), _Chains(_chains), _cycleWeights(_cycleWeights), _chainWeights(_chainWeights), _Weights(_weights), _mapNodes(_mapNodes), _NDDs(_ndds), _PDPs(_pdps){
+        _numCycles = _Cycles.size();
+        _numChains = _Chains.size();
+    }
 
 KidneyModel::~KidneyModel() {
     env.end();  
 }
 
 
-
 double KidneyModel::solvePatternFormulation() {
-    int _numCycles = _Cycles.size();
-    int _numChains = _Chains.size();
+  
 
     // Decision variables
-    IloArray<IloBoolVarArray> z_c(env, _numCycles);  // 1 if cycle i is chosen
-    IloArray<IloBoolVarArray> z_p(env, _numChains);  // 1 if chain i is chosen
+    IloBoolVarArray x_cycle(env, _numCycles);  // 1 if cycle i is chosen
+    IloBoolVarArray x_path(env, _numChains);  // 1 if chain i is chosen
 
+    // Objective
+    IloExpr obj(env);
+    for (int i = 0; i < _numCycles; ++i) {
+        double cycle_weight = _cycleWeights[i]; 
+        obj += cycle_weight * x_cycle[i];  
+    }
+    for (int i = 0; i < _numChains; ++i) {
+        double chain_weight = _cycleWeights[i]; 
+        obj += chain_weight * x_path[i];  
+    }
+    IloObjective objective = IloMaximize(env, obj);
 
-    //Objective 
+    // Constraints: Each node can appear at most once
+    IloRangeArray constraints(env);
+    for (auto& node_pair : _mapNodes) {
+        int node = node_pair.first;
+        vector<int> node_chains = node_pair.second.first; // a list of the chains containing the node
+        vector<int> node_cycles = node_pair.second.second; // a list of the cycles containing the node   
 
+        // total sum of chaining cycles and chains <= 1
+        IloExpr nodeConstraint(env);
+        for (int cycle_index : node_cycles) {
+            nodeConstraint += x_cycle[cycle_index];
+        }
+        for (int chain_index : node_chains) {
+            nodeConstraint += x_path[chain_index];
+        }
+        constraints.add(IloRange(env, 0, nodeConstraint, 1)); 
+        nodeConstraint.end(); 
 
+        cout << "node " << node << " chains " << node_chains.size()<< " cycles " << node_cycles.size() <<endl;
+    }
 
-
-    return 0.0;
-    // try {
-
-        
-
-        
-    //     model.add(IloMaximize(env, objective));
-    //     objective.end();
-
-    //     // Constraints
-
-    //     // 1. Flow Conservation: Each node has one incoming and one outgoing edge if included
-    //     for (int i = 0; i < numNodes; ++i) {
-    //         IloExpr inFlow(env);
-    //         IloExpr outFlow(env);
-    //         for (int j = 0; j < numNodes; ++j) {
-    //             if (i != j) {
-    //                 inFlow += x[j][i];
-    //                 outFlow += x[i][j];
-    //             }
-    //         }
-    //         model.add(inFlow == y[i]);
-    //         model.add(outFlow == y[i]);
-    //         inFlow.end();
-    //         outFlow.end();
-    //     }
-
-    //     // 2. Subtour Elimination (Lazy Constraints or Miller-Tucker-Zemlin (MTZ) Constraints)
-    //     IloIntVarArray u(env, numNodes, 0, numNodes - 1); // MTZ ordering variables
-    //     for (int i = 1; i < numNodes; ++i) {
-    //         for (int j = 1; j < numNodes; ++j) {
-    //             if (i != j) {
-    //                 model.add(u[i] - u[j] + (numNodes - 1) * x[i][j] <= numNodes - 2);
-    //             }
-    //         }
-    //     }
-
-    //     // 3. Cycle Length Constraint: Total selected nodes should not exceed `k`
-    //     IloExpr cycleLength(env);
-    //     for (int i = 0; i < numNodes; ++i) {
-    //         cycleLength += y[i];
-    //     }
-    //     model.add(cycleLength <= K);
-    //     cycleLength.end();
-
-    //     // Solve the model
-    //     IloCplex cplex(model);
-    //     cplex.setParam(IloCplex::TiLim, 300);  // Optional: Set a time limit
-    //     cplex.solve();
-
-    //     if (cplex.getStatus() == IloAlgorithm::Optimal || cplex.getStatus() == IloAlgorithm::Feasible) {
-    //         double solutionValue = cplex.getObjValue();
-    //         std::cout << "Optimal solution found with total prize: " << solutionValue << std::endl;
-    //         return solutionValue;
-    //     } else {
-    //         std::cout << "No feasible solution found." << std::endl;
-    //         return 0.0;
-    //     }
-    // } catch (IloException& e) {
-    //     std::cerr << "CPLEX Exception: " << e.getMessage() << std::endl;
-    //     return 0.0;
-    // }
+    IloModel model(env);
+    IloCplex cplex(model);
+    cplex.solve();
+    double result = cplex.getObjValue();
+    return result;
 }
+
