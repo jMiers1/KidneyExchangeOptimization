@@ -31,6 +31,18 @@ double KidneyModel::solvePatternFormulation() {
     IloBoolVarArray x_cycle(env, _numCycles);  // 1 if cycle i is chosen
     IloBoolVarArray x_path(env, _numChains);  // 1 if chain i is chosen
 
+    // // Objective
+    // IloExpr obj(env);
+    // for (int i = 0; i < _numCycles; ++i) {
+    //     double cycle_weight = _cycleWeights[i]; 
+    //     obj += cycle_weight * x_cycle[i];  
+    // }
+    // for (int i = 0; i < _numChains; ++i) {
+    //     double chain_weight = _chainWeights[i]; 
+    //     obj += chain_weight * x_path[i];  
+    // }
+    // IloObjective objective = IloMaximize(env, obj);
+
     // Objective
     IloExpr obj(env);
     for (int i = 0; i < _numCycles; ++i) {
@@ -38,10 +50,23 @@ double KidneyModel::solvePatternFormulation() {
         obj += cycle_weight * x_cycle[i];  
     }
     for (int i = 0; i < _numChains; ++i) {
-        double chain_weight = _cycleWeights[i]; 
+        double chain_weight = _chainWeights[i];  // Corrected to _chainWeights
         obj += chain_weight * x_path[i];  
     }
     IloObjective objective = IloMaximize(env, obj);
+
+    // Print the objective function
+    cout << "Objective function: " << endl;
+    for (int i = 0; i < _numCycles; ++i) {
+        cout << " + " << _cycleWeights[i] << " * x_cycle[" << i << "]";
+    }
+    for (int i = 0; i < _numChains; ++i) {
+        cout << " + " << _chainWeights[i] << " * x_path[" << i << "]";
+    }
+    cout << endl;
+
+
+
 
     // Constraints: Each node can appear at most once
     IloRangeArray constraints(env);
@@ -65,9 +90,19 @@ double KidneyModel::solvePatternFormulation() {
     }
 
     IloModel model(env);
+    model.add(objective);   
+    model.add(constraints); 
+
     IloCplex cplex(model);
     cplex.solve();
-    double result = cplex.getObjValue();
-    return result;
+
+    if (cplex.getStatus() == IloAlgorithm::Optimal) {
+        double result = cplex.getObjValue();
+        cout << "Optimal solution found with value: " << result << endl;
+        return result;
+    } else {
+        cout << "No optimal solution found!" << endl;
+        return 0;
+    }
 }
 
