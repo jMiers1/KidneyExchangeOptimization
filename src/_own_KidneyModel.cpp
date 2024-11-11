@@ -31,18 +31,6 @@ double KidneyModel::solvePatternFormulation() {
     IloBoolVarArray x_cycle(env, _numCycles);  // 1 if cycle i is chosen
     IloBoolVarArray x_path(env, _numChains);  // 1 if chain i is chosen
 
-    // // Objective
-    // IloExpr obj(env);
-    // for (int i = 0; i < _numCycles; ++i) {
-    //     double cycle_weight = _cycleWeights[i]; 
-    //     obj += cycle_weight * x_cycle[i];  
-    // }
-    // for (int i = 0; i < _numChains; ++i) {
-    //     double chain_weight = _chainWeights[i]; 
-    //     obj += chain_weight * x_path[i];  
-    // }
-    // IloObjective objective = IloMaximize(env, obj);
-
     // Objective
     IloExpr obj(env);
     for (int i = 0; i < _numCycles; ++i) {

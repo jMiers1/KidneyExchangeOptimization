@@ -1,0 +1,10 @@
+Data Reader: -
+
+CycleChainFinder:
+- optimize cycle & chain finding (maybe early stopping to avoid many duplicates)
+
+KidneyModel:
+- compare optimal solutions of the two KidneyModel
+
+NEW:
+- wrapper class to execute both models and compare 
