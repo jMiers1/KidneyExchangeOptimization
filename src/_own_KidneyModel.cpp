@@ -66,8 +66,6 @@ double KidneyModel::solvePatternFormulation() {
     cout << endl;
 
 
-
-
     // Constraints: Each node can appear at most once
     IloRangeArray constraints(env);
     for (auto& node_pair : _mapNodes) {
