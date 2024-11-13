@@ -13304,6 +13304,11 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar
   /Users/juliusmiers/CodingWS24/ORSeminar/src/Class_Problem_VFS.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/FindCycles.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/ReadData.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_CycleChainFinder.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_DataReader.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_KidneyModel.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Logger.hpp \
+  /Users/juliusmiers/CodingWS24/ORSeminar/src/_own_Utility.hpp \
   /Users/juliusmiers/CodingWS24/ORSeminar/src/main_VFS.hpp \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/adjacent_find.h \
   /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/__algorithm/all_of.h \
@@ -14160,14 +14165,8 @@ CMakeFiles/KidneyProblem.dir/main.cpp.o: /Users/juliusmiers/CodingWS24/ORSeminar
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/limits.h \
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdarg.h \
   /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stddef.h \
-  /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdint.h \
-  <<<<<<< \
-  HEAD
+  /opt/homebrew/Cellar/llvm/19.1.3/lib/clang/19/include/stdint.h
 
-
-HEAD:
-
-<<<<<<<:
 
 /opt/homebrew/Cellar/llvm/19.1.3/include/c++/v1/chrono:
 
