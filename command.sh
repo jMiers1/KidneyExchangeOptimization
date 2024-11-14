@@ -1,9 +1,9 @@
 #!/bin/sh
 
-base_path="Users/juliusmiers/CodingWS24/ORSeminar"
+base_path="/Users/juliusmiers/Documents/KidneyExchangeOptimization"
 instance_type="PrefLib"
-instance_folder="Kidney_Matching_16_0"
-instance="KP_Num1_N16_A0.txt"
+instance_folder="Kidney_Matching_32_0"
+instance="KP_Num31_N32_A0.txt"
 
 input_path="/$base_path/instances/$instance_type/$instance_folder/$instance"
 output_path="/$base_path/out/$instance_type/$instance_folder/$instance"
