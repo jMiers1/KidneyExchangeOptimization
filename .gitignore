@@ -2,3 +2,4 @@
 /instances
 /src/CMakeLists.txt
 command.sh
+/.vscode
