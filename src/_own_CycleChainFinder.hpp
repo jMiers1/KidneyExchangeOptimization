@@ -9,6 +9,9 @@
 
 using namespace std;
 
+enum VisitState { UNVISITED, VISITING, VISITED, NO_OUTGOING};
+
+
 ILOSTLBEGIN
 
 class CycleChainFinder {
@@ -23,6 +26,9 @@ private:
     void mapNodestoCyclesAndChains();
     void mapCycleAndChainWeights();
     void printResults();
+    void findCyclesChains();
+    void dfs(int start_node, vector<VisitState> visited, vector<int> parent);
+
 
 
 
@@ -41,6 +47,7 @@ public:
     map<int,double> _chainWeights;
     int _K{-1};
     int _L{-1};
+
 
     // output
     vector<vector<int>> cycles{{}};

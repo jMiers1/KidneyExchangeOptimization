@@ -1,6 +1,8 @@
 // CycleFinder.cpp
 #include "_own_CycleChainFinder.hpp"
 #include "_own_Utility.hpp"
+#include "_own_Logger.hpp"
+
 #include <algorithm>
 #include <stack>
 #include <tuple>
@@ -9,19 +11,35 @@
 #include <iostream>
 
 
+
+
+
+
+
 // Constructor
 CycleChainFinder::CycleChainFinder(const vector<vector<int>>& adjacencyList,  
                                     const vector<vector<int>>& predList,  
                                     const map<pair<int,int>,double>& _weights,
                                     const int& k,
                                     const int& l) : _AdjacencyList(adjacencyList), _PredList(predList), _Weights(_weights), _K(k), _L(l) {
-                                    separateNodeSet();
-                                    findCycles();
-                                    findChains();
+                                    separateNodeSet(); // differentiates node set into NDDs and PDPs
+                                    prevSectionEnd = logging("Separate Node Set", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+                                    findCyclesChains();
+                                    print2DArray(chains);
+
+                                    // findCycles();  // finds cycles
+                                    // prevSectionEnd = logging("Find cycles", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+                                    // findChains();  // finds chains
+                                    //  prevSectionEnd = logging("Find chains", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
                                     _numChains = chains.size();
                                     _numCycles = cycles.size();
                                     mapNodestoCyclesAndChains();
                                     mapCycleAndChainWeights();
+                                     prevSectionEnd = logging("Other mappings", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
                                     }
 
 
@@ -40,6 +58,74 @@ void CycleChainFinder::separateNodeSet(){
     _PDPs =  pdps;
     _NDDs = ndds;
 }
+
+void CycleChainFinder::findCyclesChains(){
+   chains.clear();
+   cycles.clear();
+   int N_nodes = _NDDs.size() + _PDPs.size();
+   vector<VisitState> visited(N_nodes, UNVISITED);
+   vector<int> parent(N_nodes, -1);
+   vector<vector<int>> cycles, chains;
+
+   for (int i = 0; i<N_nodes; i++){
+        if (_AdjacencyList[i].size() == 0){
+            visited[i] = NO_OUTGOING;
+        }
+   }
+
+   for (int u : _NDDs){
+        cout << "DFS for node " << u <<endl;
+        dfs(u = u, visited = visited, parent = parent);
+   }
+   for (int u : _PDPs){
+        cout << "DFS for node " << u <<endl;
+        dfs(u = u, visited = visited, parent = parent);
+   }
+   extractUniques("chains");
+}
+
+void CycleChainFinder::dfs(int u, vector<VisitState> visited, vector<int> parent){
+    visited[u] = VISITING;
+
+    for (int v : _AdjacencyList[u]) {
+        if (visited[v] == UNVISITED) {
+            cout << "New parent: "<<v<<endl;
+            parent[v] = u;
+            dfs(v, visited, parent);
+        }
+        else if (visited[v] == VISITING) {
+            cout << "Found cycle" <<endl;
+            vector<int> cycle;
+            int current = u;
+            while (current != v) {
+                cout<< current <<endl;
+                cycle.push_back(current);
+                current = parent[current];
+            }
+            cycle.push_back(v);
+            reverse(cycle.begin(), cycle.end());
+            cycles.push_back(cycle);
+        }
+        else if (visited[v] == VISITED || visited[v] == NO_OUTGOING) {
+            cout <<"Found chain"<<endl;
+            vector<int> chain;
+            int current = u;
+            while (current != -1) {
+                chain.push_back(current);
+                current = parent[current];
+            }
+            
+            reverse(chain.begin(), chain.end());
+            chain.push_back(v);
+            chains.push_back(chain);
+        }
+    }
+
+
+
+    visited[u] = VISITED;
+}
+
 
 void CycleChainFinder::findChains(){
     // Chains have to start at an NDD 

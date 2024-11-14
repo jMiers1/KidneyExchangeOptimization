@@ -1,8 +1,3 @@
-This is from REMOTE
-This is from LOCAL
-
-
-
 # KEP-BPMDD
 A branch-and-price algorithm enhanced by multi-valued decision diagrams (BPMDD) for the kidney exchange problem (KEP)
 

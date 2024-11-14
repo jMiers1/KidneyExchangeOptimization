@@ -2,6 +2,9 @@
 
 #include "_own_DataReader.hpp"
 #include "_own_Utility.hpp"
+#include "_own_Logger.hpp"
+
+
 #include <iostream>
 #include <fstream>
 

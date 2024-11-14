@@ -1,5 +1,8 @@
 #include "_own_KidneyModel.hpp"
+#include "_own_Logger.hpp"
 #include "_own_Utility.hpp"
+
+
 #include <vector>
 #include <map>
 
@@ -17,6 +20,7 @@ KidneyModel::KidneyModel(IloEnv& _env,
     : env(_env), _Cycles(_cycles), _Chains(_chains), _cycleWeights(_cycleWeights), _chainWeights(_chainWeights), _Weights(_weights), _mapNodes(_mapNodes), _NDDs(_ndds), _PDPs(_pdps){
         _numCycles = _Cycles.size();
         _numChains = _Chains.size();
+        solvePatternFormulation();
     }
 
 KidneyModel::~KidneyModel() {
@@ -44,14 +48,14 @@ double KidneyModel::solvePatternFormulation() {
     IloObjective objective = IloMaximize(env, obj);
 
     // Print the objective function
-    cout << "Objective function: " << endl;
-    for (int i = 0; i < _numCycles; ++i) {
-        cout << " + " << _cycleWeights[i] << " * x_cycle[" << i << "]";
-    }
-    for (int i = 0; i < _numChains; ++i) {
-        cout << " + " << _chainWeights[i] << " * x_path[" << i << "]";
-    }
-    cout << endl;
+    // cout << "Objective function: " << endl;
+    // for (int i = 0; i < _numCycles; ++i) {
+    //     cout << " + " << _cycleWeights[i] << " * x_cycle[" << i << "]";
+    // }
+    // for (int i = 0; i < _numChains; ++i) {
+    //     cout << " + " << _chainWeights[i] << " * x_path[" << i << "]";
+    // }
+    // cout << endl;
 
 
     // Constraints: Each node can appear at most once
@@ -72,7 +76,7 @@ double KidneyModel::solvePatternFormulation() {
         constraints.add(IloRange(env, 0, nodeConstraint, 1)); 
         nodeConstraint.end(); 
 
-        cout << "node " << node << " chains " << node_chains.size()<< " cycles " << node_cycles.size() <<endl;
+        //cout << "node " << node << " chains " << node_chains.size()<< " cycles " << node_cycles.size() <<endl;
     }
 
     IloModel model(env);
@@ -83,11 +87,29 @@ double KidneyModel::solvePatternFormulation() {
     cplex.solve();
 
     if (cplex.getStatus() == IloAlgorithm::Optimal) {
+
         double result = cplex.getObjValue();
         cout << "Optimal solution found with value: " << result << endl;
+
+        // Print values of decision variables
+        cout << "Selected cycles:" << endl;
+        for (int i = 0; i < _numCycles; ++i) {
+            if (cplex.getValue(x_cycle[i]) > 0.5) {  // If cycle is selected
+                cout << "Cycle " << i << " is selected with weight " << _cycleWeights[i] << endl;
+            }
+        }
+
+        cout << "Selected chains:" << endl;
+        for (int i = 0; i < _numChains; ++i) {
+            if (cplex.getValue(x_path[i]) > 0.5) {  // If chain is selected
+                cout << "Chain " << i << " is selected with weight " << _chainWeights[i] << endl;
+            }
+        }
+
+
         return result;
     } else {
-        cout << "No optimal solution found!" << endl;
+        cout << "ERROR" << endl;
         return 0;
     }
 }

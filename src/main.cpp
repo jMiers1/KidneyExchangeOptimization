@@ -52,11 +52,24 @@ int main(int argc, const char * argv[]) {
     prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
 
+
+
     // Own     
+    cout << "### Start Own Model ### \n \n" <<endl; 
+
+    prevSectionEnd = logging("Own: Start", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     IloEnv _env;
     DataReader reader(FilePath, _env);
-    CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
+    prevSectionEnd = logging("Own: Read Data", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
+    reader._AdjacencyList = {{1,2},{2},{3,4,5},{4},{3},{}};
+    reader._PredList = {{},{0},{0,1},{2,4},{2,3},{2}};
+
+    print2DArray(reader._AdjacencyList);
+
+    CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
+    return 0;
+    prevSectionEnd = logging("Own: Found Cycles and Chains", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     KidneyModel model (_env, 
                         finder.cycles, 
                         finder.chains, 
@@ -66,12 +79,13 @@ int main(int argc, const char * argv[]) {
                         finder._cycleWeights,
                         finder._NDDs, 
                         finder._PDPs);
-    double result = model.solvePatternFormulation();
+    prevSectionEnd = logging("Own: Solved Model", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
-    cout << "PatternFormulation: "<<result<<endl;
+    cout << "\n \n ### End Own Model ### \n \n" <<endl; 
 
 
-
+    // Default
+    cout << "### Start Default> Model ### \n \n" <<endl; 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
     cout << "Reading input graph..." << endl;
     if (P.ReadData() == 0) {
@@ -114,7 +128,7 @@ int main(int argc, const char * argv[]) {
     cout << endl << "End \n" <<endl;
 
 
-    //Traces
-    //finishLogging();
+    //Logging
+    finishLogging();
     return 0;
 }
