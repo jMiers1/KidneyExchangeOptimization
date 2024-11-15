@@ -14,7 +14,10 @@
 
 
 
-
+    // reader._AdjacencyList = {{1,2},{2},{3,4,5},{1},{},{6},{}};
+    // reader._PredList = {{},{0,3},{0,1},{2},{2},{2},{5}};
+    // CycleLength = 2;
+    // ChainLength = 4;
 
 
 // Constructor
@@ -26,26 +29,22 @@ CycleChainFinder::CycleChainFinder(const vector<vector<int>>& adjacencyList,
                                     separateNodeSet(); // differentiates node set into NDDs and PDPs
                                     prevSectionEnd = logging("Separate Node Set", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
+
                                     findCyclesChains();
-                                    cout <<"Chains"<<endl;
-                                    print2DArray(chains);
+                                    
+                                    cout << "Cycles "<<cycles.size()<<" chains "<<chains.size()<<endl;
+                                    write2DArrayToFile(chains, "chains_NDD_cycle_false.txt");
+                                    // cout << "chains"<<endl;
+                                    // printCycles(chains);
 
-                                     cout <<"Cycles"<<endl;
-                                    print2DArray(cycles);
-
-
-
-                                    // findCycles();  // finds cycles
-                                    // prevSectionEnd = logging("Find cycles", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
-
-                                    // findChains();  // finds chains
-                                    //  prevSectionEnd = logging("Find chains", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+                                    prevSectionEnd = logging("own -- Found cycles & chains", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+                                  
 
                                     _numChains = chains.size();
                                     _numCycles = cycles.size();
                                     mapNodestoCyclesAndChains();
                                     mapCycleAndChainWeights();
-                                     prevSectionEnd = logging("Other mappings", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+                                    prevSectionEnd = logging("Other mappings", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
                                     }
 
@@ -85,7 +84,6 @@ void CycleChainFinder::findCyclesChains(){
    extractUniques("cycles"); // find unique cycles
 }
 
-
 void CycleChainFinder::dfs(int focal_node, vector<VisitState> visited, vector<int> parent, int current_depth, bool chains_allowed, bool cycles_allowed){
     vector<int> chain, cycle;
     visited[focal_node] = VISITING;
@@ -96,17 +94,15 @@ void CycleChainFinder::dfs(int focal_node, vector<VisitState> visited, vector<in
     if (current_depth < smaller_bound.second){
         ;
     }else{
-                // cout << "Current depth: "<<current_depth<<" allowed depth: "<<smaller_bound.second<<endl;
-
-        if (current_depth == _maxChainLength){
-            cout << "Current depth: "<<current_depth<< " Chains not allowed"<<endl;
-            // chains can as such not be lengethened further,
-            // but for the meantime we do, hoping for a cycle. 
-            // if eventually a cycle is found, then ok. else throw away, but not add the chain 
+        if (current_depth > _maxChainLength){
+            /* 
+            chains can as such not be lengethened further,
+            but for the meantime we do, hoping for a cycle. 
+            if eventually a cycle is found, then ok. else throw away, but not add the chain  
+            */ 
             chains_allowed = false;
         }
-        if (current_depth == _maxCycleLength){
-            cout << "cycles not allowed"<<endl;
+        if (current_depth > _maxCycleLength){
             // cycles not allowed anymore
             cycles_allowed = false;
         }
@@ -158,8 +154,6 @@ void CycleChainFinder::dfs(int focal_node, vector<VisitState> visited, vector<in
     visited[focal_node] = VISITED;
 }
 
-
-
 vector<int> traceBack(const int& focal_node, const int& go_back_to_node, const vector<int>& parent){
     vector<int> chain;
     int current = focal_node;
@@ -173,6 +167,111 @@ vector<int> traceBack(const int& focal_node, const int& go_back_to_node, const v
     reverse(chain.begin(), chain.end());
     return chain;
 }
+
+void CycleChainFinder::extractUniques(const std::string& type) {
+    if (type == "cycles") {
+        std::set<std::vector<int>> uniqueCycles_sorted;
+        std::set<std::vector<int>> uniqueCycles;
+        for (auto& cycle : cycles) {
+            vector<int> cycle_sorted = cycle;
+            std::sort(cycle_sorted.begin(), cycle_sorted.end()); 
+            if (uniqueCycles_sorted.find(cycle_sorted) == uniqueCycles_sorted.end()){
+                // cycle not yet in the unique set 
+                if (cycle.size() >= 2){
+                    uniqueCycles.insert(cycle); 
+                    uniqueCycles_sorted.insert(cycle_sorted);
+                }
+            }
+        }
+        cycles.assign(uniqueCycles.begin(), uniqueCycles.end());
+
+    } else if (type == "chains") {
+        std::set<std::vector<int>> uniqueChains;
+        for (auto& chain : chains) {
+            if (chain.size() >= 2){
+                uniqueChains.insert(chain);  
+            }
+        }
+        chains.assign(uniqueChains.begin(), uniqueChains.end());
+    }
+}
+
+void CycleChainFinder::mapNodestoCyclesAndChains(){
+    for (int node: _PDPs){
+         // can be in cycles and in chains 
+        for (int chain_index = 0; chain_index< _numChains; chain_index++){
+            const vector<int>& chain = chains[chain_index];
+            if (containedInVector(node,chain)){
+                mapNodes[node].first.push_back(chain_index);
+            }
+        }
+        for (int cycle_index = 0; cycle_index< _numCycles; cycle_index++){
+            const vector<int>& cycle = cycles[cycle_index];
+            if (containedInVector(node,cycle)){
+                mapNodes[node].second.push_back(cycle_index);
+            }
+        }
+    }
+    for (int node: _NDDs){
+    // has to be the start of a chain 
+        for (int chain_index = 0; chain_index< _numChains; chain_index++){
+            const vector<int>& chain = chains[chain_index];
+            if (chain.front() == node){
+                mapNodes[node].first.push_back(chain_index);
+            }
+        }
+    }
+}
+
+void CycleChainFinder::mapCycleAndChainWeights(){
+    // Cycles  
+    for (size_t i = 0; i < _numCycles; i++){
+        vector<int> x = cycles[i];
+        int total = 0;
+        for (size_t j = 0; j < x.size() - 1; ++j) {
+            int start = x[j];
+            int end = x[j + 1];
+            total +=  _Weights.find({start, end})->second;
+        }
+        // Close up the cycle: check for the last arc
+        auto it = _Weights.find({x[x.size()-1], x[0]});
+        total += it->second;
+        _cycleWeights[i] = total;
+    }
+    // Chains
+    for (size_t i = 0; i < _numChains; i++){
+        vector<int> x = chains[i];
+        int total = 0;
+        for (size_t j = 0; j < x.size() - 1; ++j) {
+            int start = x[j];
+            int end = x[j + 1];
+            total += _Weights.find({start, end})->second;
+        }
+        _chainWeights[i] = total; 
+    }
+}
+
+void CycleChainFinder::printResults(){
+    cout <<"\n "<<"Sucessors"<<endl;
+    print2DArray(_AdjacencyList);
+    cout <<"\n"<<" Predecessors"<<endl;
+    print2DArray(_PredList);
+    cout <<"\n "<<"NDDs"<<endl;
+    printVector(_NDDs);
+    cout <<"\n"<<" PDPs"<<endl;
+    printVector(_PDPs);
+    cout <<"\n "<<"Cycles"<<endl;
+    print2DArray(cycles);
+    cout <<"\n"<<" Chains"<<endl;
+    print2DArray(chains);
+    cout <<"\n "<<"Mapped"<<endl;
+    print2DMap(mapNodes);
+}
+
+
+/// NOT USED
+
+
 
 void CycleChainFinder::findChains(){
     // Chains have to start at an NDD 
@@ -278,102 +377,4 @@ void CycleChainFinder::cycle_depth_first_search(int currentNode, vector<int>& st
     // Backtrack: remove currentNode from stack and visited set
     stack.pop_back();
     visited.erase(currentNode);
-}
-
-void CycleChainFinder::extractUniques(const std::string& type) {
-    if (type == "cycles") {
-        std::set<std::vector<int>> uniqueCycles_sorted;
-        std::set<std::vector<int>> uniqueCycles;
-        for (auto& cycle : cycles) {
-            vector<int> cycle_sorted = cycle;
-            std::sort(cycle_sorted.begin(), cycle_sorted.end()); 
-            if (uniqueCycles_sorted.find(cycle_sorted) == uniqueCycles_sorted.end()){
-                // cycle not yet in the unique set 
-                uniqueCycles.insert(cycle); 
-                uniqueCycles_sorted.insert(cycle_sorted);
-            }
-        }
-        cycles.assign(uniqueCycles.begin(), uniqueCycles.end());
-
-    } else if (type == "chains") {
-        std::set<std::vector<int>> uniqueChains;
-        for (auto& chain : chains) {
-            if (chain.size() > 0){
-                uniqueChains.insert(chain);  
-            }
-        }
-        chains.assign(uniqueChains.begin(), uniqueChains.end());
-    }
-}
-
-void CycleChainFinder::mapNodestoCyclesAndChains(){
-    for (int node: _PDPs){
-         // can be in cycles and in chains 
-        for (int chain_index = 0; chain_index< _numChains; chain_index++){
-            const vector<int>& chain = chains[chain_index];
-            if (containedInVector(node,chain)){
-                mapNodes[node].first.push_back(chain_index);
-            }
-        }
-        for (int cycle_index = 0; cycle_index< _numCycles; cycle_index++){
-            const vector<int>& cycle = cycles[cycle_index];
-            if (containedInVector(node,cycle)){
-                mapNodes[node].second.push_back(cycle_index);
-            }
-        }
-    }
-    for (int node: _NDDs){
-    // has to be the start of a chain 
-        for (int chain_index = 0; chain_index< _numChains; chain_index++){
-            const vector<int>& chain = chains[chain_index];
-            if (chain.front() == node){
-                mapNodes[node].first.push_back(chain_index);
-            }
-        }
-    }
-}
-
-void CycleChainFinder::mapCycleAndChainWeights(){
-    // Cycles  
-    for (size_t i = 0; i < _numCycles; i++){
-        vector<int> x = cycles[i];
-        int total = 0;
-        for (size_t j = 0; j < x.size() - 1; ++j) {
-            int start = x[j];
-            int end = x[j + 1];
-            total +=  _Weights.find({start, end})->second;
-        }
-        // Close up the cycle: check for the last arc
-        auto it = _Weights.find({x[x.size()-1], x[0]});
-        total += it->second;
-        _cycleWeights[i] = total;
-    }
-    // Chains
-    for (size_t i = 0; i < _numChains; i++){
-        vector<int> x = chains[i];
-        int total = 0;
-        for (size_t j = 0; j < x.size() - 1; ++j) {
-            int start = x[j];
-            int end = x[j + 1];
-            total += _Weights.find({start, end})->second;
-        }
-        _chainWeights[i] = total; 
-    }
-}
-
-void CycleChainFinder::printResults(){
-    cout <<"\n "<<"Sucessors"<<endl;
-    print2DArray(_AdjacencyList);
-    cout <<"\n"<<" Predecessors"<<endl;
-    print2DArray(_PredList);
-    cout <<"\n "<<"NDDs"<<endl;
-    printVector(_NDDs);
-    cout <<"\n"<<" PDPs"<<endl;
-    printVector(_PDPs);
-    cout <<"\n "<<"Cycles"<<endl;
-    print2DArray(cycles);
-    cout <<"\n"<<" Chains"<<endl;
-    print2DArray(chains);
-    cout <<"\n "<<"Mapped"<<endl;
-    print2DMap(mapNodes);
 }

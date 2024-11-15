@@ -132,3 +132,32 @@ void printCycles(const vector<vector<int>>& cycles){
     print2DArray(cycles);
 }
 
+
+
+void write2DArrayToFile(const std::vector<std::vector<int>>& array, const std::string& filename) {
+    // Create an output file stream (ofstream)
+    std::ofstream outFile(filename);
+
+    // Check if the file was opened successfully
+    if (!outFile.is_open()) {
+        std::cerr << "Error: Unable to open the file for writing." << std::endl;
+        return;
+    }
+
+    // Iterate through the 2D array and write each element to the file
+    for (int i = 0; i < array.size(); ++i) {
+        for (int j = 0; j < array[i].size(); ++j) {
+            outFile << array[i][j] << " ";  // Write each element to the file
+        }
+        outFile << std::endl;  // Newline after each row
+    }
+
+    // Optional: add a separator between the arrays if needed
+    outFile << "\n";  // Newline after all rows for separation
+
+    // Close the file after writing
+    outFile.close();
+
+    std::cout << "Array written to " << filename << " successfully." << std::endl;
+}
+
