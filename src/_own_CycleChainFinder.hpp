@@ -27,9 +27,7 @@ private:
     void mapCycleAndChainWeights();
     void printResults();
     void findCyclesChains();
-    void dfs(int start_node, vector<VisitState> visited, vector<int> parent);
-
-
+    void dfs(int focal_node, vector<VisitState> visited, vector<int> parent);
 
 
 public:
@@ -61,5 +59,8 @@ public:
                     const int& l);
 
 };
+
+
+vector<int> buildChain(const int& v, const vector<int>& parent);
 
 #endif // CycleChainFinder_HPP

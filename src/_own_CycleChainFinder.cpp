@@ -9,7 +9,7 @@
 #include <map>
 #include <queue>
 #include <iostream>
-
+#include <numeric> 
 
 
 
@@ -26,7 +26,13 @@ CycleChainFinder::CycleChainFinder(const vector<vector<int>>& adjacencyList,
                                     prevSectionEnd = logging("Separate Node Set", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
                                     findCyclesChains();
+                                    cout <<"Chains"<<endl;
                                     print2DArray(chains);
+
+                                     cout <<"Cycles"<<endl;
+                                    print2DArray(cycles);
+
+
 
                                     // findCycles();  // finds cycles
                                     // prevSectionEnd = logging("Find cycles", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
@@ -65,67 +71,67 @@ void CycleChainFinder::findCyclesChains(){
    int N_nodes = _NDDs.size() + _PDPs.size();
    vector<VisitState> visited(N_nodes, UNVISITED);
    vector<int> parent(N_nodes, -1);
-   vector<vector<int>> cycles, chains;
-
-   for (int i = 0; i<N_nodes; i++){
-        if (_AdjacencyList[i].size() == 0){
-            visited[i] = NO_OUTGOING;
-        }
-   }
 
    for (int u : _NDDs){
-        cout << "DFS for node " << u <<endl;
-        dfs(u = u, visited = visited, parent = parent);
+        dfs(u, visited, parent);
    }
+
    for (int u : _PDPs){
-        cout << "DFS for node " << u <<endl;
-        dfs(u = u, visited = visited, parent = parent);
+        dfs(u, visited, parent);
    }
    extractUniques("chains");
+   extractUniques("cycles");
 }
 
-void CycleChainFinder::dfs(int u, vector<VisitState> visited, vector<int> parent){
-    visited[u] = VISITING;
 
-    for (int v : _AdjacencyList[u]) {
-        if (visited[v] == UNVISITED) {
-            cout << "New parent: "<<v<<endl;
-            parent[v] = u;
-            dfs(v, visited, parent);
-        }
-        else if (visited[v] == VISITING) {
-            cout << "Found cycle" <<endl;
-            vector<int> cycle;
-            int current = u;
-            while (current != v) {
-                cout<< current <<endl;
-                cycle.push_back(current);
-                current = parent[current];
-            }
-            cycle.push_back(v);
-            reverse(cycle.begin(), cycle.end());
-            cycles.push_back(cycle);
-        }
-        else if (visited[v] == VISITED || visited[v] == NO_OUTGOING) {
-            cout <<"Found chain"<<endl;
-            vector<int> chain;
-            int current = u;
-            while (current != -1) {
-                chain.push_back(current);
-                current = parent[current];
-            }
-            
-            reverse(chain.begin(), chain.end());
-            chain.push_back(v);
+void CycleChainFinder::dfs(int focal_node, vector<VisitState> visited, vector<int> parent){
+    vector<int> chain, cycle;
+    visited[focal_node] = VISITING;
+    if (_AdjacencyList[focal_node].size() == 0){
+        // no childs -> need to stop here 
+        if (accumulate(parent.begin(), parent.end(), 0) != parent.size()*(-1)){
+            // at least one valid parent -> chain not only focal node
+            chain = buildChain(focal_node, parent);
             chains.push_back(chain);
         }
+    }else{
+        for (int child : _AdjacencyList[focal_node]) {
+                if (visited[child] == UNVISITED) {
+                    parent[child] = focal_node;
+                    dfs(child, visited, parent);
+                }
+                else if (visited[child] == VISITING) {
+                    int current = focal_node;
+                    while (current != child) {
+                        cycle.push_back(current);
+                        current = parent[current];
+                    }
+                    cycle.push_back(child);
+                    reverse(cycle.begin(), cycle.end());
+                    cycles.push_back(cycle);
+                }
+                else if (visited[child] == VISITED) {
+                    if (accumulate(parent.begin(), parent.end(), 0) != parent.size()*(-1)){
+                        chain = buildChain(focal_node, parent);
+                        chains.push_back(chain);
+                    }
+                }
+            }
     }
 
-
-
-    visited[u] = VISITED;
+    visited[focal_node] = VISITED;
 }
 
+vector<int> buildChain(const int& focal_node, const vector<int>& parent){
+    vector<int> chain;
+    int current = focal_node;
+    while (current != -1) {
+        chain.push_back(current);
+        current = parent[current];
+    }
+    reverse(chain.begin(), chain.end());
+    return chain;
+}
 
 void CycleChainFinder::findChains(){
     // Chains have to start at an NDD 
