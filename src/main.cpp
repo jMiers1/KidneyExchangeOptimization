@@ -62,9 +62,10 @@ int main(int argc, const char * argv[]) {
     DataReader reader(FilePath, _env);
     prevSectionEnd = logging("Own: Read Data", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
-    reader._AdjacencyList = {{1,2},{2},{3,4,5},{1},{},{}};
-    reader._PredList = {{},{0,3},{0,1},{2},{2},{2}};
-
+    reader._AdjacencyList = {{1,2},{2},{3,4,5},{1},{},{6},{}};
+    reader._PredList = {{},{0,3},{0,1},{2},{2},{2},{5}};
+    CycleLength = 20;
+    ChainLength = 2;
     CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
     return 0;
     prevSectionEnd = logging("Own: Found Cycles and Chains", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);

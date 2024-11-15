@@ -27,7 +27,7 @@ private:
     void mapCycleAndChainWeights();
     void printResults();
     void findCyclesChains();
-    void dfs(int focal_node, vector<VisitState> visited, vector<int> parent);
+    void dfs(int focal_node, vector<VisitState> visited, vector<int> parent, int current_depth,  bool chains_allowed, bool cycles_allowed);
 
 
 public:
@@ -43,8 +43,8 @@ public:
     map<int,pair<vector<int>,vector<int>>> mapNodes; //for ech nodes the indecies of the chains and cycles containing that node
     map<int,double> _cycleWeights; // for each cycle (repesented by its index in cycles) the total value of all contained edges 
     map<int,double> _chainWeights;
-    int _K{-1};
-    int _L{-1};
+    int _maxCycleLength{-1};
+    int _maxChainLength{-1};
 
 
     // output
@@ -61,6 +61,6 @@ public:
 };
 
 
-vector<int> buildChain(const int& v, const vector<int>& parent);
+vector<int> traceBack(const int& focal_node, const int& go_back_to_node, const vector<int>& parent);
 
 #endif // CycleChainFinder_HPP
