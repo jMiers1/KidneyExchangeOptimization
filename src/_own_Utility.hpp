@@ -23,5 +23,6 @@ void printAdjacency(const std::vector<std::vector<int>>& vecOfVecs);
 void printPath(const std::vector<int>& vec);
 void printCycleWeights(const std::map<int, int>& cycleWeights);
 void printCycles(const vector<vector<int>>& cycles);
-void write2DArrayToFile(const std::vector<std::vector<int>>& array, const std::string& filename);
+void printChains(const vector<vector<int>>& chains);
+void logChainsCycles(const std::vector<std::vector<int>>& chains, const std::vector<std::vector<int>>& cycles,  const std::string& filename);
 #endif // UTILS_H

@@ -132,30 +132,35 @@ void printCycles(const vector<vector<int>>& cycles){
     print2DArray(cycles);
 }
 
+void printChains(const vector<vector<int>>& chains){
+    print2DArray(chains);
+}
 
 
-void write2DArrayToFile(const std::vector<std::vector<int>>& array, const std::string& filename) {
+
+void logChainsCycles(const std::vector<std::vector<int>>& chains, const std::vector<std::vector<int>>& cycles,  const std::string& filename) {
     // Create an output file stream (ofstream)
     std::ofstream outFile(filename);
-
-    // Check if the file was opened successfully
-    if (!outFile.is_open()) {
-        std::cerr << "Error: Unable to open the file for writing." << std::endl;
-        return;
-    }
-
-    // Iterate through the 2D array and write each element to the file
-    for (int i = 0; i < array.size(); ++i) {
-        for (int j = 0; j < array[i].size(); ++j) {
-            outFile << array[i][j] << " ";  // Write each element to the file
+    
+    outFile << "Cycles \n";
+    for (int i = 0; i < cycles.size(); ++i) {
+        for (int j = 0; j < cycles[i].size(); ++j) {
+            outFile << cycles[i][j] << " "; 
         }
-        outFile << std::endl;  // Newline after each row
+        outFile << std::endl;  
     }
+    outFile << "\n \n"; 
 
-    // Optional: add a separator between the arrays if needed
-    outFile << "\n";  // Newline after all rows for separation
 
-    // Close the file after writing
+    outFile << "Chains \n";
+    for (int i = 0; i < chains.size(); ++i) {
+        for (int j = 0; j < chains[i].size(); ++j) {
+            outFile << chains[i][j] << " "; 
+        }
+        outFile << std::endl;  
+    }
+    outFile << "\n"; 
+
     outFile.close();
 
     std::cout << "Array written to " << filename << " successfully." << std::endl;

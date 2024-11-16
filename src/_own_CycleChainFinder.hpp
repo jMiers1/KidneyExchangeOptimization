@@ -45,6 +45,7 @@ public:
     map<int,double> _chainWeights;
     int _maxCycleLength{-1};
     int _maxChainLength{-1};
+    bool ndd_cycles;
 
 
     // output

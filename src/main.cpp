@@ -55,13 +55,17 @@ int main(int argc, const char * argv[]) {
 
 
     // Own     
-    cout << "### Start Own Model ### \n \n" <<endl; 
-    cout << "cycle max: " <<CycleLength<<" chain: "<<ChainLength<<endl; 
+    cout << "### Start Own Model ### \n \n" <<endl;  
 
     prevSectionEnd = logging("Own: Start", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     IloEnv _env;
     DataReader reader(FilePath, _env);
     prevSectionEnd = logging("Own: Read Data", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+
+
+    ChainLength = 6;
+
     CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
     prevSectionEnd = logging("Own: Found Cycles and Chains", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 

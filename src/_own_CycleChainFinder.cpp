@@ -4,6 +4,7 @@
 #include "_own_Logger.hpp"
 
 #include <algorithm>
+#include <sstream>
 #include <stack>
 #include <tuple>
 #include <map>
@@ -32,11 +33,18 @@ CycleChainFinder::CycleChainFinder(const vector<vector<int>>& adjacencyList,
 
                                     findCyclesChains();
                                     
-                                    cout << "Cycles "<<cycles.size()<<" chains "<<chains.size()<<endl;
-                                    write2DArrayToFile(chains, "chains_NDD_cycle_false.txt");
-                                    // cout << "chains"<<endl;
-                                    // printCycles(chains);
+                                    ndd_cycles = true;
+                                    stringstream ss;
+                                    ss << "NDD-cycles " << ndd_cycles << ".txt";
+                                    string filename = ss.str();
+                                    
+                                    cout << "Cycles "<<cycles.size()<<endl;
+                                    printCycles(cycles);
+                                    cout <<" Chains "<<chains.size()<<endl;
+                                    printChains(chains);
 
+                                    logChainsCycles(chains = chains, cycles = cycles, filename = filename);
+                                    
                                     prevSectionEnd = logging("own -- Found cycles & chains", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
                                   
 
@@ -74,7 +82,7 @@ void CycleChainFinder::findCyclesChains(){
    string mode = (_maxChainLength >= _maxCycleLength) ? "chain_bound" : "cycle_bound";
 
    for (int u : _NDDs){
-        dfs(u, visited, parent, 1, true, true);
+        dfs(u, visited, parent, 1, true, ndd_cycles);
    }
 
    for (int u : _PDPs){
