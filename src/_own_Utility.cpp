@@ -136,8 +136,6 @@ void printChains(const vector<vector<int>>& chains){
     print2DArray(chains);
 }
 
-
-
 void logChainsCycles(const std::vector<std::vector<int>>& chains, const std::vector<std::vector<int>>& cycles,  const std::string& filename) {
     // Create an output file stream (ofstream)
     std::ofstream outFile(filename);

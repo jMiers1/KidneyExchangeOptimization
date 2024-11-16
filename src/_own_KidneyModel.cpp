@@ -21,7 +21,6 @@ KidneyModel::KidneyModel(IloEnv& _env,
         _numCycles = _Cycles.size();
         _numChains = _Chains.size();
         solvePatternFormulation();
-        prevSectionEnd = logging("Own || Solved Pattern Model", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     }
 
 KidneyModel::~KidneyModel() {
@@ -30,11 +29,11 @@ KidneyModel::~KidneyModel() {
 
 
 double KidneyModel::solvePatternFormulation() {
-  
+    double result;
 
     // Decision variables
     IloBoolVarArray x_cycle(env, _numCycles);  // 1 if cycle i is chosen
-    IloBoolVarArray x_path(env, _numChains);  // 1 if chain i is chosen
+    IloBoolVarArray x_chain(env, _numChains);  // 1 if chain i is chosen
 
     // Objective
     IloExpr obj(env);
@@ -43,8 +42,8 @@ double KidneyModel::solvePatternFormulation() {
         obj += cycle_weight * x_cycle[i];  
     }
     for (int i = 0; i < _numChains; ++i) {
-        double chain_weight = _chainWeights[i];  // Corrected to _chainWeights
-        obj += chain_weight * x_path[i];  
+        double chain_weight = _chainWeights[i];  
+        obj += chain_weight * x_chain[i];  
     }
     IloObjective objective = IloMaximize(env, obj);
 
@@ -72,46 +71,82 @@ double KidneyModel::solvePatternFormulation() {
             nodeConstraint += x_cycle[cycle_index];
         }
         for (int chain_index : node_chains) {
-            nodeConstraint += x_path[chain_index];
+            nodeConstraint += x_chain[chain_index];
         }
         constraints.add(IloRange(env, 0, nodeConstraint, 1)); 
         nodeConstraint.end(); 
 
-        //cout << "node " << node << " chains " << node_chains.size()<< " cycles " << node_cycles.size() <<endl;
+        // cout << "node " << node << " chains " << node_chains.size()<< " cycles " << node_cycles.size() <<endl;
     }
 
     IloModel model(env);
     model.add(objective);   
     model.add(constraints); 
-
     IloCplex cplex(model);
+
+    prevSectionEnd = logging("Own || Built Model", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+    cplex.setOut(env.getNullStream());
     cplex.solve();
 
+    prevSectionEnd = logging("Own || Solved Model", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
     if (cplex.getStatus() == IloAlgorithm::Optimal) {
-
-        double result = cplex.getObjValue();
-        cout << "Optimal solution found with value: " << result << endl;
-
-        // Print values of decision variables
-        cout << "Selected cycles:" << endl;
-        for (int i = 0; i < _numCycles; ++i) {
-            if (cplex.getValue(x_cycle[i]) > 0.5) {  // If cycle is selected
-                cout << "Cycle " << i << " is selected with weight " << _cycleWeights[i] << endl;
-            }
-        }
-
-        cout << "Selected chains:" << endl;
-        for (int i = 0; i < _numChains; ++i) {
-            if (cplex.getValue(x_path[i]) > 0.5) {  // If chain is selected
-                cout << "Chain " << i << " is selected with weight " << _chainWeights[i] << endl;
-            }
-        }
-
-
+        result = cplex.getObjValue();
+        printSolution(result, cplex, x_cycle,x_chain);
         return result;
+
     } else {
         cout << "ERROR" << endl;
         return 0;
     }
 }
 
+
+void KidneyModel::printSolution(const double& obj, const IloCplex& cplex, const IloBoolVarArray& x_cycle, const IloBoolVarArray& x_chain){
+
+    cout << "Pattern Formulation | Optimal solution:" << obj << endl;
+
+    // cout << "Cycles:" << endl;
+    for (int i = 0; i < _numCycles; ++i) {
+        if (cplex.getValue(x_cycle[i]) > 0.5) { 
+            printSolutionStructure("cycle", i);
+        }
+    }
+
+    // cout << "Chains:" << endl;
+    for (int i = 0; i < _numChains; ++i) {
+        if (cplex.getValue(x_chain[i]) > 0.5) { 
+            printSolutionStructure("chain", i);
+        }
+    }
+
+}
+
+void KidneyModel::printSolutionStructure(const string& structure_type, const int& index){
+     stringstream ss;
+    if (structure_type== "cycle"){
+        vector<int> cycle = _Cycles[index];
+        ss << "Cycle "<< index<<": weight " << _cycleWeights[index] << "[";
+        for (size_t i = 0; i < cycle.size(); ++i) {
+            ss << cycle[i];
+            if (i != cycle.size() - 1) {
+                ss << ", "; 
+            }
+        }
+        ss << "]";
+
+    }else if (structure_type== "chain"){
+        vector<int> cycle = _Chains[index];
+        ss << "Chain "<< index<<": weight " << _chainWeights[index] << "[";
+        for (size_t i = 0; i < cycle.size(); ++i) {
+            ss << cycle[i];
+            if (i != cycle.size() - 1) {
+                ss << ", "; 
+            }
+        }
+        ss << "]";
+    }
+    string out_str = ss.str();  
+    cout << out_str <<endl;
+}

@@ -21,6 +21,9 @@ public:
                 const vector<int>& _pdps);
     ~KidneyModel();
     double solvePatternFormulation();
+    void printSolutionStructure(const string& structure_type, const int& structure);
+    void printSolution(const string& structure_type, const int& structure);
+    void printSolution(const double& obj, const IloCplex& cplex, const IloBoolVarArray& x_cycle, const IloBoolVarArray& x_chain);
 
 private:
     IloEnv env;
