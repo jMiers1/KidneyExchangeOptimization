@@ -28,7 +28,10 @@ private:
     void printResults();
     void findCyclesChains();
     void dfs(int focal_node, vector<VisitState> visited, vector<int> parent, int current_depth,  bool chains_allowed, bool cycles_allowed);
-
+    void trackNodeMap(const string& structure_type, const vector<int>& structure);
+    void trackWeightMap(const string& structure_type, const vector<int>& structure);
+    bool isNew(const std::string& structure_type, const vector<int>& structure);
+    void processLeaveNode(const std::string& structure_type, const int& focal_node, const int& child, const vector<int>& parent);
 
 public:
 
@@ -40,7 +43,7 @@ public:
     vector<int> _NDDs;
     int _numChains{-1};
     int _numCycles{-1};
-    map<int,pair<vector<int>,vector<int>>> mapNodes; //for ech nodes the indecies of the chains and cycles containing that node
+    map<int,pair<vector<int>,vector<int>>> mapNodes; //for each node the indecies of the chains and cycles containing that node
     map<int,double> _cycleWeights; // for each cycle (repesented by its index in cycles) the total value of all contained edges 
     map<int,double> _chainWeights;
     int _maxCycleLength{-1};
@@ -51,6 +54,10 @@ public:
     // output
     vector<vector<int>> cycles{{}};
     vector<vector<int>> chains{{}};
+
+    set<vector<int>> unique_cycles{{}};
+    set<vector<int>> unique_chains{{}};
+
 
     //constructor
     CycleChainFinder(const vector<vector<int>>& adjacencyList,  

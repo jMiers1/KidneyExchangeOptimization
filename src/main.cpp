@@ -49,27 +49,15 @@ int main(int argc, const char * argv[]) {
     str.clear(); str << argv[6];
     IloNum TimeLimit; str >> TimeLimit;
     string Preference = argv[7];
-    prevSectionEnd = logging("Read user input", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
-
-
 
 
     // Own     
     cout << "### Start Own Model ### \n \n" <<endl;  
-
     prevSectionEnd = logging("Own: Start", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     IloEnv _env;
     DataReader reader(FilePath, _env);
-    prevSectionEnd = logging("Own: Read Data", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
-
-
-
-    ChainLength = 6;
-
     CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
-    prevSectionEnd = logging("Own: Found Cycles and Chains", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
-    return 0; 
     KidneyModel model (_env, 
                         finder.cycles, 
                         finder.chains, 
@@ -79,7 +67,7 @@ int main(int argc, const char * argv[]) {
                         finder._cycleWeights,
                         finder._NDDs, 
                         finder._PDPs);
-    prevSectionEnd = logging("Own: Solved Model", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+    
 
     cout << "\n \n ### End Own Model ### \n \n" <<endl; 
 

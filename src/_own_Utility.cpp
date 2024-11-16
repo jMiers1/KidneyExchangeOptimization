@@ -122,9 +122,9 @@ void printPath(const std::vector<int>& vec){
     printVector(vec);
 }
 
-void printCycleWeights(const std::map<int, int>& cycleWeights) {
+void printCycleWeights(const std::map<int, double>& cycleWeights) {
     for (const auto& entry : cycleWeights) {
-        std::cout << "Cycle/Chain " << entry.first << " has a total weight of " << entry.second << std::endl;
+        std::cout << entry.first <<": "<<  entry.second << std::endl;
     }
 }
 

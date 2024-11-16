@@ -21,6 +21,7 @@ KidneyModel::KidneyModel(IloEnv& _env,
         _numCycles = _Cycles.size();
         _numChains = _Chains.size();
         solvePatternFormulation();
+        prevSectionEnd = logging("Own || Solved Pattern Model", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     }
 
 KidneyModel::~KidneyModel() {

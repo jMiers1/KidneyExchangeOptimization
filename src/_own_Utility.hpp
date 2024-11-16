@@ -21,7 +21,7 @@ bool containedInSet(const int& target, const set<int>& s);
 void printWeights(const std::map<std::pair<int, int>, double>& weights);
 void printAdjacency(const std::vector<std::vector<int>>& vecOfVecs);
 void printPath(const std::vector<int>& vec);
-void printCycleWeights(const std::map<int, int>& cycleWeights);
+void printCycleWeights(const std::map<int, double>& cycleWeights);
 void printCycles(const vector<vector<int>>& cycles);
 void printChains(const vector<vector<int>>& chains);
 void logChainsCycles(const std::vector<std::vector<int>>& chains, const std::vector<std::vector<int>>& cycles,  const std::string& filename);
