@@ -61,7 +61,7 @@ int main(int argc, const char * argv[]) {
 
     cout << "\n \n ### End Own Model ### \n \n" <<endl; 
 
-
+    return 0;
     // Default
     cout << "### Start Default> Model ### \n \n" <<endl; 
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);

@@ -27,6 +27,7 @@ public:
     void printObjectiveFunction();
 
     double solvePctspFormulation();
+    void test();
 
     
 
@@ -51,6 +52,5 @@ private:
 };
 
 
-pair<vector<vector<pair<int, int>>>, vector<vector<int>>> findViolatingCycles(const vector<pair<int, int>>& edgesInSolution,const vector<vector<int>>& adjacencyList,const int& k);
-
+vector<vector<int>> findViolatingEdgeCycles(const vector<pair<int, int>>& activeEdges);
 #endif // KidneyModel_Hpp
