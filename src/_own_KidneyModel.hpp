@@ -28,6 +28,10 @@ public:
 
     double solvePctspFormulation();
 
+    
+
+
+
 private:
     IloEnv env;
     vector<vector<int>> _Cycles;
@@ -44,99 +48,9 @@ private:
     int _numNodes{-99};
     vector<vector<int>> _AdjacencyList;
     vector<vector<int>> _PredList;
-
-
-    //     // Nested class CutCallback
-    // class CutCallback : public IloCplex::LazyConstraintCallbackI {
-    // private:
-    //     IloEnv env;
-    //     IloBoolVarArray& x_cycle;  // Decision variables for cycles
-    //     IloBoolVarArray& x_edge;   // Decision variables for edges
-    //     IloBoolVarArray& f_in;     // Inflow variables
-    //     const map<pair<int, int>, IloBoolVar>& edgeVars;  // Map for edge variables
-    //     const vector<vector<int>>& predList;  // Predecessor list
-    //     const vector<vector<int>>& adjacencyList;  // Adjacency list
-
-    // public:
-    //     // Constructor
-    //     CutCallback(const IloEnv& env, 
-    //                 IloBoolVarArray& x_cycle, 
-    //                 IloBoolVarArray& x_edge, 
-    //                 IloBoolVarArray& f_in, 
-    //                 const map<pair<int, int>, IloBoolVar>& edgeVars, 
-    //                 const vector<vector<int>>& predList, 
-    //                 const vector<vector<int>>& adjacencyList)
-    //         : env(env), 
-    //           x_cycle(x_cycle), 
-    //           x_edge(x_edge), 
-    //           f_in(f_in), 
-    //           edgeVars(edgeVars), 
-    //           predList(predList), 
-    //           adjacencyList(adjacencyList) {}
-
-    //     // Main callback function to generate cuts
-    //     void main() override {
-    //         // Only called during the MIP solution phase
-    //         IloBoolVarArray x_cycle = this->x_cycle;
-    //         IloBoolVarArray x_edge = this->x_edge;
-            
-    //         // List to collect edges that are in the solution (i.e., y[e] > 0.5)
-    //         vector<pair<int, int>> edges_in_solution;
-
-    //         // Check for edges in the solution, i.e., edges that are selected (y[e] > 0.5)
-    //         for (const auto& entry : edgeVars) {
-    //             if (getValue(entry.second) > 0.5) { // If the edge is selected
-    //                 edges_in_solution.push_back(entry.first);
-    //             }
-    //         }
-
-    //         // Find any violated cycles based on the current solution
-    //         vector<vector<int>> violated_cycles = find_violating_cycles(edges_in_solution);
-
-    //         // For each violated cycle, generate a lazy cut
-    //         for (const auto& cycle : violated_cycles) {
-    //             vector<int> complement = get_complement(cycle);  // Nodes not in the cycle
-    //             vector<pair<int, int>> cut_edges = get_cut_edges(complement, cycle);
-
-    //             // Create a lazy constraint (cut) and add it to the model
-    //             IloExpr cut_expr(env);
-    //             for (const auto& edge : cut_edges) {
-    //                 cut_expr += edgeVars.at(edge);  // Add selected edges to the cut expression
-    //             }
-                
-    //             // Add the lazy constraint (cut)
-    //             addLazyConstraint(cut_expr >= 1);
-    //             cut_expr.end();
-    //         }
-    //     }
-
-    //     // Helper function to find violated cycles (you need to implement this based on your cycle detection logic)
-    //     vector<vector<int>> find_violating_cycles(const vector<pair<int, int>>& edges_in_solution) {
-    //         vector<vector<int>> violated_cycles;
-    //         // Example (You can replace it with actual cycle detection)
-    //         return violated_cycles;
-    //     }
-
-    //     // Helper function to get the complement of a cycle
-    //     vector<int> get_complement(const vector<int>& cycle) {
-    //         vector<int> complement;
-    //         return complement;
-    //     }
-
-    //     // Helper function to generate the cut edges
-    //     vector<pair<int, int>> get_cut_edges(const vector<int>& complement, const vector<int>& cycle) {
-    //         vector<pair<int, int>> cut_edges;
-    //         for (int node : complement) {
-    //             for (int neighbor : cycle) {
-    //                 cut_edges.push_back({node, neighbor});
-    //             }
-    //         }
-    //         return cut_edges;
-    //     }
-    // };
-
-
-
 };
+
+
+pair<vector<vector<pair<int, int>>>, vector<vector<int>>> findViolatingCycles(const vector<pair<int, int>>& edgesInSolution,const vector<vector<int>>& adjacencyList,const int& k);
 
 #endif // KidneyModel_Hpp

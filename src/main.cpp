@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]) {
     IloEnv _env;
     DataReader reader(FilePath, _env);
     CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
-    KidneyModel model (_env, finder.cycles, finder.chains, reader._Weights, finder.mapNodes, finder._chainWeights, finder._cycleWeights, finder._NDDs, finder._PDPs);
+    KidneyModel model (_env, finder.cycles, finder.chains, reader._Weights, finder.mapNodes, finder._chainWeights, finder._cycleWeights, finder._NDDs, finder._PDPs, reader._AdjacencyList, reader._PredList);
 
     cout << "\n \n ### End Own Model ### \n \n" <<endl; 
 
