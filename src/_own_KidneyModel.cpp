@@ -38,7 +38,7 @@ KidneyModel::KidneyModel(IloEnv& _env,
         _numEdges = _Weights.size();
         _numNodes = _NDDs.size() + _PDPs.size();
 
-        test();
+        //test();
     }
 
 // Define the callback class using ILOLASYCONSTRAINTCALLBACK2 macro
@@ -108,11 +108,7 @@ ILOLAZYCONSTRAINTCALLBACK4(KidneyModelLazyCallback,
 
 
 
-
-
-
-
-
+// PC-TSP model 
 
 double KidneyModel::solvePctspFormulation(){
     double result;
@@ -213,10 +209,92 @@ double KidneyModel::solvePctspFormulation(){
     return result;
 }
 
+vector<vector<int>> findViolatingEdgeCycles(const vector<pair<int, int>>& activeEdges) {
+    vector<vector<int>> edgeCycles; // To store all cycles found
+    set<int> exploredNodes;         // To store fully explored nodes
+    set<pair<int, int>> unexploredEdges(activeEdges.begin(), activeEdges.end());
+    
+    while (!unexploredEdges.empty()) {
+        // Start with an unexplored edge
+        pair<int, int> edge = *unexploredEdges.begin();
+        int start = edge.first;
+        int end = edge.second;
 
+        // Track the current exploration path
+        vector<int> explorationPath;
+        set<int> visitedInPath;  // Track nodes in the current path
+
+        // Add the first edge to the exploration path
+        explorationPath.push_back(start);
+        explorationPath.push_back(end);
+        visitedInPath.insert(start);
+        visitedInPath.insert(end);
+
+        // Explore the path starting from 'start'
+        while (true) {
+            // Search for the next edge where the start node matches the current end node
+            auto it = find_if(unexploredEdges.begin(), unexploredEdges.end(),
+                              [end](const pair<int, int>& e) { return e.first == end; });
+
+            if (it == unexploredEdges.end()) {
+                // No next edge found, break out of the loop (this chain is fully explored)
+                break;
+            }
+
+            // Move to the next edge
+            edge = *it;
+            start = edge.first;
+            end = edge.second;
+
+            if (visitedInPath.find(end) != visitedInPath.end()) {
+                // Cycle detected, record the cycle
+                edgeCycles.push_back(explorationPath);
+                break;
+            }
+
+            // Add the current edge's end node to the exploration path
+            explorationPath.push_back(end);
+            visitedInPath.insert(end);
+
+            // Remove the current edge from unexploredEdges since we processed it
+            unexploredEdges.erase(it);
+        }
+
+        // Remove the current edge from the unexplored set (if it was not already removed)
+        unexploredEdges.erase(edge);
+    }
+
+    return edgeCycles;
+}
+
+void KidneyModel::test(){
+
+    vector<pair<int, int>> edgesInSolution = {
+
+        // remove (0, 1) (1, 0) 
+        {0,6},
+        {1,0},
+        {2,3},
+        {3,4},
+        {4,5},
+        {5,3},
+        {6,1}};
+
+    // Find violating cycles
+
+    auto result = findViolatingEdgeCycles(edgesInSolution);
+
+        // Print results
+        cout << "Violating Edge Cycles:\n";
+        for (const auto& cycle : result) {
+            printVector(cycle);
+        }
+}
+    
 
 
 // Pattern model 
+
 double KidneyModel::solvePatternFormulation() {
     double result;
 
@@ -286,6 +364,10 @@ double KidneyModel::solvePatternFormulation() {
     env.end();
 }
 
+
+
+// Print outs 
+
 void KidneyModel::printObjectiveFunction(){
   
     cout << "Objective function: " << endl;
@@ -347,94 +429,3 @@ void KidneyModel::printSolutionStructure(const string& structure_type, const int
 }
 
 
-
-
-
-
-
-
-
-vector<vector<int>> findViolatingEdgeCycles(const vector<pair<int, int>>& activeEdges) {
-    vector<vector<int>> edgeCycles; // To store all cycles found
-    set<int> exploredNodes;         // To store fully explored nodes
-    set<pair<int, int>> unexploredEdges(activeEdges.begin(), activeEdges.end());
-    
-    while (!unexploredEdges.empty()) {
-        // Start with an unexplored edge
-        pair<int, int> edge = *unexploredEdges.begin();
-        int start = edge.first;
-        int end = edge.second;
-
-        // Track the current exploration path
-        vector<int> explorationPath;
-        set<int> visitedInPath;  // Track nodes in the current path
-
-        // Add the first edge to the exploration path
-        explorationPath.push_back(start);
-        explorationPath.push_back(end);
-        visitedInPath.insert(start);
-        visitedInPath.insert(end);
-
-        // Explore the path starting from 'start'
-        while (true) {
-            // Search for the next edge where the start node matches the current end node
-            auto it = find_if(unexploredEdges.begin(), unexploredEdges.end(),
-                              [end](const pair<int, int>& e) { return e.first == end; });
-
-            if (it == unexploredEdges.end()) {
-                // No next edge found, break out of the loop (this chain is fully explored)
-                break;
-            }
-
-            // Move to the next edge
-            edge = *it;
-            start = edge.first;
-            end = edge.second;
-
-            if (visitedInPath.find(end) != visitedInPath.end()) {
-                // Cycle detected, record the cycle
-                edgeCycles.push_back(explorationPath);
-                break;
-            }
-
-            // Add the current edge's end node to the exploration path
-            explorationPath.push_back(end);
-            visitedInPath.insert(end);
-
-            // Remove the current edge from unexploredEdges since we processed it
-            unexploredEdges.erase(it);
-        }
-
-        // Remove the current edge from the unexplored set (if it was not already removed)
-        unexploredEdges.erase(edge);
-    }
-
-    return edgeCycles;
-}
-
-
-
-void KidneyModel::test(){
-
-    vector<pair<int, int>> edgesInSolution = {
-
-        // remove (0, 1) (1, 0) 
-        {0,6},
-        {1,0},
-        {2,3},
-        {3,4},
-        {4,5},
-        {5,3},
-        {6,1}};
-
-    // Find violating cycles
-
-    auto result = findViolatingEdgeCycles(edgesInSolution);
-
-        // Print results
-        cout << "Violating Edge Cycles:\n";
-        for (const auto& cycle : result) {
-            printVector(cycle);
-        }
-}
-    

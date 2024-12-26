@@ -51,12 +51,11 @@ int main(int argc, const char * argv[]) {
     string Preference = argv[7];
 
 
-    // Own     
-    cout << "### Start Own Model ### \n \n" <<endl;  
+    // Own      
     prevSectionEnd = logging("Own: Start", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
     IloEnv _env;
-    DataReader reader(FilePath, _env);
-    CycleChainFinder finder(reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
+    DataReader reader (FilePath, _env);
+    CycleChainFinder finder (reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
     KidneyModel model (_env, finder.cycles, finder.chains, reader._Weights, finder.mapNodes, finder._chainWeights, finder._cycleWeights, finder._NDDs, finder._PDPs, reader._AdjacencyList, reader._PredList);
 
     cout << "\n \n ### End Own Model ### \n \n" <<endl; 
@@ -64,6 +63,8 @@ int main(int argc, const char * argv[]) {
 
     // Default
     cout << "### Start Default> Model ### \n \n" <<endl; 
+
+    
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
     cout << "Reading input graph..." << endl;
     if (P.ReadData() == 0) {
