@@ -26,15 +26,13 @@ public:
     IloInt _NDDs{99};
     IloInt _Pairs{99};
     IloInt _NumArcs{99};
-    IloNumArray2 _AdjacencyList_ILO; // need for CPLEX model
+    IloNumArray2 _AdjacencyList_ILO; // _ILO attributes for CPLEX model, without _ILO for own procressing (e.g. _AdjacencyList for cycle and chain finding)
     IloNumArray2 _Weights_ILO;  
     IloNumArray _PairsType;
 
-    vector<vector<int>> _AdjacencyList;  // need to find cycles & chains
+    vector<vector<int>> _AdjacencyList;
     vector<vector<int>> _PredList;
     map<pair<int,int>,double> _Weights;
-
-    // create this in call
     string _fileName; 
 
     DataReader(const string& path,  IloEnv& env);
