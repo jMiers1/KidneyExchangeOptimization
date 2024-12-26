@@ -1,0 +1,38 @@
+Advanced Seminar 
+
+
+Allgemein:
+- ggf Templates für Präsentation & Report
+- Fokus ist Präsentation, nicht report (hier nur summary + Fokus auf offene fragen aus Präsentation) 
+- GitHub repo als zip an ihn 
+
+Präsentation: 
+- Visueller Ansatz
+- Nicht zu viel text auf den slides
+- Slides als Ergänzung zum sprechen, nicht als summary 
+- Flowchart > pseudocode 
+- Gerne dynamisch machen ( > Animationen: pop up) 
+- Aufbau:
+    - 1) Allgemeine Einleitung: Was ist ein KEP? 
+    - 2) Vorstellung grober framework 
+        - Phase 1) 
+        - Phase 2) & 3) etwas abstrakter (da macht man halt teure heuristische Optimierung falls 1. Phase nicht geklappt hat) 
+
+Studie:
+- Mathematischer framework ist ok ( nicht grundsätzlich neu) 
+- Fokus auf Benchmarking der selling points:
+    - A) MDD in Phase 1: 
+        - Regulärer CPLEX mip solver vs MDD: was ist besser?
+        - Brauchen wir die MDDs auch danach noch? 
+    - B) Wie funktioniert eigentlich diese user preference for cycles over chains? 
+    - C) Hyperparameter tuning: 
+        - Wie groß soll K sein? 
+        - Wie sollen die splits gesetzt werden (zB 90%) ? 
+
+Next Steps
+- Step 1: Lokale TODOs:
+    - Code noch besser steuern können > mehr user input parameter zB zu Verwendung von MDD
+    - Code noch mehr separieren ( Phase 2 und 3 genau benennen können) 
+    - Eigenes CPLEX solver statt stage 1
+- Step 2: Auf Alex lokaler machine laufen lassen 
+- Step 3: LRZ [optional da kostenpflichtig]
