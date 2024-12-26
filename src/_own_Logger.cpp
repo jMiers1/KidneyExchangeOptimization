@@ -213,23 +213,3 @@ std::map<string, string> mapUserInput(const char * argv[]){
 
     return userInput;
 };
-
-
-// void writeLogs_CSV(){
-//     string filename = fileName(userInput, "csv").str();
-//     std::ofstream file(filename);
-//     int step = 0;
-
-//     if (file.is_open()) {
-//         //file << extractUserInput(userInput, ";").str();
-//         file << extractLogHeader(logHeader = logHeader, ";").str();
-//         for (const auto& entry : operationTraces) {
-//             file << extractLogEntry(entry, step, ";").str();
-//             ++step;}
-//         file.close();
-//     } else {
-//         std::cerr << "Error: Could not open the file." << std::endl;
-//     }
-
-//     createFile(extractUserInput(userInput, ";"), "txt");
-//}
