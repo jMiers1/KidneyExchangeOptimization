@@ -1,0 +1,15 @@
+Instance: KP_Num20_N17_A1.txt
+Max Cyle Length: 3
+Max Chain Length: 4
+Degree Type: Indegree
+Preference: CY
+Time Taken: 0.019378
+Time Limit: 20
+Status: Optimal
+Objective Value: 7
+Cycle 1:	9	3	11	
+Chain 1:	16	2	8	14	6	
+
+Average Chain Length: 4
+Average Cycle Length: 3
+Percentage of highly-sensitized patients in solution (%): 0

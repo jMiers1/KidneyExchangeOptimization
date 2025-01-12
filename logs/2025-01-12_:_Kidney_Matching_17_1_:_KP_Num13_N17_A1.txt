@@ -4,6 +4,6 @@
                 Execution date                    2025-01-12
                           File               KP_Num13_N17_A1
                         Folder          Kidney_Matching_17_1
-              Max chain length                             3
+              Max chain length                             4
               Max cycle length                             3
                     Time limit                            20

@@ -3,7 +3,7 @@ Max Cyle Length: 3
 Max Chain Length: 3
 Degree Type: Indegree
 Preference: CY
-Time Taken: 0.043063
+Time Taken: 0.048633
 Time Limit: 20
 Status: Optimal
 Objective Value: 10
