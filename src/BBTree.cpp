@@ -306,14 +306,14 @@ void Problem::BBTree(){
             if (TimedOut == true){
                 //vBestSol = vFeasSol;
                 TBBtime = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
-                cout << endl << "Feasible Solution " << endl << "Objective Value: " << GlobalLB << endl;
+                //cout << endl << "Feasible Solution " << endl << "Objective Value: " << GlobalLB << endl;
                 PrintLag("Feasible");
                 prevSectionEnd = logging("(3c)", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             }
             else{
                 //vBestSol = vFeasSol;
                 TBBtime = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
-                cout << endl << "Optimal Solution " << endl << "Objective Value: " << GlobalLB << endl;
+                //cout << endl << "Optimal Solution " << endl << "Objective Value: " << GlobalLB << endl;
                 PrintLag("Optimal");
                 prevSectionEnd = logging("(3a)", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
             }
@@ -325,14 +325,30 @@ void Problem::BBTree(){
             vBestSol = vFeasSol;
             TBBtime = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
             if (DegreeType == "Best_K-VFS" && TooManyVFSCycles == true){
-                cout << endl << "BP_MDD unable to start...More than 4M cycles, thus no K-VFS was obtained." << endl;
+                //cout << endl << "BP_MDD unable to start...More than 4M cycles, thus no K-VFS was obtained." << endl;
                 PrintLag("Unstarted");
             }else{
                 //Print optimal solution
-                cout << endl << "Optimal Solution " << endl << "Objective Value: " << GlobalLB << endl;
+                //cout << endl << "Optimal Solution " << endl << "Objective Value: " << GlobalLB << endl;
                 PrintLag("Optimal");
             }
         }
+
+
+
+        /*
+       cout << "\nOptimal solution: ";
+        for (const auto& val : vBestSol) {
+            for (const auto& val2 : val){
+                cout << val2 << " ";
+            }
+        }
+        cout << endl;
+
+        cout << "Global upper bound: " << GlobalUB << endl
+            << "Global lower bound: " << GlobalLB << endl;
+        */ 
+
     }
     else{
 
@@ -344,7 +360,7 @@ void Problem::BBTree(){
         vBestSol = vFeasSol;
         TBBtime = (clock() - StartSolTime)/double(CLOCKS_PER_SEC);
         //Print best solution
-        cout << endl << "Feasible Solution " << endl << "Objective Value: " << GlobalLB << endl;
+        //cout << endl << "Feasible Solution " << endl << "Objective Value: " << GlobalLB << endl;
         if (CGNotOptimal == false){
             if (GlobalUB == GlobalLB){
                 PrintLag("Optimal");

@@ -33,7 +33,7 @@ KidneyModel::KidneyModel(IloEnv& _env,
     : env(_env), _Cycles(_cycles), _Chains(_chains), _cycleWeights(_cycleWeights), _chainWeights(_chainWeights), _Weights(_weights), _mapNodes(_mapNodes), _NDDs(_ndds), _PDPs(_pdps), _AdjacencyList(adjacencyList), _PredList(predList) {
         _numCycles = _Cycles.size();
         _numChains = _Chains.size();
-        // solvePatternFormulation();
+        solvePatternFormulation();
 
         _numEdges = _Weights.size();
         _numNodes = _NDDs.size() + _PDPs.size();

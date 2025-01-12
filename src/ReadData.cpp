@@ -17,7 +17,7 @@ int Problem::ReadData() {
     // Check that instance file is valid 
     ifstream inFile(FilePath, ifstream::in);
     if (!inFile) {
-        cout << endl << "Instance's files not found. " << FilePath << endl;
+        //cout << endl << "Instance's files not found. " << FilePath << endl;
         return 0;
     }
 

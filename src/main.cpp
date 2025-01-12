@@ -53,26 +53,23 @@ int main(int argc, const char * argv[]) {
 
     // Own      
     prevSectionEnd = logging("Own: Start", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
+
+    /*
     IloEnv _env;
     DataReader reader (FilePath, _env);
     CycleChainFinder finder (reader._AdjacencyList, reader._PredList, reader._Weights, CycleLength, ChainLength);
     KidneyModel model (_env, finder.cycles, finder.chains, reader._Weights, finder.mapNodes, finder._chainWeights, finder._cycleWeights, finder._NDDs, finder._PDPs, reader._AdjacencyList, reader._PredList);
-
     cout << "\n \n ### End Own Model ### \n \n" <<endl; 
-
-
-    // Default
     cout << "### Start Default> Model ### \n \n" <<endl; 
+    */
 
     
     Problem P(FilePath, OutputPath, DegreeType, CycleLength, ChainLength, TimeLimit, WeightMatrix, AdjacencyList, Pairs, NDDs, Preference);
-    cout << "Reading input graph..." << endl;
+    //cout << "Reading input graph..." << endl;
     if (P.ReadData() == 0) {
         cout << "Failed while reading input..." << endl;
         return -1;
     }
-
-    prevSectionEnd = logging("Read instance file", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
 
     
     // Configure solution mode
@@ -96,15 +93,14 @@ int main(int argc, const char * argv[]) {
             P.CadaCuantoMerge = 20;
         }
     }
-    prevSectionEnd = logging("Configure solution mode", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
+    prevSectionEnd = logging("Configured Probelm", "", prevSectionEnd,  __FILE__, __FUNCTION__, __LINE__);
     
     // Apply MDD 
     P.BuildMDDs();
     
     // Apply BBTree
     P.BBTree();
-    
-    cout << endl << "End \n" <<endl;
+
 
 
     //Logging

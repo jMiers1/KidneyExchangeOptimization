@@ -42,7 +42,7 @@ void startLogging(const char * argv[]){
 void finishLogging(){
     global_used_time = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - global_start_time).count();
     global_used_memory = getMemory();
-    writeLogs_Terminal();
+    // writeLogs_Terminal();
     writeLog_Files();
 }
 

@@ -49,7 +49,7 @@ vector<pair<int,int>> Problem::OptimalVFS(){
     //Solve
     cp_vfs.setOut(env.getNullStream());
     cp_vfs.solve();
-    cout << "StatusVFS: " << cp_vfs.getStatus() << endl;
+    //cout << "StatusVFS: " << cp_vfs.getStatus() << endl;
     IloNumArray Sol_vfs(env);
     cp_vfs.getValues(Sol_vfs, d);
     
@@ -350,7 +350,7 @@ void Problem::CycleFormulation(){
             //cout << AdjacencyList[PredList[i][j]].getSize() << endl;
             units-= x[PredList[i][j]][h];
         }
-        cout << units << endl;
+        //cout << units << endl;
         flow.add(IloRange(env,-IloInfinity, units, 0));
         units.end();
     }

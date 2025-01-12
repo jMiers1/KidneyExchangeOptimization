@@ -83,7 +83,7 @@ void Problem::Lagrange(){
         
         if (cplex.getStatus() == IloAlgorithm::Infeasible) {
             prevSectionEnd = logging("CPLEX - Infeasible", "", prevSectionEnd, __FILE__, __FUNCTION__, __LINE__);
-            cout << "Infeasible";
+            //cout << "Infeasible";
         }
         else{
             //Check running time
@@ -96,7 +96,7 @@ void Problem::Lagrange(){
             //Get objective value
             double pastUpperBound = UpperBound;
             UpperBound = cplex.getObjValue();
-            cout << "Upper Bound:" << UpperBound << endl;
+            //cout << "Upper Bound:" << UpperBound << endl;
             
             //Get dual variables
             cplex.getDuals(solpi,onecycle);
