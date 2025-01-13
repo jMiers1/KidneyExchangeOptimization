@@ -91,7 +91,7 @@ if __name__ == '__main__':
                     results.append(f'Skipped {input_file}')
                     print(f'Skipped {input_file}')
 
-    output_json_file = "/Users/juliusmiers/KidneyExchangeOptimization/results.json"  # Change this to the desired output file path
+    output_json_file = "/Users/juliusmiers/KidneyExchangeOptimization/hyperparameter_tuning/results.json"  # Change this to the desired output file path
 
     # Write the results to the JSON file
     with open(output_json_file, "w") as json_file:
