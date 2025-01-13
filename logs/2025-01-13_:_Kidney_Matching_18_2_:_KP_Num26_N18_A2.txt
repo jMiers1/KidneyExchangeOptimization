@@ -1,9 +1,0 @@
-                 0_Information                       0_Value
-              Cycle/chain mode                            CY
-                   Degree type                      Indegree
-                Execution date                    2025-01-13
-                          File               KP_Num26_N18_A2
-                        Folder          Kidney_Matching_18_2
-              Max chain length                             9
-              Max cycle length                             9
-                    Time limit                            20

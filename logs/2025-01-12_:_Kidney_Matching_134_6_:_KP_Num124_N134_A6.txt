@@ -1,9 +1,0 @@
-                 0_Information                       0_Value
-              Cycle/chain mode                            CY
-                   Degree type                      Indegree
-                Execution date                    2025-01-12
-                          File             KP_Num124_N134_A6
-                        Folder         Kidney_Matching_134_6
-              Max chain length                             9
-              Max cycle length                             9
-                    Time limit                            20

@@ -8,6 +8,7 @@ def parse_file(file_path):
         lines = file.readlines()
     
     # Parse header information
+    data["FilePath"] = file_path
     data["Instance"] = lines[0].split(":")[1].strip()
     data["MaxCycleLength"] = int(lines[1].split(":")[1].strip())
     data["MaxChainLength"] = int(lines[2].split(":")[1].strip())
@@ -42,19 +43,58 @@ def parse_file(file_path):
 
     return data
 
-# Path to the folder containing the files
-input_folder = "/path/to/files"
-output_file = "output.json"
+if __name__ == '__main__':
 
-# Parse all files in the folder
-results = []
-for filename in os.listdir(input_folder):
-    if filename.endswith(".txt"):  # Assuming files have .txt extension
-        file_path = os.path.join(input_folder, filename)
-        results.append(parse_file(file_path))
 
-# Save the results as a JSON file
-with open(output_file, "w") as json_file:
-    json.dump(results, json_file, indent=4)
 
-print(f"Data has been written to {output_file}")
+    '''# Path to the folder containing the files
+    input_file = "/Users/juliusmiers/KidneyExchangeOptimization/out/PrefLib/3_cycle_length/3_chain_length/Kidney_Matching_17_1/KP_Num11_N17_A1.txt_cycle3_chain3.txt"
+    output_file = "/Users/juliusmiers/KidneyExchangeOptimization/logs/PrefLib/3_cycle_length/3_chain_length/Kidney_Matching_17_1/KP_Num11_N17_A1.txt_cycle3_chain3.txt"
+
+    # Parse all files in the folder
+    results = []
+    results.append(parse_file(input_file))
+    # for filename in os.listdir(input_folder):
+    #     if filename.endswith(".txt"):  # Assuming files have .txt extension
+    #         file_path = os.path.join(input_folder, filename)
+    #         results.append(parse_file(file_path))
+
+    # Save the results as a JSON file
+    with open(output_file, "w") as json_file:
+        json.dump(results, json_file, indent=4)
+
+    print(f"Data has been written to {output_file}")
+    '''
+    # Paths
+    base_input_folder = "/Users/juliusmiers/KidneyExchangeOptimization/out"
+    results = []
+    for root, _, files in os.walk(base_input_folder):
+        for file in files:
+            if file.endswith(".txt"):
+                # Input and output file paths
+                input_file = os.path.join(root, file)
+                '''relative_path = os.path.relpath(input_file, base_input_folder)
+                output_file = os.path.join(base_output_folder, relative_path).replace(".txt", ".json")
+                
+                # Ensure the output folder structure exists
+                os.makedirs(os.path.dirname(output_file), exist_ok=True)
+                
+                # Parse the file and save as JSON
+                parsed_data = parse_file(input_file)
+                with open(output_file, "w") as json_file:
+                    json.dump(parsed_data, json_file, indent=4)
+
+                print(f"Processed {input_file} -> {output_file}")'''
+                try: 
+                    results.append(parse_file(input_file))
+                except: 
+                    results.append(f'Skipped {input_file}')
+                    print(f'Skipped {input_file}')
+
+    output_json_file = "/Users/juliusmiers/KidneyExchangeOptimization/results.json"  # Change this to the desired output file path
+
+    # Write the results to the JSON file
+    with open(output_json_file, "w") as json_file:
+        json.dump(results, json_file, indent=4)
+
+    print("Written output to json")
